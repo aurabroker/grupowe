@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" prefix="og: https://ogp.me/ns#">
 <head>
+  <!-- ═══════════════════════════════════════════════
+       GRUPOWE.PRO | Aura Consulting | Ubezpieczenia Grupowe
+       Autor: Aura Consulting | 2026
+  ═══════════════════════════════════════════════ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Polityka Prywatności | grupowe.pro</title>
-  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Ubezpieczenia Grupowe dla Firm | grupowe.pro – Aura Consulting</title>
+  <meta name="description" content="Profesjonalne ubezpieczenia grupowe dla pracowników: życiowe, zdrowotne, leczenie na świecie. Broker Aura Consulting. Zadzwoń: 500 502 702.">
+  <meta name="keywords" content="ubezpieczenia grupowe, ubezpieczenie pracowników, broker ubezpieczeniowy, Aura Consulting, grupowe.pro, laven, medisky">
+  <meta name="author" content="Aura Consulting">
+  <link rel="canonical" href="https://grupowe.pro/">
+
+  <!-- Google Tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-L5S53BCN1K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -13,50 +24,340 @@
     gtag('config', 'G-L5S53BCN1K');
   </script>
 
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'brand-navy': '#2a3b69',
+                    'brand-navy-dark': '#1e294a',
+                    'brand-pink': '#e11d48',
+                },
+                keyframes: {
+                    float: {
+                        '0%, 100%': { transform: 'translateY(0)' },
+                        '50%': { transform: 'translateY(-20px)' },
+                    },
+                    floatRev: {
+                        '0%, 100%': { transform: 'translateY(0)' },
+                        '50%': { transform: 'translateY(15px)' },
+                    }
+                },
+                animation: {
+                    'float': 'float 8s ease-in-out infinite',
+                    'float-reverse': 'floatRev 6s ease-in-out infinite',
+                }
+            }
+        }
+    }
+  </script>
+
+  <!-- FONT BEZSZERYFOWY INTER -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Główny arkusz stylów -->
   <link rel="stylesheet" href="style.css">
+  
+  <style>
+      .loader { border: 2px solid #f3f3f3; border-top: 2px solid #2a3b69; border-radius: 50%; width: 14px; height: 14px; animation: spin 1s linear infinite; }
+      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<body>
 
-<nav class="bg-white/95 backdrop-blur-md border-b border-slate-200 fixed top-0 w-full z-50 h-20 flex items-center">
-  <div class="container mx-auto px-5 flex justify-between items-center w-full">
-    <a href="index.html" class="text-2xl font-black text-[#1e294a] no-underline tracking-tight">grupowe<span class="text-[#e11d48]">.pro</span></a>
-    <a href="index.html" class="text-sm font-bold text-[#1e294a] hover:text-[#e11d48] transition-colors uppercase tracking-widest">Wróć na stronę główną &rarr;</a>
+<!-- NAWIGACJA -->
+<nav>
+  <div class="container nav-inner flex justify-between items-center w-full">
+    <a href="index.html" class="nav-logo">grupowe<span>.pro</span></a>
+    <ul class="nav-links">
+      <li><a href="#uslugi">Zakres ochrony</a></li>
+      <li><a href="#dlaczego-my">Dlaczego my</a></li>
+      <li><a href="#projekty">Nasze projekty</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="tel:+48500502702" class="btn btn-primary text-white" style="padding: 10px 24px; color: #ffffff !important;">📞 500 502 702</a></li>
+    </ul>
   </div>
 </nav>
 
-<main class="pt-32 pb-24 container mx-auto px-5 max-w-4xl">
-    <div class="bg-white p-10 md:p-16 rounded-[40px] shadow-sm border border-slate-200">
-        <h1 class="text-3xl md:text-4xl font-black text-[#1e294a] mb-8">Polityka prywatności plików Cookies</h1>
-        
-        <div class="space-y-6 text-lg text-slate-600 leading-relaxed">
-            <p>Niniejsza Polityka określa zasady gromadzenia, przetwarzania i wykorzystywania danych pozyskanych przez serwis internetowy działający pod adresem <strong>grupowe.pro</strong>.</p>
-            
-            <h3 class="text-xl font-bold text-[#1e294a] mt-8 mb-4">1. Informacje ogólne</h3>
-            <p>Serwis nie zbiera w sposób automatyczny żadnych informacji, z wyjątkiem informacji zawartych w plikach cookies. Pliki cookies (tzw. „ciasteczka”) stanowią dane informatyczne, w szczególności pliki tekstowe, które przechowywane są w urządzeniu końcowym Użytkownika Serwisu i przeznaczone są do korzystania ze stron internetowych Serwisu.</p>
-            
-            <h3 class="text-xl font-bold text-[#1e294a] mt-8 mb-4">2. Do czego używamy plików cookies?</h3>
-            <ul class="list-disc pl-6 space-y-2">
-                <li>Dostosowania zawartości stron internetowych Serwisu do preferencji Użytkownika.</li>
-                <li>Tworzenia statystyk, które pomagają zrozumieć, w jaki sposób Użytkownicy Serwisu korzystają ze stron internetowych, co umożliwia ulepszanie ich struktury i zawartości (m.in. przy użyciu narzędzia Google Analytics).</li>
-                <li>Utrzymania sesji Użytkownika po ewentualnym zalogowaniu, a także zapamiętywania identyfikatorów partnerów polecających.</li>
-            </ul>
-
-            <h3 class="text-xl font-bold text-[#1e294a] mt-8 mb-4">3. Narzędzia analityczne</h3>
-            <p>Serwis wykorzystuje narzędzie Google Analytics udostępniane przez Google LLC w celu generowania anonimowych statystyk funkcjonowania strony. W ramach Google Analytics zbierane są informacje demograficzne oraz dane o zachowaniu użytkowników bez możliwości ich personalnej identyfikacji.</p>
-
-            <h3 class="text-xl font-bold text-[#1e294a] mt-8 mb-4">4. Zarządzanie plikami cookies</h3>
-            <p>Użytkownik może samodzielnie i w każdym czasie zmienić ustawienia dotyczące plików cookies, określając warunki ich przechowywania i uzyskiwania dostępu przez pliki cookies do Urządzenia Użytkownika. Zmiany ustawień można dokonać za pomocą ustawień przeglądarki internetowej.</p>
-            
-            <p class="mt-8 text-sm italic">Ostatnia aktualizacja dokumentu: Marzec 2026 r.</p>
+<!-- HERO -->
+<header class="hero pt-40 pb-20 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+  <div class="container mx-auto px-5 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+    <div class="reveal lg:w-1/2 text-left">
+      <span class="text-[#e11d48] font-extrabold tracking-widest text-xs uppercase mb-4 block">Broker Ubezpieczeniowy dla Firm</span>
+      <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-black text-slate-800 mb-6 leading-tight tracking-tight">Bezpieczeństwo zespołu <br><span class="text-[#e11d48]">to fundament biznesu.</span></h1>
+      <p class="text-lg text-slate-500 mb-10 leading-relaxed max-w-xl">Jako niezależny broker projektujemy programy ubezpieczeń dla pracowników, które realnie wspierają Twój zespół i optymalizują koszty firmy. Badanie rynku i wdrożenie jest w 100% bezpłatne.</p>
+      <div class="flex gap-4 flex-wrap">
+        <a href="#kontakt" class="btn btn-primary pulse-animation text-white" style="color: #ffffff !important;">Poproś o analizę ofert</a>
+        <a href="#uslugi" class="btn btn-outline">Poznaj nasze programy</a>
+      </div>
+    </div>
+    
+    <div class="reveal delay-100 lg:w-1/2 relative w-full mt-10 lg:mt-0 h-[400px] lg:h-[500px]">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80" alt="Zespół specjalistów" class="w-full h-full object-cover rounded-[40px] shadow-2xl animate-float">
+        <div class="absolute -bottom-8 -left-4 lg:-left-12 bg-white/90 backdrop-blur-xl p-5 lg:p-6 rounded-3xl shadow-xl border border-white flex items-center gap-4 animate-float-reverse">
+            <div class="w-12 h-12 bg-[#10b981] text-white rounded-full flex items-center justify-center shrink-0">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <div>
+                <p class="font-extrabold text-[#1e294a] m-0 text-base lg:text-lg leading-none">Ochrona 24/7</p>
+                <p class="text-xs lg:text-sm text-slate-500 m-0 mt-1 font-medium">W pracy i na świecie</p>
+            </div>
         </div>
     </div>
-</main>
+  </div>
+</header>
 
-<footer class="py-12 border-t border-slate-200 text-center bg-white">
+<!-- USŁUGI (UKŁAD 2x2 Z MODALAMI) -->
+<section class="py-20 container mx-auto px-5" id="uslugi" style="border-top: 1px solid var(--border);">
+  <div class="text-center mx-auto reveal mb-16">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-[#1e294a] mb-4">Cztery filary ochrony</h2>
+    <p class="mx-auto text-lg text-slate-500 max-w-2xl">Zbuduj przewagę na rynku pracy dzięki programom benefitowym opartym na faktycznych potrzebach pracowników.</p>
+  </div>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <article class="service-card reveal delay-100 bg-white rounded-[32px] border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer group flex flex-col" onclick="openModal('modal-zycie')">
+      <div class="overflow-hidden h-56"><img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=600&q=80" alt="Życie" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></div>
+      <div class="p-8 flex flex-col flex-grow">
+        <h3 class="text-xl font-bold text-[#1e294a] mb-3">Grupowe ubezpieczenia na życie</h3>
+        <p class="text-slate-500 mb-6">Niezawodna ochrona finansowa dla pracowników i ich rodzin na wypadek nieprzewidzianych, trudnych zdarzeń losowych.</p>
+        <span class="mt-auto font-bold text-[#e11d48] text-sm flex items-center gap-2 group-hover:translate-x-2 transition-transform">Dowiedz się więcej &rarr;</span>
+      </div>
+    </article>
+
+    <article class="service-card reveal delay-200 bg-white rounded-[32px] border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer group flex flex-col" onclick="openModal('modal-zdrowie')">
+      <div class="overflow-hidden h-56"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80" alt="Zdrowie" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></div>
+      <div class="p-8 flex flex-col flex-grow">
+        <h3 class="text-xl font-bold text-[#1e294a] mb-3">Grupowa opieka medyczna</h3>
+        <p class="text-slate-500 mb-6">Błyskawiczny dostęp do lekarzy specjalistów i zaawansowanych badań diagnostycznych – bez skierowań i długich kolejek w NFZ.</p>
+        <span class="mt-auto font-bold text-[#e11d48] text-sm flex items-center gap-2 group-hover:translate-x-2 transition-transform">Dowiedz się więcej &rarr;</span>
+      </div>
+    </article>
+
+    <article class="service-card reveal delay-100 bg-white rounded-[32px] border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer group flex flex-col" onclick="openModal('modal-laven')">
+      <div class="overflow-hidden h-56"><img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=600&q=80" alt="Technologie" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></div>
+      <div class="p-8 flex flex-col flex-grow">
+        <h3 class="text-xl font-bold text-[#1e294a] mb-3">Komplementarne ubezpieczenie medyczne</h3>
+        <p class="text-slate-500 mb-6">Wsparcie finansowe pokrywające koszty najdroższych, innowacyjnych terapii i technologii medycznych nierefundowanych przez NFZ.</p>
+        <span class="mt-auto font-bold text-[#e11d48] text-sm flex items-center gap-2 group-hover:translate-x-2 transition-transform">Odkryj program LAVEN &rarr;</span>
+      </div>
+    </article>
+
+    <article class="service-card reveal delay-200 bg-white rounded-[32px] border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer group flex flex-col" onclick="openModal('modal-medisky')">
+      <div class="overflow-hidden h-56"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" alt="Świat" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></div>
+      <div class="p-8 flex flex-col flex-grow">
+        <h3 class="text-xl font-bold text-[#1e294a] mb-3">Opieka medyczna - leczenie na całym świecie</h3>
+        <p class="text-slate-500 mb-6">Ty wybierasz gdzie się leczysz! Otwarty dostęp do najlepszych zagranicznych klinik i światowej klasy ekspertów bez barier terytorialnych.</p>
+        <span class="mt-auto font-bold text-[#e11d48] text-sm flex items-center gap-2 group-hover:translate-x-2 transition-transform">Odkryj program MediSky &rarr;</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- DLACZEGO MY (ODCHUDZONE, JASNE TŁO, ZWĘŻONE) -->
+<section class="reveal py-16" id="dlaczego-my">
+  <div class="container mx-auto max-w-5xl">
+    <div class="bg-slate-50 border border-slate-200 rounded-[32px] p-8 md:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl font-extrabold text-[#1e294a] mb-6">Broker to Twój sojusznik.</h2>
+        <p class="text-slate-600 mb-6 text-base">W odróżnieniu od agenta, broker ubezpieczeniowy reprezentuje wyłącznie Twoje interesy, a nie interesy towarzystwa ubezpieczeniowego.</p>
+        <ul class="space-y-3">
+          <li class="flex gap-3 items-start text-[#1e294a] text-base font-semibold">
+            <span class="text-[#10b981] mt-1">✓</span> Dostęp do ofert całego rynku w jednym miejscu
+          </li>
+          <li class="flex gap-3 items-start text-[#1e294a] text-base font-semibold">
+            <span class="text-[#10b981] mt-1">✓</span> Brak dodatkowych kosztów (płaci ubezpieczyciel)
+          </li>
+          <li class="flex gap-3 items-start text-[#1e294a] text-base font-semibold">
+            <span class="text-[#10b981] mt-1">✓</span> Kompleksowa pomoc przy likwidacji szkód
+          </li>
+        </ul>
+      </div>
+      <div class="bg-white p-8 rounded-[24px] border border-slate-100 shadow-lg text-center lg:text-left">
+        <h3 class="text-xl font-bold text-[#1e294a] mb-3">Taryfy Korporacyjne</h3>
+        <p class="text-slate-500 text-sm leading-relaxed mb-6">Dzięki naszej sile negocjacyjnej uzyskujemy dla MŚP stawki zarezerwowane do tej pory wyłącznie dla korporacji.</p>
+        <div class="pt-5 border-t border-slate-100">
+            <p class="font-black text-4xl text-[#e11d48] leading-none mb-1">0 zł</p>
+            <p class="text-slate-400 text-[10px] font-bold tracking-widest uppercase">Koszt audytu dla Ciebie</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY (NOWA SEKCJA) -->
+<section class="py-16 reveal" id="case-study">
+  <div class="container mx-auto px-5">
+    <div class="text-center mx-auto mb-10">
+      <h2 class="text-3xl font-extrabold text-[#1e294a]">Case Study</h2>
+      <p class="text-slate-500">Zobacz, jak realnie pomagamy salonom beauty w praktyce.</p>
+    </div>
+    
+    <div class="max-w-5xl mx-auto bg-white rounded-[32px] border border-slate-200 overflow-hidden shadow-lg flex flex-col md:flex-row">
+      <div class="md:w-2/5 bg-slate-800 p-8 flex flex-col justify-center text-white">
+          <span class="text-[#e11d48] font-bold text-xs uppercase tracking-widest mb-2">Klient</span>
+          <h3 class="text-2xl font-bold text-white mb-2">Sieć Salonów Beauty, Warszawa</h3>
+          <p class="text-sm text-slate-300 mb-6">Zatrudnienie: 15 osób</p>
+          
+          <div class="bg-slate-700/50 p-4 rounded-xl border border-slate-600">
+              <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Stan wyjściowy (Problem)</p>
+              <p class="text-sm font-medium">Brak ustrukturyzowanych benefitów, wysoka rotacja pracowników. Polisa OC salonu posiadała ukryte wyłączenia na zabiegi laserowe.</p>
+          </div>
+      </div>
+      <div class="md:w-3/5 p-8 md:p-10 flex flex-col justify-center bg-white">
+          <h4 class="text-sm font-bold text-[#e11d48] uppercase tracking-widest mb-5">Wdrożone rozwiązanie i efekty</h4>
+          <ul class="space-y-5">
+              <li class="flex items-start gap-4">
+                  <span class="text-[#10b981] font-bold text-lg leading-none mt-1">✓</span>
+                  <p class="text-sm text-slate-600 m-0"><strong>Grupowe na życie + Zdrowie:</strong> Wynegocjowaliśmy pakiet 68 zł/os., sfinansowany 50/50 przez pracodawcę i pracowników (optymalizacja kosztowa).</p>
+              </li>
+              <li class="flex items-start gap-4">
+                  <span class="text-[#10b981] font-bold text-lg leading-none mt-1">✓</span>
+                  <p class="text-sm text-slate-600 m-0"><strong>Wdrożenie LAVEN:</strong> Dodatkowe ubezpieczenie od ciężkich zachorowań jako element unikalnego Employer Brandingu w rekrutacji.</p>
+              </li>
+              <li class="flex items-start gap-4">
+                  <span class="text-[#10b981] font-bold text-lg leading-none mt-1">✓</span>
+                  <p class="text-sm text-slate-600 m-0"><strong>Audyt OC:</strong> Usunięto niebezpieczne wyłączenia, zabezpieczając zarząd przed milionowymi roszczeniami klientek.</p>
+              </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT (ODCHUDZONY, MNIEJSZY) -->
+<section class="py-16 reveal" id="kontakt">
+  <div class="container mx-auto px-5 max-w-5xl">
+    <div class="grid grid-cols-1 lg:grid-cols-2 bg-white rounded-[32px] overflow-hidden shadow-xl border border-slate-200">
+      
+      <div class="bg-[#1e294a] p-10 flex flex-col justify-center">
+        <h2 class="text-3xl font-extrabold text-white mb-4">Działajmy razem.</h2>
+        <p class="text-slate-300 mb-10 text-sm leading-relaxed">Wypełnij formularz. Przeanalizujemy strukturę zatrudnienia w Twojej firmie i przygotujemy optymalne warianty.</p>
+        
+        <div class="mb-6">
+          <label class="text-slate-400 text-[10px] font-bold uppercase tracking-widest block mb-1">Infolinia</label>
+          <a href="tel:+48500502702" class="text-white text-3xl font-black no-underline hover:text-[#e11d48] transition-colors">500 502 702</a>
+        </div>
+        <div>
+          <label class="text-slate-400 text-[10px] font-bold uppercase tracking-widest block mb-1">E-mail</label>
+          <span class="text-white text-lg font-bold">biuro@grupowe.pro</span>
+        </div>
+      </div>
+      
+      <div class="p-8 lg:p-10 bg-slate-50">
+        <h3 class="text-xl font-bold text-[#1e294a] mb-6">Zamów wycenę</h3>
+        <form id="mainContactForm" class="flex flex-col gap-4">
+          
+          <!-- NOWE POLE NIP -->
+          <div>
+            <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500 block mb-1">NIP (Weryfikacja API)</label>
+            <div class="relative">
+              <input type="text" id="kontakt-nip" name="nip" required maxlength="10" placeholder="0000000000" class="w-full p-3 rounded-xl border border-slate-200 bg-white text-sm outline-none focus:border-[#e11d48] focus:ring-2 focus:ring-[#e11d48]/20 transition-all" oninput="verifyNipApiKontakt()">
+              <div id="kontakt-nip-loader" class="loader absolute right-3 top-3.5 hidden"></div>
+            </div>
+            <p id="kontakt-nip-status" class="text-[9px] mt-1 font-semibold min-h-[12px]"></p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="flex flex-col gap-1">
+              <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Imię i Nazwisko</label>
+              <input type="text" name="name" required placeholder="Jan Kowalski" class="p-3 rounded-xl border border-slate-200 bg-white text-sm outline-none focus:border-[#e11d48] focus:ring-2 focus:ring-[#e11d48]/20 transition-all">
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500">E-mail</label>
+              <input type="email" name="email" required placeholder="adres@email.pl" class="p-3 rounded-xl border border-slate-200 bg-white text-sm outline-none focus:border-[#e11d48] focus:ring-2 focus:ring-[#e11d48]/20 transition-all">
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-3">
+            <div class="flex flex-col gap-1">
+              <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Telefon</label>
+              <input type="tel" name="phone" required placeholder="500 502 702" class="p-3 rounded-xl border border-slate-200 bg-white text-sm outline-none focus:border-[#e11d48] focus:ring-2 focus:ring-[#e11d48]/20 transition-all">
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Pracownicy</label>
+              <select name="staff" class="p-3 rounded-xl border border-slate-200 bg-white text-sm outline-none focus:border-[#e11d48] focus:ring-2 focus:ring-[#e11d48]/20 transition-all cursor-pointer">
+                <option value="">Wybierz</option>
+                <option value="2-10">2 - 10 osób</option>
+                <option value="11-50">11 - 50 osób</option>
+                <option value="51+">Powyżej 51</option>
+              </select>
+            </div>
+          </div>
+          <input type="hidden" name="ref" id="f-referrer">
+          <button type="submit" id="main-submit-btn" class="btn btn-primary text-white w-full mt-2 py-3 rounded-xl text-sm shadow-md">Wyślij zapytanie</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section py-16 container mx-auto px-5 reveal" id="faq">
+  <div class="text-center mx-auto mb-10">
+    <h2 class="text-3xl font-extrabold text-[#1e294a]">Częste pytania</h2>
+    <p class="text-slate-500">Kluczowe informacje, które warto znać przed wdrożeniem programu.</p>
+  </div>
+  <div class="max-w-3xl mx-auto space-y-2">
+    <div class="border-b border-slate-200 faq-item">
+      <button class="w-full py-5 flex justify-between items-center bg-transparent border-none text-lg font-bold text-[#1e294a] cursor-pointer text-left focus:outline-none" onclick="toggleFaq(this)">
+        Ile osób musi liczyć firma? 
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+      <div class="max-h-0 overflow-hidden transition-all duration-300 faq-content text-slate-500 text-sm leading-relaxed"><p class="pb-5">Programy grupowe dedykowane dla sektora MŚP możemy uruchomić już od 3-5 pracowników. Wynegocjujemy dla Was stawki dotychczas zarezerwowane tylko dla dużych korporacji.</p></div>
+    </div>
+    <div class="border-b border-slate-200 faq-item">
+      <button class="w-full py-5 flex justify-between items-center bg-transparent border-none text-lg font-bold text-[#1e294a] cursor-pointer text-left focus:outline-none" onclick="toggleFaq(this)">
+        Ile to kosztuje pracodawcę? 
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+      <div class="max-h-0 overflow-hidden transition-all duration-300 faq-content text-slate-500 text-sm leading-relaxed"><p class="pb-5">Nasza usługa brokerska (doradztwo, negocjacje, wdrożenie) jest bezpłatna (wynagradza nas ubezpieczyciel). Składkę za samo ubezpieczenie może opłacać firma w całości (stanowi to w pełni koszt uzyskania przychodu) lub częściowo pracownik poprzez potrącenie z pensji.</p></div>
+    </div>
+    <div class="border-b border-slate-200 faq-item">
+      <button class="w-full py-5 flex justify-between items-center bg-transparent border-none text-lg font-bold text-[#1e294a] cursor-pointer text-left focus:outline-none" onclick="toggleFaq(this)">
+        Czy audyt posiadanej polisy jest płatny? 
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+      <div class="max-h-0 overflow-hidden transition-all duration-300 faq-content text-slate-500 text-sm leading-relaxed"><p class="pb-5">Absolutnie nie. Sprawdzenie warunków obecnej polisy pod kątem kruczków prawnych oraz wskazanie optymalizacji finansowych jest całkowicie darmowe i niezobowiązujące.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NASZE PROJEKTY (4 BOKSY NA DOLE) -->
+<section class="py-16 bg-slate-50 border-t border-slate-200 reveal" id="projekty">
+  <div class="container mx-auto px-5">
+    <div class="text-center mx-auto mb-10">
+        <h2 class="text-2xl font-extrabold text-[#1e294a] mb-2">Nasze projekty eksperckie</h2>
+        <p class="mx-auto text-slate-500 text-sm">Aura Consulting to grupa specjalistycznych platform ubezpieczeniowych.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <a href="https://www.auraconsulting.pl" target="_blank" class="bg-white p-6 rounded-2xl text-center border border-slate-200 no-underline hover:-translate-y-2 hover:border-[#e11d48] hover:shadow-xl transition-all duration-300">
+        <h4 class="text-base font-bold text-[#1e294a] mb-2">www.auraconsulting.pl</h4>
+        <p class="text-xs text-slate-500 m-0">Korporacyjny broker ubezpieczeniowy. Złożone audyty dla przemysłu.</p>
+      </a>
+      <a href="https://beautypolisa.com" target="_blank" class="bg-white p-6 rounded-2xl text-center border border-slate-200 no-underline hover:-translate-y-2 hover:border-[#e11d48] hover:shadow-xl transition-all duration-300">
+        <h4 class="text-base font-bold text-[#1e294a] mb-2">beautypolisa.com</h4>
+        <p class="text-xs text-slate-500 m-0">Polisy OC i dedykowana ochrona karnoskarbowa dla branży beauty.</p>
+      </a>
+      <a href="https://utratadochodu.com" target="_blank" class="bg-white p-6 rounded-2xl text-center border border-slate-200 no-underline hover:-translate-y-2 hover:border-[#e11d48] hover:shadow-xl transition-all duration-300">
+        <h4 class="text-base font-bold text-[#1e294a] mb-2">utratadochodu.com</h4>
+        <p class="text-xs text-slate-500 m-0">Zabezpieczenie płynności finansowej w chorobie (Prywatne L4).</p>
+      </a>
+      <a href="https://grupowe.pro" class="bg-white p-6 rounded-2xl text-center border-2 border-[#1e294a] no-underline hover:-translate-y-2 hover:border-[#e11d48] hover:shadow-xl shadow-md transition-all duration-300">
+        <h4 class="text-base font-bold text-[#1e294a] mb-2">grupowe.pro</h4>
+        <p class="text-xs text-slate-500 m-0">Benefitowe ubezpieczenia grupowe dla firm i pracowników.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STOPKA -->
+<footer class="py-12 border-t border-slate-200 text-center">
   <div class="container mx-auto px-5">
     <div class="flex justify-center gap-6 mb-8 flex-wrap">
       <a href="polityka-prywatnosci.html" class="text-sm font-semibold text-slate-500 hover:text-[#e11d48] no-underline transition-colors">Polityka prywatności</a>
@@ -64,17 +365,185 @@
       <a href="regulamin.html" class="text-sm font-semibold text-slate-500 hover:text-[#e11d48] no-underline transition-colors">Regulamin</a>
     </div>
     
-    <!-- ZMIENIONA, SKOMPRESOWANA STOPKA Z ZACHOWANIEM WYTYCZNYCH -->
+    <!-- SKOMPRESOWANY TEKST PRAWNY -->
     <div class="text-[10px] text-slate-400 leading-relaxed max-w-4xl mx-auto mb-6">
       <p>Aura Consulting spółka z ograniczoną odpowiedzialnością z siedzibą w Warszawie przy ul. Bolkowskiej 2A lokal 28, wpisana do Krajowego Rejestru Sądowego pod numerem 0000426835 przez Sąd Rejonowy dla m.st. Warszawy, XII Wydział Gospodarczy Krajowego Rejestru Sądowego, REGON 341302033, kapitał zakładowy 34.000 zł.<br>Zezwolenie Komisji Nadzoru Finansowego nr 1972/13, wpis w rejestrze brokerów ubezpieczeniowych pod numerem 00001851/U.</p>
     </div>
     
     <div class="text-xs text-slate-500">
-      <span>© 2026 Aura Consulting. Wszelkie prawa zastrzeżone.</span>
+      <span>© 2026 Aura Consulting. Wszelkie prawa zastrzeżone. Realizacja: Aura Consulting Service.</span>
       <span class="block mt-2 font-bold">Infolinia: <a href="tel:+48500502702" class="text-[#1e294a] no-underline">500 502 702</a></span>
     </div>
   </div>
 </footer>
+
+<!-- ==========================================
+     MODALE INFORMACYJNE (PODSTRONY DLA USŁUG) 
+     ========================================== -->
+
+<!-- Modal 1: Życie -->
+<div id="modal-zycie" class="modal-overlay" onclick="closeModalOutside(event, 'modal-zycie')">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-zycie')">&#10005;</button>
+    <span class="modal-tag">Fundament Ochrony</span>
+    <h2 class="text-2xl font-bold mb-4 text-[#1e294a]">Grupowe ubezpieczenie na życie</h2>
+    <p class="text-slate-600 mb-6 text-sm">Trzon bezpieczeństwa socjalnego w firmie. Ubezpieczenie na życie to nie tylko świadczenie w przypadku najgorszego, ale realna pomoc finansowa w kluczowych momentach życia pracownika.</p>
+    <ul class="space-y-4 mb-8 text-sm">
+        <li class="flex items-start gap-3 text-slate-700"><span class="text-[#10b981] font-bold">✓</span> <span><strong>Ochrona finansowa:</strong> Wypłaty w przypadku poważnego zachorowania, pobytu w szpitalu czy uszczerbku na zdrowiu w wyniku NNW.</span></li>
+        <li class="flex items-start gap-3 text-slate-700"><span class="text-[#10b981] font-bold">✓</span> <span><strong>Pakiet rodzinny:</strong> Świadczenia za urodzenie dziecka, śmierć rodziców czy teściów.</span></li>
+        <li class="flex items-start gap-3 text-slate-700"><span class="text-[#10b981] font-bold">✓</span> <span><strong>Elastyczność:</strong> Brak ankiet medycznych dla grup, możliwość kontynuacji polisy po odejściu z pracy.</span></li>
+    </ul>
+    <a href="#kontakt" onclick="closeModal('modal-zycie')" class="btn btn-primary text-white w-full">Zapytaj o wycenę</a>
+  </div>
+</div>
+
+<!-- Modal 2: Zdrowie -->
+<div id="modal-zdrowie" class="modal-overlay" onclick="closeModalOutside(event, 'modal-zdrowie')">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-zdrowie')">&#10005;</button>
+    <span class="modal-tag">Codzienne Zdrowie</span>
+    <h2 class="text-2xl font-bold mb-4 text-[#1e294a]">Grupowa opieka medyczna</h2>
+    <p class="text-slate-600 mb-6 text-sm">Najbardziej pożądany benefit na polskim rynku pracy. Gwarantuje pracownikom dostęp do prywatnej służby zdrowia omijając system NFZ, co drastycznie skraca czas zwolnień L4.</p>
+    <ul class="space-y-4 mb-8 text-sm">
+        <li class="flex items-start gap-3 text-slate-700"><span class="text-[#10b981] font-bold">✓</span> <span><strong>Lekarze specjaliści:</strong> Setki placówek partnerskich w całym kraju. Dostęp od ręki bez skierowań.</span></li>
+        <li class="flex items-start gap-3 text-slate-700"><span class="text-[#10b981] font-bold">✓</span> <span><strong>Diagnostyka:</strong> Zaawansowane badania laboratoryjne, RTG, USG, Rezonans i Tomografia Komputerowa.</span></li>
+        <li class="flex items-start gap-3 text-slate-700"><span class="text-[#10b981] font-bold">✓</span> <span><strong>E-Zdrowie:</strong> Konsultacje telemedyczne z e-receptą i e-zwolnieniem dostępne 24/7.</span></li>
+    </ul>
+    <a href="#kontakt" onclick="closeModal('modal-zdrowie')" class="btn btn-primary text-white w-full">Zapytaj o wycenę</a>
+  </div>
+</div>
+
+<!-- Modal 3: LAVEN -->
+<div id="modal-laven" class="modal-overlay" onclick="closeModalOutside(event, 'modal-laven')">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-laven')">&#10005;</button>
+    <span class="modal-tag">Innowacje Medyczne</span>
+    <h2 class="text-2xl font-bold mb-4 text-[#1e294a]">LAVEN: Ubezpieczenie Komplementarne</h2>
+    <p class="text-slate-600 mb-6 text-sm">Laven to rewolucyjne na polskim rynku ubezpieczenie komplementarne (uzupełniające system NFZ). Pokrywa koszty najnowocześniejszych, ekstremalnie drogich technologii medycznych, które nie są refundowane przez państwo.</p>
+    <ul class="space-y-4 mb-8 text-sm">
+        <li class="flex items-start gap-3 text-slate-700"><span class="text-[#e11d48] font-bold text-lg leading-none">💡</span> <span><strong>Leki nowej generacji:</strong> Finansowanie leków onkologicznych i celowanych niedostępnych w standardowych koszykach.</span></li>
+        <li class="flex items-start gap-3 text-slate-700"><span class="text-[#e11d48] font-bold text-lg leading-none">💡</span> <span><strong>Innowacyjne procedury:</strong> Pokrycie kosztów operacji z użyciem robota da Vinci oraz bezinwazyjnych terapii nowotworowych.</span></li>
+        <li class="flex items-start gap-3 text-slate-700"><span class="text-[#e11d48] font-bold text-lg leading-none">💡</span> <span><strong>Badania genetyczne:</strong> Profilowanie molekularne pozwalające na idealne dobranie terapii do typu nowotworu.</span></li>
+    </ul>
+    <a href="#kontakt" onclick="closeModal('modal-laven')" class="btn btn-primary text-white w-full">Zapytaj o LAVEN</a>
+  </div>
+</div>
+
+<!-- Modal 4: MediSky -->
+<div id="modal-medisky" class="modal-overlay" onclick="closeModalOutside(event, 'modal-medisky')">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-medisky')">&#10005;</button>
+    <span class="modal-tag">Leczenie Globalne</span>
+    <h2 class="text-2xl font-bold mb-4 text-[#1e294a]">MediSky: Leczenie na całym świecie</h2>
+    <p class="text-slate-600 mb-6 text-sm">Międzynarodowe Ubezpieczenie Zdrowotne (PMI) zdejmujące bariery geograficzne w leczeniu. W razie poważnej diagnozy, pacjent ma prawo wybrać najlepszą klinikę w Europie lub USA.</p>
+    <ul class="space-y-4 mb-8 text-sm">
+        <li class="flex items-start gap-3 text-slate-700"><span class="text-[#00d4ff] font-bold text-lg leading-none">🌍</span> <span><strong>Brak limitów geograficznych:</strong> Ty decydujesz, czy operacja odbędzie się w Szwajcarii, Niemczech czy Stanach Zjednoczonych.</span></li>
+        <li class="flex items-start gap-3 text-slate-700"><span class="text-[#00d4ff] font-bold text-lg leading-none">🌍</span> <span><strong>Organizacja logistyki:</strong> Polisa pokrywa koszty przelotów, zakwaterowania pacjenta oraz osoby towarzyszącej.</span></li>
+        <li class="flex items-start gap-3 text-slate-700"><span class="text-[#00d4ff] font-bold text-lg leading-none">🌍</span> <span><strong>Druga opinia (Second Opinion):</strong> Konsultacja wyników badań z wybitnymi profesorami z całego świata w celu potwierdzenia diagnozy.</span></li>
+    </ul>
+    <a href="#kontakt" onclick="closeModal('modal-medisky')" class="btn btn-primary text-white w-full">Zapytaj o program MediSky</a>
+  </div>
+</div>
+
+<!-- ==========================================
+     SKRYPTY (LOGIKA STRONY)
+     ========================================== -->
+<script>
+  // Parametr polecający (Referrer)
+  function initReferrer() {
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get('ref');
+    if (ref) sessionStorage.setItem('bp_ref', ref);
+    const storedRef = sessionStorage.getItem('bp_ref');
+    const refEl = document.getElementById('f-referrer');
+    if (refEl && storedRef) refEl.value = storedRef;
+  }
+
+  // Płynny akordeon FAQ
+  function toggleFaq(btn) {
+    const content = btn.nextElementSibling;
+    const svg = btn.querySelector('svg');
+    const isOpen = content.style.maxHeight;
+    document.querySelectorAll('.faq-content').forEach(el => el.style.maxHeight = null);
+    document.querySelectorAll('.faq-item svg').forEach(el => {
+        el.style.transform = 'rotate(0deg)';
+        el.style.stroke = 'currentColor';
+    });
+    if (!isOpen) {
+        content.style.maxHeight = content.scrollHeight + "px";
+        svg.style.transform = 'rotate(180deg)';
+        svg.style.stroke = '#e11d48';
+    }
+  }
+
+  // Obsługa Modali
+  function openModal(id) { const el = document.getElementById(id); if(el) { el.classList.add('active'); document.body.style.overflow = 'hidden'; } }
+  function closeModal(id) { const el = document.getElementById(id); if(el) { el.classList.remove('active'); document.body.style.overflow = 'auto'; } }
+  function closeModalOutside(event, id) { if(event.target.classList.contains('modal-overlay')) { closeModal(id); } }
+
+  // Scroll Reveal (Animacje przewijania)
+  function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+    for (let i = 0; i < reveals.length; i++) {
+      const windowHeight = window.innerHeight;
+      const elementTop = reveals[i].getBoundingClientRect().top;
+      const elementVisible = 100;
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add('active');
+      }
+    }
+  }
+  window.addEventListener('scroll', revealOnScroll);
+
+  // Symulacja weryfikacji NIP (API)
+  let nipTimeoutContact;
+  function verifyNipApiKontakt() {
+      const nipInput = document.getElementById('kontakt-nip');
+      const loader = document.getElementById('kontakt-nip-loader');
+      const status = document.getElementById('kontakt-nip-status');
+      if (!nipInput || !loader || !status) return;
+      status.innerText = "";
+      if (nipInput.value.length === 10) {
+          loader.style.display = 'block';
+          clearTimeout(nipTimeoutContact);
+          nipTimeoutContact = setTimeout(() => {
+              loader.style.display = 'none';
+              status.innerText = "✓ Podmiot zweryfikowany w bazie GUS";
+              status.className = "text-[9px] mt-1 font-bold text-[#10b981]";
+          }, 1200);
+      } else { loader.style.display = 'none'; }
+  }
+
+  // Formularz i Sygnatura (Podpięcie)
+  document.getElementById('mainContactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('main-submit-btn');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = 'Przetwarzanie...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+        const ref = sessionStorage.getItem('bp_ref') || 'DIRECT';
+        const now = new Date();
+        const dateStr = now.toISOString().slice(0,10).replace(/-/g,'');
+        const timeStr = now.getHours().toString().padStart(2,'0') + now.getMinutes().toString().padStart(2,'0') + now.getSeconds().toString().padStart(2,'0');
+        const random = Math.random().toString(36).substring(2, 6).toUpperCase();
+        const sig = `BP/${ref}/${dateStr}-${timeStr}/${random}`;
+        
+        alert(`Dziękujemy! Twoje zgłoszenie o sygnaturze ${sig} zostało pomyślnie zarejestrowane. Ekspert skontaktuje się z Tobą.`);
+        
+        this.reset();
+        document.getElementById('kontakt-nip-status').innerText = '';
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+    }, 1200);
+  });
+
+  window.onload = () => {
+      initReferrer();
+      revealOnScroll();
+  };
+</script>
 
 </body>
 </html>
