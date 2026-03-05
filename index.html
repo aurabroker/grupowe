@@ -15,13 +15,12 @@
   <meta name="author" content="Aura Consulting">
   <link rel="canonical" href="https://grupowe.pro/">
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-L5S53BCN1K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-L5S53BCN1K');
   </script>
 
@@ -31,7 +30,7 @@
 
   <style>
     /* ════════════════════════════════════════
-       JASNY MOTYW - PREMIUM DESIGN
+       JASNY MOTYW - PREMIUM DESIGN 2026
     ════════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     
@@ -40,15 +39,15 @@
       --bg-alt:    #f8fafc;
       --surface:   #ffffff;
       --border:    #e2e8f0;
-      --navy:      #2a3b69;
+      --navy:      #1e293b;
       --pink:      #e11d48;
       --emerald:   #10b981;
-      --text:      #1e293b;
+      --text:      #334155;
       --muted:     #64748b;
       --ff-sans:   'Inter', system-ui, sans-serif;
       --ff-heading: 'Playfair Display', serif;
-      --radius:    24px;
-      --transition: .3s cubic-bezier(.4,0,.2,1);
+      --radius:    32px;
+      --transition: .4s cubic-bezier(.4,0,.2,1);
     }
 
     html { scroll-behavior: smooth; font-size: 16px; }
@@ -56,38 +55,42 @@
       background: var(--bg);
       color: var(--text);
       font-family: var(--ff-sans);
-      line-height: 1.6;
+      line-height: 1.7;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 100px 0; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 120px 0; }
     .text-center { text-align: center; }
 
     /* TYPOGRAPHY */
-    h1, h2, h3 { font-family: var(--ff-heading); color: var(--navy); line-height: 1.2; }
-    h1 { font-size: clamp(2.8rem, 7vw, 4.5rem); font-weight: 800; margin-bottom: 24px; }
-    h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; margin-bottom: 20px; }
-    h3 { font-size: 1.5rem; margin-bottom: 12px; }
+    h1, h2, h3, h4 { font-family: var(--ff-heading); color: var(--navy); line-height: 1.2; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; margin-bottom: 24px; letter-spacing: -0.02em; }
+    h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 20px; letter-spacing: -0.01em; }
+    h3 { font-size: 1.6rem; margin-bottom: 12px; font-weight: 700; }
     
     p { font-size: 1.1rem; color: var(--muted); max-width: 700px; }
     .mx-auto { margin-left: auto; margin-right: auto; }
+    .text-pink { color: var(--pink); }
 
     /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.6);
       height: 80px;
       display: flex;
       align-items: center;
+      transition: var(--transition);
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-    .nav-logo { font-size: 1.4rem; font-weight: 800; color: var(--navy); display: flex; align-items: center; gap: 4px; text-decoration: none; }
+    .nav-logo { font-size: 1.6rem; font-weight: 800; color: var(--navy); display: flex; align-items: center; gap: 4px; text-decoration: none; font-family: var(--ff-heading); }
     .nav-logo span { color: var(--pink); }
     
     .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
@@ -97,7 +100,7 @@
     /* BUTTONS */
     .btn {
       display: inline-flex;
-      align-items: center; gap: 12px;
+      align-items: center; justify-content: center; gap: 12px;
       padding: 16px 36px;
       border-radius: 100px;
       font-weight: 700;
@@ -106,64 +109,203 @@
       transition: var(--transition);
       text-decoration: none;
       border: none;
+      font-family: var(--ff-sans);
     }
     .btn-primary { 
       background: var(--navy); 
-      color: #ffffff !important; /* Wymuszony biały kolor czcionki */
-      box-shadow: 0 10px 20px rgba(42,59,105,0.15); 
+      color: #ffffff !important; /* Wymuszona biała czcionka */
+      box-shadow: 0 10px 20px rgba(30, 41, 59, 0.15); 
     }
     .btn-primary:hover { 
       background: var(--pink); 
       color: #ffffff !important; 
-      transform: translateY(-3px); 
-      box-shadow: 0 15px 30px rgba(225,29,72,0.25); 
+      transform: translateY(-4px); 
+      box-shadow: 0 20px 40px rgba(225,29,72,0.25); 
     }
-    .btn-outline { border: 2px solid var(--navy); color: var(--navy); background: transparent; }
-    .btn-outline:hover { border-color: var(--pink); color: var(--pink); transform: translateY(-3px); }
-
-    @keyframes pulse-ring {
-      0%   { box-shadow: 0 0 0 0 rgba(42,59,105,0.4); }
-      70%  { box-shadow: 0 0 0 16px rgba(42,59,105,0); }
-      100% { box-shadow: 0 0 0 0 rgba(42,59,105,0); }
+    .btn-outline { 
+      border: 2px solid var(--border); 
+      color: var(--navy); 
+      background: transparent; 
     }
-    .pulse-animation { animation: pulse-ring 2s infinite; }
+    .btn-outline:hover { 
+      border-color: var(--navy); 
+      background: var(--navy);
+      color: #ffffff;
+      transform: translateY(-4px); 
+    }
 
-    /* HERO */
+    /* HERO - 2 BOXES DYNAMIC */
     .hero {
-      padding: 180px 0 120px;
+      padding: 180px 0 100px;
       background: radial-gradient(circle at top right, #f1f5f9 0%, #ffffff 100%);
       position: relative;
+      overflow: hidden;
     }
-    .hero-content { max-width: 850px; }
-    .hero-label { 
-      font-family: 'Inter'; 
-      font-size: 12px; 
-      font-weight: 800; 
-      text-transform: uppercase; 
-      letter-spacing: 2px; 
-      color: var(--pink);
-      margin-bottom: 16px;
-      display: block;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-sub { font-size: 1.25rem; color: var(--muted); margin-bottom: 40px; line-height: 1.7; }
+    
+    /* DYNAMIC HERO IMAGE */
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      border-radius: 40px;
+      z-index: 10;
+    }
+    .hero-img-main {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 40px;
+      box-shadow: 0 30px 60px rgba(30,41,59,0.15);
+      animation: floatMain 8s ease-in-out infinite;
+    }
+    .hero-floating-glass {
+      position: absolute;
+      bottom: -30px;
+      left: -30px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      padding: 24px 32px;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      border: 1px solid rgba(255,255,255,0.8);
+      animation: floatReverse 6s ease-in-out infinite;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .glass-icon {
+      width: 48px; height: 48px;
+      background: var(--emerald);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
     }
 
-    /* GRIDS & CARDS */
-    .grid-4 { 
+    @keyframes floatMain {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    @keyframes floatReverse {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(15px); }
+    }
+
+    /* SERVICES 2x2 GRID (PICTURE CARDS) */
+    .services-grid { 
       display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
-      gap: 32px; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 40px; 
       margin-top: 60px; 
     }
-    .card {
+    .service-card {
       background: #fff;
-      padding: 40px;
       border-radius: var(--radius);
       border: 1px solid var(--border);
       transition: var(--transition);
       text-align: left;
-      height: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
     }
-    .card:hover { transform: translateY(-12px); border-color: var(--pink); box-shadow: 0 30px 60px rgba(0,0,0,0.06); }
-    .card-icon { font-size: 2.5rem; margin-bottom: 24px; display: block; }
+    .service-card:hover { 
+      transform: translateY(-12px); 
+      border-color: rgba(225,29,72,0.3); 
+      box-shadow: 0 40px 80px rgba(30,41,59,0.08); 
+    }
+    .service-img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .service-card:hover .service-img {
+      transform: scale(1.05);
+    }
+    .service-img-wrapper {
+      overflow: hidden;
+    }
+    .service-content {
+      padding: 40px;
+      background: #fff;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* WHY US */
+    .why-box {
+        background: var(--navy); 
+        padding: 60px; 
+        border-radius: var(--radius); 
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+    .why-box::before {
+        content: '';
+        position: absolute;
+        top: -50%; right: -50%;
+        width: 100%; height: 100%;
+        background: radial-gradient(circle, rgba(225,29,72,0.2) 0%, transparent 70%);
+    }
+
+    /* PROJECTS GRID (1x4) */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+    .project-card {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      height: 340px;
+      display: flex;
+      align-items: flex-end;
+      text-decoration: none !important;
+      transition: var(--transition);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .project-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(.4,0,.2,1);
+    }
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.2) 60%, transparent 100%);
+      transition: background 0.4s;
+    }
+    .project-content {
+      position: relative;
+      z-index: 2;
+      padding: 30px 24px;
+      color: #fff;
+      width: 100%;
+      transform: translateY(10px);
+      transition: transform 0.4s ease;
+    }
+    .project-card h3 { color: #fff; font-size: 1.3rem; margin-bottom: 8px; font-family: var(--ff-sans); font-weight: 800; }
+    .project-card p { color: #cbd5e1; font-size: 0.9rem; margin: 0; }
+    
+    .project-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(30,41,59,0.15); }
+    .project-card:hover .project-bg { transform: scale(1.1); }
+    .project-card:hover .project-overlay { background: linear-gradient(to top, rgba(225,29,72,0.95) 0%, rgba(225,29,72,0.4) 60%, transparent 100%); }
+    .project-card:hover .project-content { transform: translateY(0); }
 
     /* CONTACT SECTION */
     .contact-wrapper {
@@ -172,59 +314,66 @@
       overflow: hidden;
       display: grid;
       grid-template-columns: 1fr 1.2fr;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.05);
+      box-shadow: 0 40px 100px rgba(30,41,59,0.08);
       border: 1px solid var(--border);
     }
-    .contact-info { background: var(--navy); color: #fff; padding: 60px; }
-    .contact-info h2 { color: #fff; }
+    .contact-info { background: var(--bg-alt); padding: 60px; border-right: 1px solid var(--border); }
     .contact-form { padding: 60px; }
     
     form { display: flex; flex-direction: column; gap: 24px; }
     .form-group { display: flex; flex-direction: column; gap: 8px; text-align: left; }
     label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
-    input, select, textarea {
+    input, select {
       padding: 16px 20px;
-      border-radius: 14px;
+      border-radius: 16px;
       border: 1px solid var(--border);
-      background: var(--bg-alt);
+      background: #fff;
       font-size: 15px;
       font-family: inherit;
       outline: none;
       transition: var(--transition);
     }
-    input:focus, select:focus { border-color: var(--pink); background: #fff; box-shadow: 0 0 0 4px rgba(225,29,72,0.05); }
+    input:focus, select:focus { border-color: var(--pink); box-shadow: 0 0 0 4px rgba(225,29,72,0.08); }
 
-    /* ACCORDION */
+    /* ACCORDION FAQ */
     .faq-list { max-width: 800px; margin: 60px auto 0; }
     .faq-item { border-bottom: 1px solid var(--border); }
     .faq-btn {
-      width: 100%; padding: 24px 0; display: flex; justify-content: space-between; align-items: center;
-      background: none; border: none; font-size: 1.2rem; font-weight: 700; color: var(--navy); cursor: pointer; text-align: left;
+      width: 100%; padding: 32px 0; display: flex; justify-content: space-between; align-items: center;
+      background: none; border: none; font-size: 1.3rem; font-weight: 700; color: var(--navy); cursor: pointer; text-align: left;
+      font-family: var(--ff-heading); transition: color 0.3s;
     }
-    .faq-content { max-height: 0; overflow: hidden; transition: var(--transition); color: var(--muted); font-size: 1rem; }
-    .faq-item.active .faq-content { max-height: 300px; padding-bottom: 24px; }
+    .faq-btn svg { transition: transform 0.4s ease; stroke: var(--pink); }
+    .faq-content { max-height: 0; overflow: hidden; transition: var(--transition); color: var(--muted); font-size: 1.1rem; }
+    .faq-item.active .faq-content { max-height: 400px; padding-bottom: 32px; }
     .faq-item.active .faq-btn { color: var(--pink); }
+    .faq-item.active .faq-btn svg { transform: rotate(180deg); }
 
     /* FOOTER */
-    footer { background: #0f172a; color: #fff; padding: 80px 0 40px; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 60px; text-align: left; }
-    .footer-logo { font-size: 1.6rem; font-weight: 800; margin-bottom: 20px; }
+    footer { background: #0f172a; color: #fff; padding: 100px 0 40px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 80px; text-align: left; }
+    .footer-logo { font-size: 2rem; font-weight: 800; margin-bottom: 24px; font-family: var(--ff-heading); }
     .footer-logo span { color: var(--pink); }
-    .footer-links h4 { color: #94a3b8; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; }
-    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-links a { color: #fff; opacity: 0.7; text-decoration: none; font-size: 14px; transition: .2s; }
+    .footer-links h4 { color: #94a3b8; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; font-family: var(--ff-sans); font-weight: 700;}
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .footer-links a { color: #f8fafc; opacity: 0.7; text-decoration: none; font-size: 15px; transition: .2s; }
     .footer-links a:hover { opacity: 1; color: var(--pink); }
 
-    .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; padding: 12px 20px; background: rgba(10,15,26,0.95); border-top: 1px solid var(--border); z-index: 80; backdrop-filter: blur(12px); }
-
-    @media (max-width: 960px) {
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { height: 400px; margin-top: 40px; }
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
       .contact-wrapper { grid-template-columns: 1fr; }
+      .contact-info, .contact-form { padding: 40px 30px; }
       .footer-grid { grid-template-columns: 1fr; gap: 40px; }
       .nav-links { display: none; }
     }
     @media (max-width: 640px) {
-      .grid-4 { grid-template-columns: 1fr; }
-      .sticky-cta { display: block; }
+      .services-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2.5rem; }
     }
   </style>
 </head>
@@ -238,72 +387,119 @@
       <li><a href="#dlaczego-my">Dlaczego my</a></li>
       <li><a href="#projekty">Nasze projekty</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="tel:+48500502702" class="btn btn-primary" style="padding: 10px 24px;">📞 500 502 702</a></li>
+      <li><a href="tel:+48500502702" class="btn btn-primary" style="padding: 12px 28px;">📞 500 502 702</a></li>
     </ul>
   </div>
 </nav>
 
 <header class="hero">
-  <div class="container">
+  <div class="container hero-grid">
     <div class="hero-content">
-      <span class="hero-label">// Aura Consulting Brokerage</span>
+      <span class="hero-label">Broker Ubezpieczeniowy</span>
       <h1>Ubezpieczenia Grupowe <br><span class="text-pink">z korzyścią dla Twojej firmy.</span></h1>
-      <p class="hero-sub">Jako niezależny broker projektujemy programy ubezpieczeń dla pracowników, które realnie wspierają Twój zespół i optymalizują koszty firmy. Bezpłatnie.</p>
+      <p class="hero-sub">Jako niezależny broker projektujemy programy ubezpieczeń dla pracowników, które realnie wspierają Twój zespół i optymalizują koszty firmy. Badanie rynku i wdrożenie jest bezpłatne.</p>
       <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 40px;">
-        <a href="#kontakt" class="btn btn-primary pulse-animation">Poproś o bezpłatną analizę</a>
-        <a href="#uslugi" class="btn btn-outline">Poznaj nasze programy</a>
+        <a href="#kontakt" class="btn btn-primary">Poproś o bezpłatną analizę</a>
+        <a href="#uslugi" class="btn btn-outline">Poznaj programy</a>
       </div>
+    </div>
+    
+    <!-- Dynamic Hero Visual -->
+    <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80" alt="Zespół specjalistów" class="hero-img-main">
+        <div class="hero-floating-glass">
+            <div class="glass-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <div>
+                <p style="font-weight: 800; color: var(--navy); margin: 0; font-size: 1.1rem; line-height: 1;">Ochrona 24/7</p>
+                <p style="font-size: 0.85rem; color: var(--muted); margin: 0;">W pracy i na świecie</p>
+            </div>
+        </div>
     </div>
   </div>
 </header>
 
-<section class="section container" id="uslugi">
+<section class="section container" id="uslugi" style="border-top: 1px solid var(--border);">
   <div class="text-center mx-auto">
     <h2>Kompleksowa ochrona zespołu</h2>
-    <p class="mx-auto">Zbuduj przewagę na rynku pracy dzięki 4 kluczowym filarom programów benefitowych.</p>
+    <p class="mx-auto">Zbuduj przewagę na rynku pracy dzięki 4 kluczowym filarom programów benefitowych opracowanych przez naszych ekspertów.</p>
   </div>
-  <div class="grid-4">
-    <article class="card">
-      <span class="card-icon">🛡️</span>
-      <h3>Grupowe ubezpieczenia na życie</h3>
-      <p>Niezawodna ochrona finansowa dla pracowników i ich rodzin na wypadek nieprzewidzianych, trudnych zdarzeń losowych.</p>
+  
+  <div class="services-grid">
+    <!-- BOX 1 -->
+    <article class="service-card">
+      <div class="service-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=600&q=80" alt="Ubezpieczenia na życie" class="service-img">
+      </div>
+      <div class="service-content">
+        <h3>Grupowe ubezpieczenia na życie</h3>
+        <p>Niezawodna ochrona finansowa dla pracowników i ich rodzin na wypadek nieprzewidzianych, trudnych zdarzeń losowych (w tym NNW i poważne zachorowania).</p>
+      </div>
     </article>
-    <article class="card">
-      <span class="card-icon">🏥</span>
-      <h3>Grupowa opieka medyczna</h3>
-      <p>Błyskawiczny dostęp do lekarzy specjalistów i zaawansowanych badań diagnostycznych – całkowicie bez kolejek w NFZ.</p>
+
+    <!-- BOX 2 -->
+    <article class="service-card">
+      <div class="service-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80" alt="Opieka medyczna" class="service-img">
+      </div>
+      <div class="service-content">
+        <h3>Grupowa opieka medyczna</h3>
+        <p>Błyskawiczny dostęp do lekarzy specjalistów i zaawansowanych badań diagnostycznych – całkowicie bez kolejek w publicznej służbie zdrowia.</p>
+      </div>
     </article>
-    <article class="card">
-      <span class="card-icon">🩺</span>
-      <h3>Komplementarne ubezpieczenie medyczne</h3>
-      <p>Solidne, dodatkowe wsparcie finansowe w trakcie leczenia, zapewniające zwrot kosztów skomplikowanych procedur i rehabilitacji.</p>
+
+    <!-- BOX 3 -->
+    <article class="service-card">
+      <div class="service-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Ubezpieczenie medyczne" class="service-img">
+      </div>
+      <div class="service-content">
+        <h3>Komplementarne ubezpieczenie medyczne</h3>
+        <p>Solidne, dodatkowe wsparcie finansowe w trakcie leczenia, zapewniające zwrot kosztów skomplikowanych procedur operacyjnych, specjalistycznych leków i rehabilitacji.</p>
+      </div>
     </article>
-    <article class="card">
-      <span class="card-icon">🌍</span>
-      <h3>Opieka medyczna - leczenie na całym świecie</h3>
-      <p>Ty wybierasz gdzie się leczysz! Otwarty dostęp do najlepszych zagranicznych klinik i światowej klasy ekspertów medycznych.</p>
+
+    <!-- BOX 4 -->
+    <article class="service-card">
+      <div class="service-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" alt="Leczenie na świecie" class="service-img">
+      </div>
+      <div class="service-content">
+        <h3>Opieka medyczna - leczenie na całym świecie</h3>
+        <p>Ty wybierasz gdzie się leczysz! Otwarty dostęp do najlepszych zagranicznych klinik, światowej klasy ekspertów i unikalnych metod leczenia (np. medycyna precyzyjna).</p>
+      </div>
     </article>
   </div>
 </section>
 
 <section class="section" id="dlaczego-my" style="background: var(--bg-alt); border-y: 1px solid var(--border);">
   <div class="container">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 80px; align-items: center;">
       <div>
         <h2>Broker to Twój sojusznik.</h2>
-        <p style="margin-bottom: 30px;">W odróżnieniu od agenta, broker ubezpieczeniowy reprezentuje wyłącznie Twoje interesy, a nie towarzystwa ubezpieczeniowego.</p>
-        <ul style="list-style: none; display: flex; flex-direction: column; gap: 20px;">
-          <li style="display: flex; gap: 15px; font-weight: 600;"><span style="color: var(--emerald);">✓</span> Dostęp do ofert wielu towarzystw w jednym miejscu</li>
-          <li style="display: flex; gap: 15px; font-weight: 600;"><span style="color: var(--emerald);">✓</span> Brak ukrytych i dodatkowych kosztów (płaci ubezpieczyciel)</li>
-          <li style="display: flex; gap: 15px; font-weight: 600;"><span style="color: var(--emerald);">✓</span> Pełne, merytoryczne wsparcie przy likwidacji szkód</li>
+        <p style="margin-bottom: 40px; font-size: 1.2rem;">W odróżnieniu od agenta, broker ubezpieczeniowy reprezentuje wyłącznie Twoje interesy, a nie towarzystwa ubezpieczeniowego.</p>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 24px;">
+          <li style="display: flex; gap: 16px; font-weight: 600; font-size: 1.1rem; color: var(--navy);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Dostęp do ofert wszystkich towarzystw w jednym miejscu
+          </li>
+          <li style="display: flex; gap: 16px; font-weight: 600; font-size: 1.1rem; color: var(--navy);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Brak dodatkowych kosztów (płaci ubezpieczyciel)
+          </li>
+          <li style="display: flex; gap: 16px; font-weight: 600; font-size: 1.1rem; color: var(--navy);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Pełne wsparcie przy procesie likwidacji szkód
+          </li>
         </ul>
       </div>
-      <div style="background: var(--navy); padding: 40px; border-radius: 30px; color: #fff;">
-        <h3 style="color: #fff; font-size: 1.8rem; margin-bottom: 20px;">Gwarancja najlepszej stawki</h3>
-        <p style="color: #cbd5e1; font-size: 1rem;">Dzięki uprawnieniom brokerskim uzyskujemy dla naszych klientów preferencyjne taryfy korporacyjne, które są niedostępne w standardowej sprzedaży detalicznej u agentów.</p>
-        <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
-            <p style="font-weight: 800; font-size: 1.5rem; color: var(--accent);">0 zł</p>
-            <p style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Koszty analityczne i obsługowe dla pracodawcy</p>
+      <div class="why-box">
+        <h3 style="font-size: 2.2rem; margin-bottom: 20px;">Gwarancja najlepszej stawki</h3>
+        <p style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.8;">Dzięki uprawnieniom brokerskim uzyskujemy dla naszych klientów preferencyjne taryfy korporacyjne, które są niedostępne w standardowej sprzedaży detalicznej czy w bankach.</p>
+        <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="font-weight: 800; font-size: 3rem; color: var(--accent); line-height: 1; margin-bottom: 8px;">0 zł</p>
+            <p style="color: #94a3b8; font-size: 0.9rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Koszty analityczne dla pracodawcy</p>
         </div>
       </div>
     </div>
@@ -311,22 +507,28 @@
 </section>
 
 <section class="section container" id="faq">
-  <div class="text-center mx-auto">
+  <div class="text-center mx-auto mb-16">
     <h2>Częste pytania</h2>
     <p class="mx-auto">Kluczowe informacje, które warto znać przed wdrożeniem programu.</p>
   </div>
   <div class="faq-list">
     <div class="faq-item">
-      <button class="faq-btn" onclick="toggleFaq(this)">Ile osób musi liczyć firma? <span>+</span></button>
-      <div class="faq-content"><p>Programy grupowe dedykowane dla sektora MŚP możemy uruchomić już od 3-5 pracowników. Wynegocjujemy dla Was stawki dotychczas zarezerwowane tylko dla dużych korporacji.</p></div>
+      <button class="faq-btn" onclick="toggleFaq(this)">Ile osób musi liczyć firma? 
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+      <div class="faq-content"><p>Programy grupowe dedykowane dla sektora MŚP możemy uruchomić już od 3-5 pracowników. Wynegocjujemy dla Was stawki dotychczas zarezerwowane tylko dla dużych korporacji, niezależnie od skali działalności.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-btn" onclick="toggleFaq(this)">Ile to kosztuje pracodawcę? <span>+</span></button>
-      <div class="faq-content"><p>Nasza usługa brokerska (doradztwo, negocjacje, wdrożenie) jest bezpłatna. Składkę za samo ubezpieczenie może opłacać firma (stanowi to koszt uzyskania przychodu) lub pracownik z własnej pensji.</p></div>
+      <button class="faq-btn" onclick="toggleFaq(this)">Ile to kosztuje pracodawcę? 
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+      <div class="faq-content"><p>Nasza usługa brokerska (doradztwo, negocjacje, wdrożenie) jest bezpłatna (wynagradza nas ubezpieczyciel). Składkę za samo ubezpieczenie może opłacać firma w całości (stanowi to w pełni koszt uzyskania przychodu) lub częściowo pracownik poprzez potrącenie z pensji.</p></div>
     </div>
     <div class="faq-item">
-      <button class="faq-btn" onclick="toggleFaq(this)">Czy audyt posiadanej polisy jest płatny? <span>+</span></button>
-      <div class="faq-content"><p>Absolutnie nie. Sprawdzenie warunków obecnej polisy pod kątem kruczków prawnych oraz wskazanie optymalizacji finansowych jest całkowicie darmowe i niezobowiązujące.</p></div>
+      <button class="faq-btn" onclick="toggleFaq(this)">Czy audyt posiadanej polisy jest płatny? 
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+      <div class="faq-content"><p>Absolutnie nie. Sprawdzenie warunków obecnej polisy pod kątem kruczków prawnych oraz wskazanie optymalizacji finansowych jest całkowicie darmowe i niezobowiązujące. Często udaje nam się obniżyć składki o 20-30% utrzymując ten sam zakres.</p></div>
     </div>
   </div>
 </section>
@@ -335,15 +537,15 @@
   <div class="container">
     <div class="contact-wrapper">
       <div class="contact-info">
-        <h2 style="margin-bottom: 20px;">Działajmy razem.</h2>
-        <p style="color: #cbd5e1; margin-bottom: 60px;">Zadzwoń do nas lub wypełnij krótki formularz. Ekspert przygotuje dla Ciebie porównanie ofert rynkowych w 24h.</p>
-        <div style="margin-bottom: 32px;">
-          <label style="color: #94a3b8;">Infolinia Programu:</label>
-          <a href="tel:+48500502702" style="color: #fff; font-size: 2rem; font-weight: 800; text-decoration: none;">500 502 702</a>
+        <h2 style="margin-bottom: 24px; font-size: 2.5rem;">Działajmy razem.</h2>
+        <p style="color: #cbd5e1; margin-bottom: 60px; font-size: 1.1rem; line-height: 1.8;">Zadzwoń do nas lub wypełnij krótki formularz. Zespół ekspertów przygotuje dla Ciebie niezobowiązujące porównanie ofert rynkowych w ciągu 24 godzin.</p>
+        <div style="margin-bottom: 40px;">
+          <label style="color: #94a3b8; margin-bottom: 8px; display: block;">Infolinia Programu:</label>
+          <a href="tel:+48500502702" style="color: #fff; font-size: 2.5rem; font-weight: 800; font-family: var(--ff-heading);">500 502 702</a>
         </div>
         <div>
-          <label style="color: #94a3b8;">E-mail kontaktowy:</label>
-          <p style="color: #fff; font-size: 1.2rem; font-weight: 600;">biuro@grupowe.pro</p>
+          <label style="color: #94a3b8; margin-bottom: 8px; display: block;">E-mail kontaktowy:</label>
+          <p style="color: #fff; font-size: 1.3rem; font-weight: 600;">biuro@grupowe.pro</p>
         </div>
       </div>
       <div class="contact-form">
@@ -370,42 +572,63 @@
             </select>
           </div>
           <input type="hidden" name="ref" id="f-referrer">
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;">Wyślij zapytanie</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 16px; padding: 20px;">Wyślij zapytanie</button>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- NASZE PROJEKTY -->
+<!-- DYNAMICZNA SEKCJA PROJEKTY (1x4) -->
 <section class="section" id="projekty" style="background: var(--bg-alt); border-top: 1px solid var(--border);">
   <div class="container">
-    <div class="text-center mx-auto mb-10">
+    <div class="text-center mx-auto mb-12">
         <h2>Nasze projekty</h2>
-        <p class="mx-auto">Poznaj dedykowane rozwiązania ubezpieczeniowe w naszej grupie i wybierz obszar, którego potrzebujesz.</p>
+        <p class="mx-auto">Poznaj dedykowane rozwiązania ubezpieczeniowe stworzone w ramach grupy Aura Consulting.</p>
     </div>
-    <div class="grid-4">
-      <a href="https://www.auraconsulting.pl" target="_blank" class="card" style="text-align:center; text-decoration:none;">
-        <span class="card-icon">🌐</span>
-        <h3 style="font-size:1.2rem;">www.auraconsulting.pl</h3>
-        <p>Korporacyjny broker ubezpieczeniowy</p>
+    
+    <div class="projects-grid">
+      <!-- Projekt 1 -->
+      <a href="https://www.auraconsulting.pl" target="_blank" class="project-card">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="Aura Consulting" class="project-bg">
+        <div class="project-overlay"></div>
+        <div class="project-content">
+            <h3>www.auraconsulting.pl</h3>
+            <p>Korporacyjny broker ubezpieczeniowy. Analizy, audyty i negocjacje twardych warunków dla biznesu.</p>
+        </div>
       </a>
-      <a href="https://beautypolisa.com" target="_blank" class="card" style="text-align:center; text-decoration:none;">
-        <span class="card-icon">✨</span>
-        <h3 style="font-size:1.2rem;">beautypolisa.com</h3>
-        <p>Ubezpieczenia i polisy dla branży beauty</p>
+      
+      <!-- Projekt 2 -->
+      <a href="https://beautypolisa.com" target="_blank" class="project-card">
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80" alt="Beauty Polisa" class="project-bg">
+        <div class="project-overlay"></div>
+        <div class="project-content">
+            <h3>beautypolisa.com</h3>
+            <p>Dedykowane polisy OC i ochrona karno-skarbowa wyłącznie dla profesjonalnej branży beauty.</p>
+        </div>
       </a>
-      <a href="https://utratadochodu.com" target="_blank" class="card" style="text-align:center; text-decoration:none;">
-        <span class="card-icon">💼</span>
-        <h3 style="font-size:1.2rem;">utratadochodu.com</h3>
-        <p>Zabezpieczenie płynności i ochrona finansowa</p>
+
+      <!-- Projekt 3 -->
+      <a href="https://utratadochodu.com" target="_blank" class="project-card">
+        <img src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?auto=format&fit=crop&w=600&q=80" alt="Utrata Dochodu" class="project-bg">
+        <div class="project-overlay"></div>
+        <div class="project-content">
+            <h3>utratadochodu.com</h3>
+            <p>Zabezpieczenie płynności finansowej w przypadku choroby lub wypadku (np. Prywatne L4).</p>
+        </div>
       </a>
-      <a href="https://grupowe.pro" class="card" style="text-align:center; text-decoration:none; border-color:var(--pink);">
-        <span class="card-icon">👥</span>
-        <h3 style="font-size:1.2rem;">grupowe.pro</h3>
-        <p>Ubezpieczenia grupowe dla firm</p>
+
+      <!-- Projekt 4 -->
+      <a href="https://grupowe.pro" class="project-card" style="box-shadow: 0 0 0 4px var(--pink);">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80" alt="Grupowe PRO" class="project-bg">
+        <div class="project-overlay" style="background: linear-gradient(to top, rgba(225,29,72,0.95), transparent);"></div>
+        <div class="project-content">
+            <h3>grupowe.pro</h3>
+            <p>Eksperckie programy benefitowe: życie, zdrowie, pakiety medyczne dla pracowników Twojej firmy.</p>
+        </div>
       </a>
     </div>
+
   </div>
 </section>
 
@@ -414,7 +637,7 @@
     <div class="footer-grid">
       <div>
         <div class="footer-logo">grupowe<span>.pro</span></div>
-        <p style="max-width: 300px;">Platforma należąca do Aura Consulting – Twojego partnera w świecie niezależnych ubezpieczeń dla biznesu.</p>
+        <p style="max-width: 320px; color: #cbd5e1; font-size: 1rem; line-height: 1.8;">Platforma należąca do Aura Consulting – Twojego niezależnego partnera i doradcy w świecie finansów i ubezpieczeń korporacyjnych.</p>
       </div>
       <div class="footer-links">
         <h4>Nawigacja</h4>
@@ -422,7 +645,7 @@
           <li><a href="#uslugi">Zakres ochrony</a></li>
           <li><a href="#dlaczego-my">Dlaczego broker</a></li>
           <li><a href="#projekty">Nasze projekty</a></li>
-          <li><a href="#kontakt">Kontakt z nami</a></li>
+          <li><a href="#kontakt">Kontakt z ekspertem</a></li>
         </ul>
       </div>
       <div class="footer-links">
@@ -434,18 +657,15 @@
         </ul>
       </div>
     </div>
-    <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; font-size: 11px; opacity: 0.5;">
-      <p>© 2026 Aura Consulting. Wszystkie prawa zastrzeżone. Realizacja: Aura Consulting Service. Infolinia: 500 502 702</p>
+    <div class="footer-copyright">
+      <span>© 2026 Aura Consulting. Wszystkie prawa zastrzeżone. Realizacja: Aura Consulting Service.</span>
+      <span>Infolinia: <a href="tel:+48500502702" style="color: var(--pink); text-decoration: none; font-weight: bold;">500 502 702</a></span>
     </div>
   </div>
 </footer>
 
-<!-- PŁYWAJĄCY PRZYCISK KONTAKTU (MOBILE) -->
-<div class="sticky-cta">
-  <a href="tel:+48500502702" class="btn btn-primary" style="width:100%;justify-content:center; color:#fff!important;">📞 Zadzwoń: 500 502 702</a>
-</div>
-
 <script>
+  // Inicjalizacja parametru polecającego (Referrer)
   function initReferrer() {
     const params = new URLSearchParams(window.location.search);
     const ref = params.get('ref');
@@ -455,29 +675,29 @@
     if (refEl && storedRef) refEl.value = storedRef;
   }
 
+  // Płynny akordeon FAQ
   function toggleFaq(btn) {
     const item = btn.parentElement;
     const isActive = item.classList.contains('active');
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
     if (!isActive) {
         item.classList.add('active');
-        btn.querySelector('span').innerText = '-';
-    } else {
-        btn.querySelector('span').innerText = '+';
     }
   }
 
+  // Obsługa formularza i generowanie unikalnej sygnatury
   document.getElementById('mainContactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const ref = sessionStorage.getItem('bp_ref') || 'DIRECT';
     const now = new Date();
-    // Generowanie czytelnej sygnatury z datą
+    
+    // Generowanie czytelnej sygnatury: BP/REF/YYYYMMDD-HHMMSS/RAND
     const dateStr = now.toISOString().slice(0,10).replace(/-/g,'');
-    const timeStr = now.getHours().toString().padStart(2,'0') + now.getMinutes().toString().padStart(2,'0');
-    const random = Math.random().toString(36).substring(7).toUpperCase();
+    const timeStr = now.getHours().toString().padStart(2,'0') + now.getMinutes().toString().padStart(2,'0') + now.getSeconds().toString().padStart(2,'0');
+    const random = Math.random().toString(36).substring(2, 6).toUpperCase();
     const sig = `BP/${ref}/${dateStr}-${timeStr}/${random}`;
     
-    alert(`Dziękujemy! Twoje zgłoszenie o numerze ${sig} zostało przyjęte. Skontaktujemy się z Tobą telefonicznie.`);
+    alert(`Dziękujemy! Twoje zgłoszenie o sygnaturze ${sig} zostało przyjęte. Ekspert skontaktuje się z Tobą telefonicznie.`);
     this.reset();
   });
 
