@@ -10,27 +10,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>Ubezpieczenia Grupowe dla Firm | grupowe.pro – Aura Consulting</title>
-  <meta name="description" content="Profesjonalne ubezpieczenia grupowe dla pracowników. Broker Aura Consulting – bezpłatna analiza dla Twojej firmy. Zadzwoń: 504 400 901.">
+  <meta name="description" content="Profesjonalne ubezpieczenia grupowe dla pracowników: życiowe, zdrowotne, NNW. Broker Aura Consulting – bezpłatna analiza dla Twojej firmy. Zadzwoń: 500 502 702.">
   <meta name="keywords" content="ubezpieczenia grupowe, ubezpieczenie pracowników, broker ubezpieczeniowy, Aura Consulting, grupowe.pro">
   <meta name="author" content="Aura Consulting">
   <link rel="canonical" href="https://grupowe.pro/">
 
-  <!-- Google Tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-L5S53BCN1K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+
     gtag('config', 'G-L5S53BCN1K');
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* JASNY MOTYW - INSPIRACJA AURACONSULTING.PL */
+    /* ════════════════════════════════════════
+       JASNY MOTYW - PREMIUM DESIGN
+    ════════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
     :root {
       --bg:        #ffffff;
       --bg-alt:    #f8fafc;
@@ -38,13 +42,13 @@
       --border:    #e2e8f0;
       --navy:      #2a3b69;
       --pink:      #e11d48;
-      --accent:    #00d4ff;
+      --emerald:   #10b981;
       --text:      #1e293b;
       --muted:     #64748b;
       --ff-sans:   'Inter', system-ui, sans-serif;
       --ff-heading: 'Playfair Display', serif;
-      --radius:    16px;
-      --transition: .3s ease;
+      --radius:    24px;
+      --transition: .3s cubic-bezier(.4,0,.2,1);
     }
 
     html { scroll-behavior: smooth; font-size: 16px; }
@@ -57,101 +61,170 @@
     }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 80px 0; }
+    .section { padding: 100px 0; }
+    .text-center { text-align: center; }
 
     /* TYPOGRAPHY */
-    h1, h2, h3 { font-weight: 800; color: var(--navy); }
-    h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 24px; }
-    h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 20px; }
-    .text-pink { color: var(--pink); }
+    h1, h2, h3 { font-family: var(--ff-heading); color: var(--navy); line-height: 1.2; }
+    h1 { font-size: clamp(2.8rem, 7vw, 4.5rem); font-weight: 800; margin-bottom: 24px; }
+    h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; margin-bottom: 20px; }
+    h3 { font-size: 1.5rem; margin-bottom: 12px; }
+    
+    p { font-size: 1.1rem; color: var(--muted); max-width: 700px; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
 
     /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      height: 72px;
+      height: 80px;
       display: flex;
       align-items: center;
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-    .nav-logo { font-size: 1.2rem; font-weight: 800; color: var(--navy); display: flex; align-items: center; gap: 4px; }
+    .nav-logo { font-size: 1.4rem; font-weight: 800; color: var(--navy); display: flex; align-items: center; gap: 4px; text-decoration: none; }
     .nav-logo span { color: var(--pink); }
+    
     .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-    .nav-links a { font-size: 14px; font-weight: 600; color: var(--text); transition: var(--transition); }
+    .nav-links a { font-size: 15px; font-weight: 600; color: var(--text); transition: var(--transition); text-decoration: none; }
     .nav-links a:hover { color: var(--pink); }
 
     /* BUTTONS */
     .btn {
       display: inline-flex;
-      align-items: center; gap: 10px;
-      padding: 14px 32px;
+      align-items: center; gap: 12px;
+      padding: 16px 36px;
       border-radius: 100px;
       font-weight: 700;
+      font-size: 16px;
       cursor: pointer;
       transition: var(--transition);
       text-decoration: none;
       border: none;
     }
-    .btn-primary { background: var(--navy); color: #fff; }
-    .btn-primary:hover { background: var(--pink); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(225,29,72,0.2); }
+    .btn-primary { 
+      background: var(--navy); 
+      color: #ffffff !important; /* Wymuszony biały kolor czcionki */
+      box-shadow: 0 10px 20px rgba(42,59,105,0.15); 
+    }
+    .btn-primary:hover { 
+      background: var(--pink); 
+      color: #ffffff !important; 
+      transform: translateY(-3px); 
+      box-shadow: 0 15px 30px rgba(225,29,72,0.25); 
+    }
     .btn-outline { border: 2px solid var(--navy); color: var(--navy); background: transparent; }
-    .btn-outline:hover { background: var(--navy); color: #fff; }
+    .btn-outline:hover { border-color: var(--pink); color: var(--pink); transform: translateY(-3px); }
+
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(42,59,105,0.4); }
+      70%  { box-shadow: 0 0 0 16px rgba(42,59,105,0); }
+      100% { box-shadow: 0 0 0 0 rgba(42,59,105,0); }
+    }
+    .pulse-animation { animation: pulse-ring 2s infinite; }
 
     /* HERO */
     .hero {
-      padding: 160px 0 100px;
+      padding: 180px 0 120px;
       background: radial-gradient(circle at top right, #f1f5f9 0%, #ffffff 100%);
       position: relative;
     }
-    .hero-content { max-width: 800px; }
-    .hero-sub { font-size: 1.2rem; color: var(--muted); margin-bottom: 40px; }
+    .hero-content { max-width: 850px; }
+    .hero-label { 
+      font-family: 'Inter'; 
+      font-size: 12px; 
+      font-weight: 800; 
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+      color: var(--pink);
+      margin-bottom: 16px;
+      display: block;
+    }
 
-    /* CARDS */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+    /* GRIDS & CARDS */
+    .grid-4 { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+      gap: 32px; 
+      margin-top: 60px; 
+    }
     .card {
       background: #fff;
       padding: 40px;
       border-radius: var(--radius);
       border: 1px solid var(--border);
       transition: var(--transition);
+      text-align: left;
+      height: 100%;
     }
-    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: var(--pink); }
-    .card h3 { margin-bottom: 15px; font-size: 1.5rem; }
-    .card p { color: var(--muted); font-size: 0.95rem; }
+    .card:hover { transform: translateY(-12px); border-color: var(--pink); box-shadow: 0 30px 60px rgba(0,0,0,0.06); }
+    .card-icon { font-size: 2.5rem; margin-bottom: 24px; display: block; }
 
     /* CONTACT SECTION */
-    .contact-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
+    .contact-wrapper {
       background: #fff;
-      padding: 60px;
-      border-radius: 30px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+      border-radius: 40px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.05);
       border: 1px solid var(--border);
     }
-    form { display: flex; flex-direction: column; gap: 20px; }
+    .contact-info { background: var(--navy); color: #fff; padding: 60px; }
+    .contact-info h2 { color: #fff; }
+    .contact-form { padding: 60px; }
+    
+    form { display: flex; flex-direction: column; gap: 24px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
     input, select, textarea {
-      padding: 16px;
-      border-radius: 12px;
+      padding: 16px 20px;
+      border-radius: 14px;
       border: 1px solid var(--border);
       background: var(--bg-alt);
+      font-size: 15px;
       font-family: inherit;
       outline: none;
+      transition: var(--transition);
     }
-    input:focus { border-color: var(--pink); }
+    input:focus, select:focus { border-color: var(--pink); background: #fff; box-shadow: 0 0 0 4px rgba(225,29,72,0.05); }
 
-    footer { background: var(--navy); color: #fff; padding: 60px 0 30px; }
-    .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; }
+    /* ACCORDION */
+    .faq-list { max-width: 800px; margin: 60px auto 0; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-btn {
+      width: 100%; padding: 24px 0; display: flex; justify-content: space-between; align-items: center;
+      background: none; border: none; font-size: 1.2rem; font-weight: 700; color: var(--navy); cursor: pointer; text-align: left;
+    }
+    .faq-content { max-height: 0; overflow: hidden; transition: var(--transition); color: var(--muted); font-size: 1rem; }
+    .faq-item.active .faq-content { max-height: 300px; padding-bottom: 24px; }
+    .faq-item.active .faq-btn { color: var(--pink); }
+
+    /* FOOTER */
+    footer { background: #0f172a; color: #fff; padding: 80px 0 40px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 60px; text-align: left; }
+    .footer-logo { font-size: 1.6rem; font-weight: 800; margin-bottom: 20px; }
     .footer-logo span { color: var(--pink); }
+    .footer-links h4 { color: #94a3b8; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { color: #fff; opacity: 0.7; text-decoration: none; font-size: 14px; transition: .2s; }
+    .footer-links a:hover { opacity: 1; color: var(--pink); }
 
-    @media (max-width: 900px) {
-      .contact-container { grid-template-columns: 1fr; padding: 30px; }
+    .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; padding: 12px 20px; background: rgba(10,15,26,0.95); border-top: 1px solid var(--border); z-index: 80; backdrop-filter: blur(12px); }
+
+    @media (max-width: 960px) {
+      .contact-wrapper { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
       .nav-links { display: none; }
+    }
+    @media (max-width: 640px) {
+      .grid-4 { grid-template-columns: 1fr; }
+      .sticky-cta { display: block; }
     }
   </style>
 </head>
@@ -161,11 +234,11 @@
   <div class="container nav-inner">
     <a href="/" class="nav-logo">grupowe<span>.pro</span></a>
     <ul class="nav-links">
-      <li><a href="#uslugi">Usługi</a></li>
-      <li><a href="#jak-to-dziala">Jak działamy</a></li>
-      <li><a href="medical.html">Medycyna</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-      <li><a href="tel:+48504400901" class="btn btn-primary" style="padding: 10px 24px;">📞 504 400 901</a></li>
+      <li><a href="#uslugi">Zakres ochrony</a></li>
+      <li><a href="#dlaczego-my">Dlaczego my</a></li>
+      <li><a href="#projekty">Nasze projekty</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="tel:+48500502702" class="btn btn-primary" style="padding: 10px 24px;">📞 500 502 702</a></li>
     </ul>
   </div>
 </nav>
@@ -173,79 +246,204 @@
 <header class="hero">
   <div class="container">
     <div class="hero-content">
-      <h1>Ubezpieczenia Grupowe <br><span class="text-pink">z myślą o Twojej firmie.</span></h1>
-      <p class="hero-sub">Jako broker ubezpieczeniowy Aura Consulting, bezpłatnie projektujemy i negocjujemy programy ochrony dla Twojego zespołu.</p>
-      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-        <a href="#kontakt" class="btn btn-primary">Zamów bezpłatną analizę</a>
-        <a href="medical.html" class="btn btn-outline">Sprawdź opiekę medyczną</a>
+      <span class="hero-label">// Aura Consulting Brokerage</span>
+      <h1>Ubezpieczenia Grupowe <br><span class="text-pink">z korzyścią dla Twojej firmy.</span></h1>
+      <p class="hero-sub">Jako niezależny broker projektujemy programy ubezpieczeń dla pracowników, które realnie wspierają Twój zespół i optymalizują koszty firmy. Bezpłatnie.</p>
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 40px;">
+        <a href="#kontakt" class="btn btn-primary pulse-animation">Poproś o bezpłatną analizę</a>
+        <a href="#uslugi" class="btn btn-outline">Poznaj nasze programy</a>
       </div>
     </div>
   </div>
 </header>
 
 <section class="section container" id="uslugi">
-  <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+  <div class="text-center mx-auto">
     <h2>Kompleksowa ochrona zespołu</h2>
-    <p style="color: var(--muted);">Wspieramy firmy w budowaniu przewagi na rynku pracy poprzez profesjonalne benefity pozapłacowe.</p>
+    <p class="mx-auto">Zbuduj przewagę na rynku pracy dzięki 4 kluczowym filarom programów benefitowych.</p>
   </div>
-  <div class="grid">
+  <div class="grid-4">
     <article class="card">
-      <h3>Ubezpieczenia na życie</h3>
-      <p>Ochrona finansowa dla pracowników i ich rodzin na wypadek nieprzewidzianych zdarzeń losowych.</p>
+      <span class="card-icon">🛡️</span>
+      <h3>Grupowe ubezpieczenia na życie</h3>
+      <p>Niezawodna ochrona finansowa dla pracowników i ich rodzin na wypadek nieprzewidzianych, trudnych zdarzeń losowych.</p>
     </article>
     <article class="card">
-      <h3>Opieka medyczna</h3>
-      <p>Szybki dostęp do lekarzy specjalistów i badań diagnostycznych w sieciach LuxMed i Enel-Med.</p>
+      <span class="card-icon">🏥</span>
+      <h3>Grupowa opieka medyczna</h3>
+      <p>Błyskawiczny dostęp do lekarzy specjalistów i zaawansowanych badań diagnostycznych – całkowicie bez kolejek w NFZ.</p>
     </article>
     <article class="card">
-      <h3>Audyt i optymalizacja</h3>
-      <p>Sprawdzamy Twoje obecne polisy i negocjujemy lepsze warunki cenowe bez obniżania zakresu ochrony.</p>
+      <span class="card-icon">🩺</span>
+      <h3>Komplementarne ubezpieczenie medyczne</h3>
+      <p>Solidne, dodatkowe wsparcie finansowe w trakcie leczenia, zapewniające zwrot kosztów skomplikowanych procedur i rehabilitacji.</p>
+    </article>
+    <article class="card">
+      <span class="card-icon">🌍</span>
+      <h3>Opieka medyczna - leczenie na całym świecie</h3>
+      <p>Ty wybierasz gdzie się leczysz! Otwarty dostęp do najlepszych zagranicznych klinik i światowej klasy ekspertów medycznych.</p>
     </article>
   </div>
 </section>
 
-<section class="section" id="kontakt" style="background: var(--bg-alt);">
+<section class="section" id="dlaczego-my" style="background: var(--bg-alt); border-y: 1px solid var(--border);">
   <div class="container">
-    <div class="contact-container">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
       <div>
-        <h2>Porozmawiajmy o ubezpieczeniu</h2>
-        <p style="color: var(--muted); margin-bottom: 40px;">Zadzwoń do nas lub wypełnij formularz. Przygotujemy bezpłatne porównanie ofert w ciągu 24h.</p>
-        <div style="margin-bottom: 20px;">
-          <p style="font-weight: 700; color: var(--navy);">Infolinia:</p>
-          <a href="tel:+48504400901" style="font-size: 1.5rem; color: var(--pink); font-weight: 800;">504 400 901</a>
-        </div>
-        <div>
-          <p style="font-weight: 700; color: var(--navy);">E-mail:</p>
-          <p style="font-size: 1.2rem;">biuro@grupowe.pro</p>
+        <h2>Broker to Twój sojusznik.</h2>
+        <p style="margin-bottom: 30px;">W odróżnieniu od agenta, broker ubezpieczeniowy reprezentuje wyłącznie Twoje interesy, a nie towarzystwa ubezpieczeniowego.</p>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 20px;">
+          <li style="display: flex; gap: 15px; font-weight: 600;"><span style="color: var(--emerald);">✓</span> Dostęp do ofert wielu towarzystw w jednym miejscu</li>
+          <li style="display: flex; gap: 15px; font-weight: 600;"><span style="color: var(--emerald);">✓</span> Brak ukrytych i dodatkowych kosztów (płaci ubezpieczyciel)</li>
+          <li style="display: flex; gap: 15px; font-weight: 600;"><span style="color: var(--emerald);">✓</span> Pełne, merytoryczne wsparcie przy likwidacji szkód</li>
+        </ul>
+      </div>
+      <div style="background: var(--navy); padding: 40px; border-radius: 30px; color: #fff;">
+        <h3 style="color: #fff; font-size: 1.8rem; margin-bottom: 20px;">Gwarancja najlepszej stawki</h3>
+        <p style="color: #cbd5e1; font-size: 1rem;">Dzięki uprawnieniom brokerskim uzyskujemy dla naszych klientów preferencyjne taryfy korporacyjne, które są niedostępne w standardowej sprzedaży detalicznej u agentów.</p>
+        <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="font-weight: 800; font-size: 1.5rem; color: var(--accent);">0 zł</p>
+            <p style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Koszty analityczne i obsługowe dla pracodawcy</p>
         </div>
       </div>
-      <form id="mainContact">
-        <input type="text" name="name" required placeholder="Imię i Nazwisko">
-        <input type="text" name="company" required placeholder="Nazwa Firmy">
-        <input type="email" name="email" required placeholder="E-mail służbowy">
-        <select name="staff">
-          <option value="">Liczba pracowników</option>
-          <option value="2-10">2 - 10 osób</option>
-          <option value="11-50">11 - 50 osób</option>
-          <option value="51+">Powyżej 51 osób</option>
-        </select>
-        <input type="hidden" name="referrer" id="f-referrer">
-        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Wyślij zapytanie</button>
-      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section container" id="faq">
+  <div class="text-center mx-auto">
+    <h2>Częste pytania</h2>
+    <p class="mx-auto">Kluczowe informacje, które warto znać przed wdrożeniem programu.</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">Ile osób musi liczyć firma? <span>+</span></button>
+      <div class="faq-content"><p>Programy grupowe dedykowane dla sektora MŚP możemy uruchomić już od 3-5 pracowników. Wynegocjujemy dla Was stawki dotychczas zarezerwowane tylko dla dużych korporacji.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">Ile to kosztuje pracodawcę? <span>+</span></button>
+      <div class="faq-content"><p>Nasza usługa brokerska (doradztwo, negocjacje, wdrożenie) jest bezpłatna. Składkę za samo ubezpieczenie może opłacać firma (stanowi to koszt uzyskania przychodu) lub pracownik z własnej pensji.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">Czy audyt posiadanej polisy jest płatny? <span>+</span></button>
+      <div class="faq-content"><p>Absolutnie nie. Sprawdzenie warunków obecnej polisy pod kątem kruczków prawnych oraz wskazanie optymalizacji finansowych jest całkowicie darmowe i niezobowiązujące.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kontakt">
+  <div class="container">
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <h2 style="margin-bottom: 20px;">Działajmy razem.</h2>
+        <p style="color: #cbd5e1; margin-bottom: 60px;">Zadzwoń do nas lub wypełnij krótki formularz. Ekspert przygotuje dla Ciebie porównanie ofert rynkowych w 24h.</p>
+        <div style="margin-bottom: 32px;">
+          <label style="color: #94a3b8;">Infolinia Programu:</label>
+          <a href="tel:+48500502702" style="color: #fff; font-size: 2rem; font-weight: 800; text-decoration: none;">500 502 702</a>
+        </div>
+        <div>
+          <label style="color: #94a3b8;">E-mail kontaktowy:</label>
+          <p style="color: #fff; font-size: 1.2rem; font-weight: 600;">biuro@grupowe.pro</p>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form id="mainContactForm">
+          <div class="form-group">
+            <label>Imię i Nazwisko / Nazwa Firmy</label>
+            <input type="text" name="name" required placeholder="np. Jan Kowalski">
+          </div>
+          <div class="form-group">
+            <label>E-mail służbowy</label>
+            <input type="email" name="email" required placeholder="twoj@email.pl">
+          </div>
+          <div class="form-group">
+            <label>Telefon kontaktowy</label>
+            <input type="tel" name="phone" required placeholder="500 502 702">
+          </div>
+          <div class="form-group">
+            <label>Liczba pracowników</label>
+            <select name="staff">
+              <option value="">Wybierz przedział</option>
+              <option value="2-10">2 - 10 osób</option>
+              <option value="11-50">11 - 50 osób</option>
+              <option value="51+">Powyżej 51 osób</option>
+            </select>
+          </div>
+          <input type="hidden" name="ref" id="f-referrer">
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;">Wyślij zapytanie</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NASZE PROJEKTY -->
+<section class="section" id="projekty" style="background: var(--bg-alt); border-top: 1px solid var(--border);">
+  <div class="container">
+    <div class="text-center mx-auto mb-10">
+        <h2>Nasze projekty</h2>
+        <p class="mx-auto">Poznaj dedykowane rozwiązania ubezpieczeniowe w naszej grupie i wybierz obszar, którego potrzebujesz.</p>
+    </div>
+    <div class="grid-4">
+      <a href="https://www.auraconsulting.pl" target="_blank" class="card" style="text-align:center; text-decoration:none;">
+        <span class="card-icon">🌐</span>
+        <h3 style="font-size:1.2rem;">www.auraconsulting.pl</h3>
+        <p>Korporacyjny broker ubezpieczeniowy</p>
+      </a>
+      <a href="https://beautypolisa.com" target="_blank" class="card" style="text-align:center; text-decoration:none;">
+        <span class="card-icon">✨</span>
+        <h3 style="font-size:1.2rem;">beautypolisa.com</h3>
+        <p>Ubezpieczenia i polisy dla branży beauty</p>
+      </a>
+      <a href="https://utratadochodu.com" target="_blank" class="card" style="text-align:center; text-decoration:none;">
+        <span class="card-icon">💼</span>
+        <h3 style="font-size:1.2rem;">utratadochodu.com</h3>
+        <p>Zabezpieczenie płynności i ochrona finansowa</p>
+      </a>
+      <a href="https://grupowe.pro" class="card" style="text-align:center; text-decoration:none; border-color:var(--pink);">
+        <span class="card-icon">👥</span>
+        <h3 style="font-size:1.2rem;">grupowe.pro</h3>
+        <p>Ubezpieczenia grupowe dla firm</p>
+      </a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    <div class="footer-logo">grupowe<span>.pro</span></div>
-    <p style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 40px;">Grupowe.pro to platforma Aura Consulting – brokera ubezpieczeniowego działającego w interesie klienta, a nie towarzystwa. Nasza usługa jest bezpłatna.</p>
-    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.8rem; display: flex; justify-content: space-between; flex-wrap: wrap;">
-      <p>© 2026 Aura Consulting. Wszystkie prawa zastrzeżone. Tel: 504 400 901</p>
-      <p><a href="#" style="color: #fff; opacity: 0.6;">Polityka Prywatności</a></p>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">grupowe<span>.pro</span></div>
+        <p style="max-width: 300px;">Platforma należąca do Aura Consulting – Twojego partnera w świecie niezależnych ubezpieczeń dla biznesu.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Nawigacja</h4>
+        <ul>
+          <li><a href="#uslugi">Zakres ochrony</a></li>
+          <li><a href="#dlaczego-my">Dlaczego broker</a></li>
+          <li><a href="#projekty">Nasze projekty</a></li>
+          <li><a href="#kontakt">Kontakt z nami</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Informacje prawne</h4>
+        <ul>
+          <li><a href="/polityka-prywatnosci.html">Polityka prywatności</a></li>
+          <li><a href="/rodo.html">Klauzula RODO</a></li>
+          <li><a href="/regulamin.html">Regulamin serwisu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; font-size: 11px; opacity: 0.5;">
+      <p>© 2026 Aura Consulting. Wszystkie prawa zastrzeżone. Realizacja: Aura Consulting Service. Infolinia: 500 502 702</p>
     </div>
   </div>
 </footer>
+
+<!-- PŁYWAJĄCY PRZYCISK KONTAKTU (MOBILE) -->
+<div class="sticky-cta">
+  <a href="tel:+48500502702" class="btn btn-primary" style="width:100%;justify-content:center; color:#fff!important;">📞 Zadzwoń: 500 502 702</a>
+</div>
 
 <script>
   function initReferrer() {
@@ -256,11 +454,33 @@
     const refEl = document.getElementById('f-referrer');
     if (refEl && storedRef) refEl.value = storedRef;
   }
-  document.getElementById('mainContact').addEventListener('submit', function(e) {
+
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if (!isActive) {
+        item.classList.add('active');
+        btn.querySelector('span').innerText = '-';
+    } else {
+        btn.querySelector('span').innerText = '+';
+    }
+  }
+
+  document.getElementById('mainContactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('Dziękujemy! Skontaktujemy się z Tobą telefonicznie.');
+    const ref = sessionStorage.getItem('bp_ref') || 'DIRECT';
+    const now = new Date();
+    // Generowanie czytelnej sygnatury z datą
+    const dateStr = now.toISOString().slice(0,10).replace(/-/g,'');
+    const timeStr = now.getHours().toString().padStart(2,'0') + now.getMinutes().toString().padStart(2,'0');
+    const random = Math.random().toString(36).substring(7).toUpperCase();
+    const sig = `BP/${ref}/${dateStr}-${timeStr}/${random}`;
+    
+    alert(`Dziękujemy! Twoje zgłoszenie o numerze ${sig} zostało przyjęte. Skontaktujemy się z Tobą telefonicznie.`);
     this.reset();
   });
+
   window.onload = initReferrer;
 </script>
 
