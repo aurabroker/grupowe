@@ -1,1535 +1,268 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" prefix="og: https://ogp.me/ns#">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aura Consulting - wiodący broker ubezpieczeniowy. Ubezpieczenia grupowe, BeautyPolisa, D&O, CAR, dostęp do Lloyd's of London. 15+ lat doświadczenia.">
-    <title>Aura Consulting - Broker Ubezpieczeniowy | Ubezpieczenia Grupowe i Firmowe</title>
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Aura Consulting - Broker Ubezpieczeniowy">
-    <meta property="og:description" content="Kompleksowe rozwiązania ubezpieczeniowe dla firm. Specjalizacje: beauty, budownictwo, zarządy. Dostęp do rynku londyńskiego.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://auraexpert.pl">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --color-primary: #0A2463;
-            --color-primary-light: #0d2f7d;
-            --color-secondary: #00C9B1;
-            --color-accent: #F4A259;
-            --color-bg: #FAFAFA;
-            --color-bg-white: #FFFFFF;
-            --color-bg-light: #F5F5F5;
-            --color-text: #2D2D2D;
-            --color-text-light: #6B6B6B;
-            --shadow-sm: 0 2px 8px rgba(10, 36, 99, 0.08);
-            --shadow-md: 0 4px 16px rgba(10, 36, 99, 0.12);
-            --shadow-lg: 0 8px 32px rgba(10, 36, 99, 0.16);
-            --radius: 12px;
-            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: var(--color-text);
-            background: var(--color-bg);
-            overflow-x: hidden;
-        }
-        
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--color-primary);
-            letter-spacing: -0.02em;
-        }
-        
-        h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
-        h2 { font-size: clamp(2rem, 4vw, 2.5rem); }
-        h3 { font-size: clamp(1.5rem, 3vw, 1.875rem); }
-        h4 { font-size: 1.5rem; }
-        
-        p {
-            margin-bottom: 1rem;
-            color: var(--color-text);
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-        
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        
-        .container-wide {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow-sm);
-            z-index: 1000;
-            transition: var(--transition);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .logo-accent {
-            color: var(--color-secondary);
-        }
-        
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        nav a {
-            font-weight: 500;
-            color: var(--color-text);
-            transition: var(--transition);
-        }
-        
-        nav a:hover {
-            color: var(--color-secondary);
-        }
-        
-        .nav-cta {
-            background: var(--color-secondary);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius);
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        
-        .nav-cta:hover {
-            background: #00b39f;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--color-primary) 0%, #0d2f7d 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(0, 201, 177, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(244, 162, 89, 0.1) 0%, transparent 50%);
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 700px;
-        }
-        
-        .hero h1 {
-            color: white;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease-out;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-        
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: var(--radius);
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-            transition: var(--transition);
-            text-align: center;
-        }
-        
-        .btn-primary {
-            background: var(--color-secondary);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #00b39f;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-        
-        .btn-secondary:hover {
-            background: white;
-            color: var(--color-primary);
-        }
-        
-        .trust-badges {
-            display: flex;
-            gap: 2rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 0.6s both;
-        }
-        
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            opacity: 0.9;
-        }
-        
-        .trust-badge-icon {
-            font-size: 1.5rem;
-        }
-        
-        /* Sections */
-        section {
-            padding: 5rem 0;
-        }
-        
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-        }
-        
-        .section-subtitle {
-            color: var(--color-secondary);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-        }
-        
-        .section-title {
-            margin-bottom: 1rem;
-        }
-        
-        .section-description {
-            font-size: 1.125rem;
-            color: var(--color-text-light);
-        }
-        
-        /* USP Section */
-        .usp-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .usp-card {
-            text-align: center;
-            padding: 2rem;
-            background: var(--color-bg-white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-        
-        .usp-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .usp-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .usp-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-        }
-        
-        .usp-card p {
-            color: var(--color-text-light);
-            margin-bottom: 0;
-        }
-        
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background: var(--color-bg-white);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .service-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-4px);
-        }
-        
-        .service-header {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-            color: white;
-            padding: 2rem;
-        }
-        
-        .service-header h3 {
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-        
-        .service-body {
-            padding: 2rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .service-body ul {
-            list-style: none;
-            margin-bottom: 1.5rem;
-            flex: 1;
-        }
-        
-        .service-body li {
-            padding-left: 1.5rem;
-            position: relative;
-            margin-bottom: 0.75rem;
-            color: var(--color-text-light);
-        }
-        
-        .service-body li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--color-secondary);
-            font-weight: 700;
-        }
-        
-        .service-cta {
-            background: var(--color-secondary);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius);
-            font-weight: 600;
-            display: inline-block;
-            transition: var(--transition);
-            text-align: center;
-        }
-        
-        .service-cta:hover {
-            background: #00b39f;
-            transform: translateY(-2px);
-        }
-        
-        /* Process Section */
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            position: relative;
-        }
-        
-        .process-step {
-            text-align: center;
-            padding: 2rem;
-            background: var(--color-bg-white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            position: relative;
-        }
-        
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--color-secondary) 0%, #00b39f 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 1.5rem;
-        }
-        
-        .process-step h3 {
-            margin-bottom: 1rem;
-        }
-        
-        .process-step p {
-            color: var(--color-text-light);
-            margin-bottom: 0;
-        }
-        
-        /* Stats Section */
-        .stats {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-            color: white;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            text-align: center;
-        }
-        
-        .stat-item h3 {
-            font-size: 3rem;
-            color: var(--color-secondary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-item p {
-            font-size: 1.125rem;
-            opacity: 0.9;
-            margin-bottom: 0;
-        }
-        
-        /* Testimonials */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .testimonial-card {
-            background: var(--color-bg-white);
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            border-left: 4px solid var(--color-secondary);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            color: var(--color-text);
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            background: var(--color-secondary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.25rem;
-        }
-        
-        .author-info h4 {
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-        
-        .author-info p {
-            font-size: 0.875rem;
-            color: var(--color-text-light);
-            margin-bottom: 0;
-        }
-        
-        /* FAQ */
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            background: var(--color-bg-white);
-            border-radius: var(--radius);
-            margin-bottom: 1rem;
-            box-shadow: var(--shadow-sm);
-            overflow: hidden;
-        }
-        
-        .faq-question {
-            width: 100%;
-            padding: 1.5rem;
-            background: none;
-            border: none;
-            text-align: left;
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--color-primary);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: var(--transition);
-        }
-        
-        .faq-question:hover {
-            color: var(--color-secondary);
-        }
-        
-        .faq-icon {
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-        
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        
-        .faq-answer-content {
-            padding: 0 1.5rem 1.5rem;
-            color: var(--color-text-light);
-        }
-        
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-        }
-        
-        /* Contact Section */
-        .contact-section {
-            background: var(--color-bg-light);
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-        
-        .contact-info h3 {
-            margin-bottom: 1rem;
-        }
-        
-        .contact-info p {
-            color: var(--color-text-light);
-            margin-bottom: 2rem;
-        }
-        
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: start;
-            gap: 1rem;
-        }
-        
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--color-secondary);
-        }
-        
-        .contact-item-content h4 {
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-        
-        .contact-item-content p {
-            margin: 0;
-            color: var(--color-text);
-        }
-        
-        .contact-form {
-            background: var(--color-bg-white);
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--color-text);
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #E0E0E0;
-            border-radius: var(--radius);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--color-secondary);
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--color-primary);
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-col h3 {
-            color: white;
-            margin-bottom: 1.5rem;
-            font-size: 1.125rem;
-        }
-        
-        .footer-col p {
-            opacity: 0.9;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-col ul {
-            list-style: none;
-        }
-        
-        .footer-col li {
-            margin-bottom: 0.75rem;
-        }
-        
-        .footer-col a {
-            opacity: 0.9;
-            transition: var(--transition);
-        }
-        
-        .footer-col a:hover {
-            opacity: 1;
-            color: var(--color-secondary);
-        }
-        
-        .footer-projects {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: var(--radius);
-            margin-bottom: 3rem;
-        }
-        
-        .footer-projects h3 {
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            border: 2px solid rgba(0, 201, 177, 0.3);
-            transition: var(--transition);
-        }
-        
-        .project-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--color-secondary);
-            transform: translateY(-4px);
-        }
-        
-        .project-card h4 {
-            color: var(--color-secondary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .project-card p {
-            font-size: 0.875rem;
-            opacity: 0.9;
-            margin-bottom: 0;
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            opacity: 0.8;
-        }
-        
-        .footer-bottom p {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Responsive */
-        @media (max-width: 968px) {
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            nav {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100vh;
-                background: white;
-                flex-direction: column;
-                justify-content: center;
-                transition: left 0.3s ease;
-                z-index: 999;
-            }
-            
-            nav.active {
-                left: 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-                z-index: 1001;
-            }
-        }
-        
-        @media (max-width: 640px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-cta {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-            }
-        }
-    </style>
-    
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Aura Consulting",
-      "description": "Wiodący broker ubezpieczeniowy specjalizujący się w kompleksowych rozwiązaniach ubezpieczeniowych dla firm",
-      "url": "https://auraexpert.pl",
-      "logo": "https://auraexpert.pl/logo.png",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "PL"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer service",
-        "areaServed": "PL"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/company/aura-consulting"
-      ]
+  <!-- ═══════════════════════════════════════════════
+       GRUPOWE.PRO | Aura Consulting | Ubezpieczenia Grupowe
+       Autor: Aura Consulting | 2026
+  ═══════════════════════════════════════════════ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Ubezpieczenia Grupowe dla Firm | grupowe.pro – Aura Consulting</title>
+  <meta name="description" content="Profesjonalne ubezpieczenia grupowe dla pracowników. Broker Aura Consulting – bezpłatna analiza dla Twojej firmy. Zadzwoń: 504 400 901.">
+  <meta name="keywords" content="ubezpieczenia grupowe, ubezpieczenie pracowników, broker ubezpieczeniowy, Aura Consulting, grupowe.pro">
+  <meta name="author" content="Aura Consulting">
+  <link rel="canonical" href="https://grupowe.pro/">
+
+  <!-- Google Tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L5S53BCN1K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L5S53BCN1K');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* JASNY MOTYW - INSPIRACJA AURACONSULTING.PL */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #ffffff;
+      --bg-alt:    #f8fafc;
+      --surface:   #ffffff;
+      --border:    #e2e8f0;
+      --navy:      #2a3b69;
+      --pink:      #e11d48;
+      --accent:    #00d4ff;
+      --text:      #1e293b;
+      --muted:     #64748b;
+      --ff-sans:   'Inter', system-ui, sans-serif;
+      --ff-heading: 'Playfair Display', serif;
+      --radius:    16px;
+      --transition: .3s ease;
     }
-    </script>
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--ff-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 80px 0; }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3 { font-weight: 800; color: var(--navy); }
+    h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 24px; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 20px; }
+    .text-pink { color: var(--pink); }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      height: 72px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .nav-logo { font-size: 1.2rem; font-weight: 800; color: var(--navy); display: flex; align-items: center; gap: 4px; }
+    .nav-logo span { color: var(--pink); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 600; color: var(--text); transition: var(--transition); }
+    .nav-links a:hover { color: var(--pink); }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center; gap: 10px;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      border: none;
+    }
+    .btn-primary { background: var(--navy); color: #fff; }
+    .btn-primary:hover { background: var(--pink); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(225,29,72,0.2); }
+    .btn-outline { border: 2px solid var(--navy); color: var(--navy); background: transparent; }
+    .btn-outline:hover { background: var(--navy); color: #fff; }
+
+    /* HERO */
+    .hero {
+      padding: 160px 0 100px;
+      background: radial-gradient(circle at top right, #f1f5f9 0%, #ffffff 100%);
+      position: relative;
+    }
+    .hero-content { max-width: 800px; }
+    .hero-sub { font-size: 1.2rem; color: var(--muted); margin-bottom: 40px; }
+
+    /* CARDS */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+    .card {
+      background: #fff;
+      padding: 40px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: var(--pink); }
+    .card h3 { margin-bottom: 15px; font-size: 1.5rem; }
+    .card p { color: var(--muted); font-size: 0.95rem; }
+
+    /* CONTACT SECTION */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      background: #fff;
+      padding: 60px;
+      border-radius: 30px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+    }
+    form { display: flex; flex-direction: column; gap: 20px; }
+    input, select, textarea {
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-alt);
+      font-family: inherit;
+      outline: none;
+    }
+    input:focus { border-color: var(--pink); }
+
+    footer { background: var(--navy); color: #fff; padding: 60px 0 30px; }
+    .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; }
+    .footer-logo span { color: var(--pink); }
+
+    @media (max-width: 900px) {
+      .contact-container { grid-template-columns: 1fr; padding: 30px; }
+      .nav-links { display: none; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo">
-                    <span>Aura</span>
-                    <span class="logo-accent">Consulting</span>
-                </a>
-                <nav id="mainNav">
-                    <a href="#uslugi">Usługi</a>
-                    <a href="#proces">Proces</a>
-                    <a href="#o-nas">O Nas</a>
-                    <a href="#faq">FAQ</a>
-                    <a href="#kontakt" class="nav-cta">Bezpłatna Konsultacja</a>
-                </nav>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">☰</button>
-            </div>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Kompleksowe Ubezpieczenia dla Twojej Firmy i Pracowników</h1>
-                <p class="hero-subtitle">15 lat doświadczenia | Specjalizacje branżowe | Automatyzacja procesów | Dostęp do Lloyd's of London</p>
-                <div class="hero-cta">
-                    <a href="#kontakt" class="btn btn-primary">Bezpłatna Konsultacja</a>
-                    <a href="#uslugi" class="btn btn-secondary">Zobacz Nasze Rozwiązania</a>
-                </div>
-                <div class="trust-badges">
-                    <div class="trust-badge">
-                        <span class="trust-badge-icon">✓</span>
-                        <span>500+ firm obsłużonych</span>
-                    </div>
-                    <div class="trust-badge">
-                        <span class="trust-badge-icon">✓</span>
-                        <span>15 lat doświadczenia</span>
-                    </div>
-                    <div class="trust-badge">
-                        <span class="trust-badge-icon">✓</span>
-                        <span>20+ partnerów ubezpieczeniowych</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<nav>
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo">grupowe<span>.pro</span></a>
+    <ul class="nav-links">
+      <li><a href="#uslugi">Usługi</a></li>
+      <li><a href="#jak-to-dziala">Jak działamy</a></li>
+      <li><a href="medical.html">Medycyna</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+      <li><a href="tel:+48504400901" class="btn btn-primary" style="padding: 10px 24px;">📞 504 400 901</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <!-- USP Section -->
-    <section id="usp">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Dlaczego Aura Consulting</div>
-                <h2 class="section-title">Twój Partner w Świecie Ubezpieczeń</h2>
-            </div>
-            <div class="usp-grid">
-                <div class="usp-card fade-in">
-                    <div class="usp-icon">🏆</div>
-                    <h3>Doświadczenie</h3>
-                    <p>15+ lat w brokeringu ubezpieczeniowym. Setki zadowolonych klientów z różnych branż.</p>
-                </div>
-                <div class="usp-card fade-in">
-                    <div class="usp-icon">🎯</div>
-                    <h3>Specjalizacja</h3>
-                    <p>Dedykowane rozwiązania dla branży beauty, budownictwa, zarządów i wolnych zawodów.</p>
-                </div>
-                <div class="usp-card fade-in">
-                    <div class="usp-icon">🌍</div>
-                    <h3>Globalny Zasięg</h3>
-                    <p>Bezpośredni dostęp do Lloyd's of London i międzynarodowych ubezpieczycieli.</p>
-                </div>
-                <div class="usp-card fade-in">
-                    <div class="usp-icon">⚡</div>
-                    <h3>Technologia</h3>
-                    <p>Nowoczesne narzędzia, automatyzacja, sprzedaż online. BeautyPolisa w 5 minut.</p>
-                </div>
-                <div class="usp-card fade-in">
-                    <div class="usp-icon">🔄</div>
-                    <h3>Kompleksowość</h3>
-                    <p>Od analizy ryzyka po likwidację szkód - pełna obsługa na każdym etapie.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<header class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Ubezpieczenia Grupowe <br><span class="text-pink">z myślą o Twojej firmie.</span></h1>
+      <p class="hero-sub">Jako broker ubezpieczeniowy Aura Consulting, bezpłatnie projektujemy i negocjujemy programy ochrony dla Twojego zespołu.</p>
+      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+        <a href="#kontakt" class="btn btn-primary">Zamów bezpłatną analizę</a>
+        <a href="medical.html" class="btn btn-outline">Sprawdź opiekę medyczną</a>
+      </div>
+    </div>
+  </div>
+</header>
 
-    <!-- Services Section -->
-    <section id="uslugi" style="background: var(--color-bg-light);">
-        <div class="container-wide">
-            <div class="section-header">
-                <div class="section-subtitle">Nasze Usługi</div>
-                <h2 class="section-title">Kompleksowe Rozwiązania Ubezpieczeniowe</h2>
-                <p class="section-description">Oferujemy szeroki zakres produktów ubezpieczeniowych dopasowanych do specyfiki Twojej branży</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-header">
-                        <h3>Ubezpieczenia Grupowe dla Pracowników</h3>
-                    </div>
-                    <div class="service-body">
-                        <ul>
-                            <li>Life insurance - ubezpieczenia na życie</li>
-                            <li>Medical packages - pakiety medyczne</li>
-                            <li>Disability protection - ochrona w razie niezdolności do pracy</li>
-                            <li>Kompleksowa opieka nad benefitami pracowniczymi</li>
-                        </ul>
-                        <a href="https://grupowe.pro" target="_blank" rel="noopener noreferrer" class="service-cta">Dowiedz się więcej</a>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-header">
-                        <h3>Ochrona Utraty Dochodów</h3>
-                    </div>
-                    <div class="service-body">
-                        <ul>
-                            <li>Income protection dla przedsiębiorców i wolnych zawodów</li>
-                            <li>Zabezpieczenie finansowe w razie choroby lub wypadku</li>
-                            <li>Indywidualne dopasowanie do profilu zawodowego</li>
-                            <li>Wsparcie w trudnych sytuacjach życiowych</li>
-                        </ul>
-                        <a href="https://utratadochodu.com" target="_blank" rel="noopener noreferrer" class="service-cta">Sprawdź Ofertę</a>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-header">
-                        <h3>BeautyPolisa - Ubezpieczenia dla Branży Beauty</h3>
-                    </div>
-                    <div class="service-body">
-                        <ul>
-                            <li>Dedykowane rozwiązania dla salonów beauty, SPA, klinik estetycznych</li>
-                            <li>OC zawodowe i majątkowe</li>
-                            <li>Ochrona pracowników i wyposażenia</li>
-                            <li>Polisa online w 5 minut</li>
-                        </ul>
-                        <a href="https://beautypolisa.pl" target="_blank" rel="noopener noreferrer" class="service-cta">Poznaj BeautyPolisę</a>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-header">
-                        <h3>Ubezpieczenia Odpowiedzialności Cywilnej</h3>
-                    </div>
-                    <div class="service-body">
-                        <ul>
-                            <li>OC zawodowe dla wolnych zawodów</li>
-                            <li>OC działalności gospodarczej</li>
-                            <li>OC produktu i po dostawie</li>
-                            <li>Ochrona przed roszczeniami klientów</li>
-                        </ul>
-                        <a href="#kontakt" class="service-cta">Skontaktuj się</a>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-header">
-                        <h3>Ubezpieczenia Budowlane</h3>
-                    </div>
-                    <div class="service-body">
-                        <ul>
-                            <li>CAR (Construction All Risks) - ubezpieczenie budowy w toku</li>
-                            <li>EAR (Erection All Risks) - ubezpieczenie montażu</li>
-                            <li>OC Projektanta i Kierownika Budowy</li>
-                            <li>Ubezpieczenia Gwarancji i Rękojmi</li>
-                            <li>Obsługa całego procesu budowlanego</li>
-                        </ul>
-                        <a href="#kontakt" class="service-cta">Zabezpiecz Swoją Inwestycję</a>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-header">
-                        <h3>Ubezpieczenia dla Zarządów - D&amp;O i TAX</h3>
-                    </div>
-                    <div class="service-body">
-                        <ul>
-                            <li>D&amp;O - ochrona członków zarządu i rady nadzorczej</li>
-                            <li>TAX Insurance - ubezpieczenie ryzyka podatkowego</li>
-                            <li>Ochrona majątku osobistego kadry zarządzającej</li>
-                            <li>Pokrycie kosztów obrony prawnej</li>
-                            <li>Indywidualne dopasowanie do specyfiki spółki</li>
-                        </ul>
-                        <a href="#kontakt" class="service-cta">Chroń Decyzje Zarządu</a>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-header">
-                        <h3>Dostęp do Rynku Londyńskiego</h3>
-                    </div>
-                    <div class="service-body">
-                        <ul>
-                            <li>Bezpośredni dostęp do Lloyd's of London</li>
-                            <li>Rozwiązania dla dużych i nietypowych ryzyk</li>
-                            <li>Wysokie limity odpowiedzialności</li>
-                            <li>Ubezpieczenia cyber, professional indemnity, trade credit</li>
-                            <li>Konkurencyjne warunki dzięki międzynarodowej sieci</li>
-                        </ul>
-                        <a href="#kontakt" class="service-cta">Odkryj Globalne Możliwości</a>
-                    </div>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-header">
-                        <h3>Programy Masowe - BeautyPolisa Online</h3>
-                    </div>
-                    <div class="service-body">
-                        <ul>
-                            <li>Natychmiastowa ochrona online - polisa w 5 minut</li>
-                            <li>Dedykowane ubezpieczenia OC dla branży beauty</li>
-                            <li>Ochrona karno-skarbowa dla właścicieli i pracowników</li>
-                            <li>Pakiety dopasowane do rodzaju działalności</li>
-                            <li>Wsparcie prawne w postępowaniach administracyjnych</li>
-                        </ul>
-                        <a href="https://beautypolisa.pl" target="_blank" rel="noopener noreferrer" class="service-cta">Kup BeautyPolisę Online</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="section container" id="uslugi">
+  <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+    <h2>Kompleksowa ochrona zespołu</h2>
+    <p style="color: var(--muted);">Wspieramy firmy w budowaniu przewagi na rynku pracy poprzez profesjonalne benefity pozapłacowe.</p>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <h3>Ubezpieczenia na życie</h3>
+      <p>Ochrona finansowa dla pracowników i ich rodzin na wypadek nieprzewidzianych zdarzeń losowych.</p>
+    </article>
+    <article class="card">
+      <h3>Opieka medyczna</h3>
+      <p>Szybki dostęp do lekarzy specjalistów i badań diagnostycznych w sieciach LuxMed i Enel-Med.</p>
+    </article>
+    <article class="card">
+      <h3>Audyt i optymalizacja</h3>
+      <p>Sprawdzamy Twoje obecne polisy i negocjujemy lepsze warunki cenowe bez obniżania zakresu ochrony.</p>
+    </article>
+  </div>
+</section>
 
-    <!-- Process Section -->
-    <section id="proces">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Jak Pracujemy</div>
-                <h2 class="section-title">Prosty Proces Współpracy</h2>
-            </div>
-            <div class="process-steps">
-                <div class="process-step fade-in">
-                    <div class="step-number">1</div>
-                    <h3>Analiza Potrzeb</h3>
-                    <p>Bezpłatna konsultacja i kompleksowy audit ubezpieczeniowy Twojej firmy</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="step-number">2</div>
-                    <h3>Propozycja Rozwiązań</h3>
-                    <p>Porównanie ofert od wiodących ubezpieczycieli i rynku londyńskiego</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="step-number">3</div>
-                    <h3>Wdrożenie</h3>
-                    <p>Kompleksowa obsługa formalnoprawna i przygotowanie dokumentacji</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="step-number">4</div>
-                    <h3>Opieka Posprzedażna</h3>
-                    <p>Bieżąca obsługa, wprowadzanie zmian i profesjonalna likwidacja szkód</p>
-                </div>
-            </div>
+<section class="section" id="kontakt" style="background: var(--bg-alt);">
+  <div class="container">
+    <div class="contact-container">
+      <div>
+        <h2>Porozmawiajmy o ubezpieczeniu</h2>
+        <p style="color: var(--muted); margin-bottom: 40px;">Zadzwoń do nas lub wypełnij formularz. Przygotujemy bezpłatne porównanie ofert w ciągu 24h.</p>
+        <div style="margin-bottom: 20px;">
+          <p style="font-weight: 700; color: var(--navy);">Infolinia:</p>
+          <a href="tel:+48504400901" style="font-size: 1.5rem; color: var(--pink); font-weight: 800;">504 400 901</a>
         </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item fade-in">
-                    <h3>500+</h3>
-                    <p>Obsłużonych firm</p>
-                </div>
-                <div class="stat-item fade-in">
-                    <h3>15+</h3>
-                    <p>Lat doświadczenia</p>
-                </div>
-                <div class="stat-item fade-in">
-                    <h3>20+</h3>
-                    <p>Partnerów ubezpieczeniowych</p>
-                </div>
-                <div class="stat-item fade-in">
-                    <h3>24/7</h3>
-                    <p>Wsparcie dla klientów</p>
-                </div>
-            </div>
+        <div>
+          <p style="font-weight: 700; color: var(--navy);">E-mail:</p>
+          <p style="font-size: 1.2rem;">biuro@grupowe.pro</p>
         </div>
-    </section>
+      </div>
+      <form id="mainContact">
+        <input type="text" name="name" required placeholder="Imię i Nazwisko">
+        <input type="text" name="company" required placeholder="Nazwa Firmy">
+        <input type="email" name="email" required placeholder="E-mail służbowy">
+        <select name="staff">
+          <option value="">Liczba pracowników</option>
+          <option value="2-10">2 - 10 osób</option>
+          <option value="11-50">11 - 50 osób</option>
+          <option value="51+">Powyżej 51 osób</option>
+        </select>
+        <input type="hidden" name="referrer" id="f-referrer">
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Wyślij zapytanie</button>
+      </form>
+    </div>
+  </div>
+</section>
 
-    <!-- Testimonials -->
-    <section id="o-nas">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Opinie Klientów</div>
-                <h2 class="section-title">Co Mówią o Nas Klienci</h2>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"Dzięki Aura Consulting wdrożyliśmy kompleksowy program ubezpieczeń grupowych dla ponad 200 pracowników. Profesjonalizm i indywidualne podejście na najwyższym poziomie."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">MK</div>
-                        <div class="author-info">
-                            <h4>Marek Kowalski</h4>
-                            <p>HR Manager, TechCorp</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"BeautyPolisa to rewelacja! Kupiłam ubezpieczenie online w 5 minut i mam spokojną głowę. Idealne rozwiązanie dla właścicieli salonów beauty."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AN</div>
-                        <div class="author-info">
-                            <h4>Anna Nowak</h4>
-                            <p>Właścicielka Salonu Beauty</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"Dzięki dostępowi do rynku londyńskiego zabezpieczyliśmy naszą dużą inwestycję budowlaną na warunkach niedostępnych w Polsce. Profesjonalizm i skuteczność."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">PW</div>
-                        <div class="author-info">
-                            <h4>Piotr Wiśniewski</h4>
-                            <p>Prezes Zarządu, DevelopCo</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<footer>
+  <div class="container">
+    <div class="footer-logo">grupowe<span>.pro</span></div>
+    <p style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 40px;">Grupowe.pro to platforma Aura Consulting – brokera ubezpieczeniowego działającego w interesie klienta, a nie towarzystwa. Nasza usługa jest bezpłatna.</p>
+    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.8rem; display: flex; justify-content: space-between; flex-wrap: wrap;">
+      <p>© 2026 Aura Consulting. Wszystkie prawa zastrzeżone. Tel: 504 400 901</p>
+      <p><a href="#" style="color: #fff; opacity: 0.6;">Polityka Prywatności</a></p>
+    </div>
+  </div>
+</footer>
 
-    <!-- FAQ Section -->
-    <section id="faq" style="background: var(--color-bg-light);">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">FAQ</div>
-                <h2 class="section-title">Najczęściej Zadawane Pytania</h2>
-            </div>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Czym różni się broker od agenta ubezpieczeniowego?</span>
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>Broker ubezpieczeniowy działa w interesie klienta, a nie ubezpieczyciela. Porównujemy oferty wielu towarzystw ubezpieczeniowych i wybieramy najlepsze rozwiązanie dla Twojej firmy. Agent reprezentuje tylko jedno towarzystwo.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Ile kosztuje ubezpieczenie grupowe dla pracowników?</span>
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>Koszt zależy od wielu czynników: liczby pracowników, ich wieku, rodzaju ochrony, sumy ubezpieczenia. Zazwyczaj to 50-200 zł miesięcznie na pracownika. Przygotujemy wycenę dopasowaną do Twojego budżetu.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Jak długo trwa wdrożenie ubezpieczenia grupowego?</span>
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>Standardowy proces wdrożenia trwa 2-4 tygodnie od momentu wyboru oferty. W przypadku pilnych potrzeb możemy przyspieszyć proces do 7-10 dni roboczych.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Czy pobierate opłaty za swoje usługi?</span>
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>Nie. Jako broker otrzymujemy prowizję od ubezpieczycieli, więc nasze usługi doradcze są bezpłatne dla klientów. Płacisz tylko składkę ubezpieczeniową.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Co to jest BeautyPolisa i dla kogo jest przeznaczona?</span>
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>BeautyPolisa to dedykowane ubezpieczenie OC dla branży beauty - salonów kosmetycznych, fryzjerskich, SPA, klinik medycyny estetycznej. Kupisz je online w 5 minut i otrzymasz natychmiastową ochronę.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Czy obsługujecie małe firmy (poniżej 10 pracowników)?</span>
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>Tak! Obsługujemy zarówno małe firmy (od 5 pracowników), jak i duże korporacje (500+ pracowników). Każdy klient jest dla nas równie ważny.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Czym jest ubezpieczenie D&amp;O dla zarządów?</span>
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>D&O (Directors & Officers) to ochrona członków zarządu i rady nadzorczej przed odpowiedzialnością osobistą za decyzje biznesowe. Pokrywa koszty obrony prawnej i odszkodowania wynikające z roszczeń akcjonariuszy, kontrahentów czy organów państwowych.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Jakie są korzyści z dostępu do rynku londyńskiego?</span>
-                        <span class="faq-icon">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>Rynek londyński (Lloyd's of London) oferuje wysokie limity odpowiedzialności (nawet dziesiątki milionów USD), dostęp do specjalistycznych produktów niedostępnych w Polsce, oraz konkurencyjne ceny dla dużych i nietypowych ryzyk. Idealny dla firm działających międzynarodowo lub z unikalnymi potrzebami ubezpieczeniowymi.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
+  function initReferrer() {
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get('ref');
+    if (ref) sessionStorage.setItem('bp_ref', ref);
+    const storedRef = sessionStorage.getItem('bp_ref');
+    const refEl = document.getElementById('f-referrer');
+    if (refEl && storedRef) refEl.value = storedRef;
+  }
+  document.getElementById('mainContact').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Dziękujemy! Skontaktujemy się z Tobą telefonicznie.');
+    this.reset();
+  });
+  window.onload = initReferrer;
+</script>
 
-    <!-- Contact Section -->
-    <section id="kontakt" class="contact-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Kontakt</div>
-                <h2 class="section-title">Porozmawiajmy o Twoich Potrzebach Ubezpieczeniowych</h2>
-                <p class="section-description">Umów bezpłatną konsultację i poznaj rozwiązania dopasowane do Twojej firmy</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Skontaktuj się z nami</h3>
-                    <p>Nasz zespół ekspertów jest gotowy odpowiedzieć na wszystkie pytania dotyczące ubezpieczeń dla Twojej firmy.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <div class="contact-item-content">
-                                <h4>Email</h4>
-                                <p>kontakt@auraexpert.pl</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <div class="contact-item-content">
-                                <h4>Telefon</h4>
-                                <p>+48 123 456 789</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <div class="contact-item-content">
-                                <h4>Lokalizacja</h4>
-                                <p>Warszawa, Polska</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Imię i Nazwisko *</label>
-                        <input type="text" id="name" name="name" required aria-label="Imię i Nazwisko">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required aria-label="Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefon</label>
-                        <input type="tel" id="phone" name="phone" aria-label="Telefon">
-                    </div>
-                    <div class="form-group">
-                        <label for="company">Firma</label>
-                        <input type="text" id="company" name="company" aria-label="Firma">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Wiadomość *</label>
-                        <textarea id="message" name="message" required aria-label="Wiadomość"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Wyślij Wiadomość</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-projects">
-                <h3>Nasze Projekty</h3>
-                <div class="projects-grid">
-                    <a href="https://beautypolisa.pl" target="_blank" rel="noopener noreferrer" class="project-card">
-                        <h4>BeautyPolisa</h4>
-                        <p>Ubezpieczenia dla branży beauty - kup online w 5 minut</p>
-                    </a>
-                    <a href="https://grupowe.pro" target="_blank" rel="noopener noreferrer" class="project-card">
-                        <h4>grupowe.pro</h4>
-                        <p>Portal edukacyjny o ubezpieczeniach grupowych</p>
-                    </a>
-                    <a href="https://utratadochodu.com" target="_blank" rel="noopener noreferrer" class="project-card">
-                        <h4>utratadochodu.com</h4>
-                        <p>Ochrona dochodów dla przedsiębiorców</p>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Aura Consulting</h3>
-                    <p>Wiodący broker ubezpieczeniowy specjalizujący się w kompleksowych rozwiązaniach dla firm. 15+ lat doświadczenia, dostęp do Lloyd's of London, innowacyjne programy masowe.</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Usługi</h3>
-                    <ul>
-                        <li><a href="#uslugi">Ubezpieczenia Grupowe</a></li>
-                        <li><a href="#uslugi">Ochrona Utraty Dochodów</a></li>
-                        <li><a href="https://beautypolisa.pl" target="_blank" rel="noopener noreferrer">BeautyPolisa</a></li>
-                        <li><a href="#uslugi">Ubezpieczenia OC</a></li>
-                        <li><a href="#uslugi">Ubezpieczenia Budowlane</a></li>
-                        <li><a href="#uslugi">D&amp;O i TAX Insurance</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Zasoby</h3>
-                    <ul>
-                        <li><a href="#o-nas">O Nas</a></li>
-                        <li><a href="#proces">Proces Współpracy</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="https://grupowe.pro" target="_blank" rel="noopener noreferrer">Blog</a></li>
-                        <li><a href="#kontakt">Kariera</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Kontakt</h3>
-                    <ul>
-                        <li><a href="mailto:kontakt@auraexpert.pl">kontakt@auraexpert.pl</a></li>
-                        <li><a href="tel:+48123456789">+48 123 456 789</a></li>
-                        <li>Warszawa, Polska</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 Aura Consulting. Wszelkie prawa zastrzeżone.</p>
-                <div class="footer-links">
-                    <a href="#kontakt">Polityka Prywatności</a>
-                    <a href="#kontakt">Regulamin</a>
-                    <a href="#kontakt">RODO</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            mobileMenuBtn.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
-        });
-        
-        // Close mobile menu on link click
-        const navLinks = mainNav.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
-                mobileMenuBtn.textContent = '☰';
-            });
-        });
-        
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                // Close all items
-                faqItems.forEach(i => i.classList.remove('active'));
-                
-                // Open clicked item if it wasn't active
-                if (!isActive) {
-                    item.classList.add('active');
-                    question.setAttribute('aria-expanded', 'true');
-                } else {
-                    question.setAttribute('aria-expanded', 'false');
-                }
-            });
-        });
-        
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const headerOffset = 80;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Intersection Observer for Fade-in Animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Form Submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
-            
-            // Here you would normally send data to a server
-            console.log('Form submitted:', data);
-            
-            alert('Dziękujemy za wiadomość! Skontaktujemy się z Tobą wkrótce.');
-            contactForm.reset();
-        });
-        
-        // Header Scroll Effect
-        let lastScroll = 0;
-        const header = document.querySelector('header');
-        
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                header.style.boxShadow = 'var(--shadow-md)';
-            } else {
-                header.style.boxShadow = 'var(--shadow-sm)';
-            }
-            
-            lastScroll = currentScroll;
-        });
-    </script>
 </body>
 </html>
