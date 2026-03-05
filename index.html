@@ -21,13 +21,14 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+
     gtag('config', 'G-L5S53BCN1K');
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-  
+
   <!-- Główny arkusz stylów -->
   <link rel="stylesheet" href="style.css">
 </head>
@@ -53,7 +54,7 @@
       <h1>Ubezpieczenia Grupowe <br><span class="text-pink">z korzyścią dla Twojej firmy.</span></h1>
       <p class="hero-sub">Jako niezależny broker projektujemy programy ubezpieczeń dla pracowników, które realnie wspierają Twój zespół i optymalizują koszty firmy. Badanie rynku i wdrożenie jest bezpłatne.</p>
       <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 40px;">
-        <a href="#kontakt" class="btn btn-primary">Poproś o bezpłatną analizę</a>
+        <a href="#kontakt" class="btn btn-primary pulse-animation">Poproś o bezpłatną analizę</a>
         <a href="#uslugi" class="btn btn-outline">Poznaj programy</a>
       </div>
     </div>
@@ -74,83 +75,58 @@
   </div>
 </header>
 
-<section class="section container" id="uslugi" style="border-top: 1px solid var(--border);">
+<section class="section container" id="uslugi">
   <div class="text-center mx-auto">
     <h2>Kompleksowa ochrona zespołu</h2>
     <p class="mx-auto">Zbuduj przewagę na rynku pracy dzięki 4 kluczowym filarom programów benefitowych opracowanych przez naszych ekspertów.</p>
   </div>
   
-  <div class="services-grid">
+  <div class="grid-4">
     <!-- BOX 1 -->
-    <article class="service-card">
-      <div class="service-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=600&q=80" alt="Ubezpieczenia na życie" class="service-img">
-      </div>
-      <div class="service-content">
-        <h3>Grupowe ubezpieczenia na życie</h3>
-        <p>Niezawodna ochrona finansowa dla pracowników i ich rodzin na wypadek nieprzewidzianych, trudnych zdarzeń losowych (w tym NNW i poważne zachorowania).</p>
-      </div>
+    <article class="card">
+      <span class="card-icon">🛡️</span>
+      <h3>Grupowe ubezpieczenia na życie</h3>
+      <p>Niezawodna ochrona finansowa dla pracowników i ich rodzin na wypadek nieprzewidzianych, trudnych zdarzeń losowych.</p>
     </article>
 
     <!-- BOX 2 -->
-    <article class="service-card">
-      <div class="service-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80" alt="Opieka medyczna" class="service-img">
-      </div>
-      <div class="service-content">
-        <h3>Grupowa opieka medyczna</h3>
-        <p>Błyskawiczny dostęp do lekarzy specjalistów i zaawansowanych badań diagnostycznych – całkowicie bez kolejek w publicznej służbie zdrowia.</p>
-      </div>
+    <article class="card">
+      <span class="card-icon">🏥</span>
+      <h3>Grupowa opieka medyczna</h3>
+      <p>Błyskawiczny dostęp do lekarzy specjalistów i zaawansowanych badań diagnostycznych – całkowicie bez kolejek w NFZ.</p>
     </article>
 
     <!-- BOX 3 -->
-    <article class="service-card">
-      <div class="service-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Ubezpieczenie medyczne" class="service-img">
-      </div>
-      <div class="service-content">
-        <h3>Komplementarne ubezpieczenie medyczne</h3>
-        <p>Solidne, dodatkowe wsparcie finansowe w trakcie leczenia, zapewniające zwrot kosztów skomplikowanych procedur operacyjnych, specjalistycznych leków i rehabilitacji.</p>
-      </div>
+    <article class="card">
+      <span class="card-icon">🩺</span>
+      <h3>Komplementarne ubezpieczenie medyczne</h3>
+      <p>Solidne, dodatkowe wsparcie finansowe w trakcie leczenia, zapewniające zwrot kosztów skomplikowanych procedur i rehabilitacji.</p>
     </article>
 
     <!-- BOX 4 -->
-    <article class="service-card">
-      <div class="service-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" alt="Leczenie na świecie" class="service-img">
-      </div>
-      <div class="service-content">
-        <h3>Opieka medyczna - leczenie na całym świecie</h3>
-        <p>Ty wybierasz gdzie się leczysz! Otwarty dostęp do najlepszych zagranicznych klinik, światowej klasy ekspertów i unikalnych metod leczenia (np. medycyna precyzyjna).</p>
-      </div>
+    <article class="card">
+      <span class="card-icon">🌍</span>
+      <h3>Opieka medyczna - leczenie na całym świecie</h3>
+      <p>Ty wybierasz gdzie się leczysz! Otwarty dostęp do najlepszych zagranicznych klinik i światowej klasy ekspertów medycznych.</p>
     </article>
   </div>
 </section>
 
 <section class="section" id="dlaczego-my" style="background: var(--bg-alt); border-y: 1px solid var(--border);">
   <div class="container">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 80px; align-items: center;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
       <div>
         <h2>Broker to Twój sojusznik.</h2>
-        <p style="margin-bottom: 40px; font-size: 1.2rem;">W odróżnieniu od agenta, broker ubezpieczeniowy reprezentuje wyłącznie Twoje interesy, a nie towarzystwa ubezpieczeniowego.</p>
-        <ul style="list-style: none; display: flex; flex-direction: column; gap: 24px;">
-          <li style="display: flex; gap: 16px; font-weight: 600; font-size: 1.1rem; color: var(--navy);">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Dostęp do ofert wszystkich towarzystw w jednym miejscu
-          </li>
-          <li style="display: flex; gap: 16px; font-weight: 600; font-size: 1.1rem; color: var(--navy);">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Brak dodatkowych kosztów (płaci ubezpieczyciel)
-          </li>
-          <li style="display: flex; gap: 16px; font-weight: 600; font-size: 1.1rem; color: var(--navy);">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Pełne wsparcie przy procesie likwidacji szkód
-          </li>
+        <p style="margin-bottom: 30px;">W odróżnieniu od agenta, broker ubezpieczeniowy reprezentuje wyłącznie Twoje interesy, a nie towarzystwa ubezpieczeniowego.</p>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 20px;">
+          <li style="display: flex; gap: 15px; font-weight: 600;"><span style="color: var(--emerald);">✓</span> Dostęp do ofert wielu towarzystw w jednym miejscu</li>
+          <li style="display: flex; gap: 15px; font-weight: 600;"><span style="color: var(--emerald);">✓</span> Brak ukrytych i dodatkowych kosztów (płaci ubezpieczyciel)</li>
+          <li style="display: flex; gap: 15px; font-weight: 600;"><span style="color: var(--emerald);">✓</span> Pełne, merytoryczne wsparcie przy likwidacji szkód</li>
         </ul>
       </div>
       <div class="why-box">
         <h3 style="font-size: 2.2rem; margin-bottom: 20px;">Gwarancja najlepszej stawki</h3>
-        <p style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.8;">Dzięki uprawnieniom brokerskim uzyskujemy dla naszych klientów preferencyjne taryfy korporacyjne, które są niedostępne w standardowej sprzedaży detalicznej czy w bankach.</p>
+        <p style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.8;">Dzięki uprawnieniom brokerskim uzyskujemy dla naszych klientów preferencyjne taryfy korporacyjne, które są niedostępne w standardowej sprzedaży detalicznej u agentów.</p>
         <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);">
             <p style="font-weight: 800; font-size: 3rem; color: var(--accent); line-height: 1; margin-bottom: 8px;">0 zł</p>
             <p style="color: #94a3b8; font-size: 0.9rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Koszty analityczne dla pracodawcy</p>
