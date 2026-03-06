@@ -67,18 +67,18 @@
       @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
 </head>
-<body>
+<body class="font-sans antialiased text-slate-800">
 
 <!-- NAWIGACJA -->
-<nav>
-  <div class="container nav-inner flex justify-between items-center w-full">
-    <a href="index.html" class="nav-logo">grupowe<span>.pro</span></a>
-    <ul class="nav-links">
-      <li><a href="#uslugi">Zakres ochrony</a></li>
-      <li><a href="#dlaczego-my">Dlaczego my</a></li>
-      <li><a href="#projekty">Nasze projekty</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="tel:+48500502702" class="btn btn-primary text-white" style="padding: 10px 24px; color: #ffffff !important;">📞 500 502 702</a></li>
+<nav class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-sm border-b border-slate-100">
+  <div class="container mx-auto px-5 py-4 flex justify-between items-center w-full">
+    <a href="index.html" class="text-2xl font-black tracking-tighter text-[#1e294a] no-underline">grupowe<span class="text-[#e11d48]">.pro</span></a>
+    <ul class="hidden md:flex gap-8 items-center list-none m-0 p-0 text-sm font-semibold">
+      <li><a href="#uslugi" class="text-slate-600 hover:text-[#e11d48] transition-colors no-underline">Zakres ochrony</a></li>
+      <li><a href="#dlaczego-my" class="text-slate-600 hover:text-[#e11d48] transition-colors no-underline">Dlaczego my</a></li>
+      <li><a href="#projekty" class="text-slate-600 hover:text-[#e11d48] transition-colors no-underline">Nasze projekty</a></li>
+      <li><a href="#faq" class="text-slate-600 hover:text-[#e11d48] transition-colors no-underline">FAQ</a></li>
+      <li><a href="tel:+48500502702" class="bg-[#e11d48] text-white px-5 py-2.5 rounded-full hover:bg-rose-700 transition-colors shadow-md shadow-rose-200 no-underline">📞 500 502 702</a></li>
     </ul>
   </div>
 </nav>
@@ -91,8 +91,8 @@
       <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-black text-slate-800 mb-6 leading-tight tracking-tight">Bezpieczeństwo zespołu <br><span class="text-[#e11d48]">to fundament biznesu.</span></h1>
       <p class="text-lg text-slate-500 mb-10 leading-relaxed max-w-xl">Jako niezależny broker projektujemy programy ubezpieczeń dla pracowników, które realnie wspierają Twój zespół i optymalizują koszty firmy. Badanie rynku i wdrożenie jest w 100% bezpłatne.</p>
       <div class="flex gap-4 flex-wrap">
-        <a href="#kontakt" class="btn btn-primary pulse-animation text-white" style="color: #ffffff !important;">Poproś o analizę ofert</a>
-        <a href="#uslugi" class="btn btn-outline">Poznaj nasze programy</a>
+        <a href="#kontakt" class="bg-[#1e294a] hover:bg-slate-800 text-white font-bold py-3.5 px-8 rounded-xl shadow-lg transition-transform hover:-translate-y-1 no-underline">Poproś o analizę ofert</a>
+        <a href="#uslugi" class="bg-white border-2 border-slate-200 text-slate-700 font-bold py-3 px-8 rounded-xl hover:border-slate-300 hover:bg-slate-50 transition-colors no-underline">Poznaj nasze programy</a>
       </div>
     </div>
     
@@ -159,7 +159,7 @@
 
 <!-- DLACZEGO MY (ODCHUDZONE, JASNE TŁO, ZWĘŻONE) -->
 <section class="reveal py-16" id="dlaczego-my">
-  <div class="container mx-auto max-w-5xl">
+  <div class="container mx-auto max-w-5xl px-5">
     <div class="bg-slate-50 border border-slate-200 rounded-[32px] p-8 md:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
         <h2 class="text-3xl font-extrabold text-[#1e294a] mb-6">Broker to Twój sojusznik.</h2>
@@ -193,36 +193,29 @@
   <div class="container mx-auto px-5">
     <div class="text-center mx-auto mb-10">
       <h2 class="text-3xl font-extrabold text-[#1e294a]">Case Study</h2>
-      <p class="text-slate-500">Zobacz, jak realnie pomagamy salonom beauty w praktyce.</p>
+      <p class="text-slate-500">Zobacz, jak realnie optymalizujemy koszty w firmach.</p>
     </div>
     
     <div class="max-w-5xl mx-auto bg-white rounded-[32px] border border-slate-200 overflow-hidden shadow-lg flex flex-col md:flex-row">
       <div class="md:w-2/5 bg-slate-800 p-8 flex flex-col justify-center text-white">
           <span class="text-[#e11d48] font-bold text-xs uppercase tracking-widest mb-2">Klient</span>
-          <h3 class="text-2xl font-bold text-white mb-2">Sieć Salonów Beauty, Warszawa</h3>
-          <p class="text-sm text-slate-300 mb-6">Zatrudnienie: 15 osób</p>
+          <h3 class="text-2xl font-bold text-white mb-2">Duża firma farmaceutyczna</h3>
+          <p class="text-sm text-slate-300 mb-6">Audyt pakietów medycznych</p>
           
           <div class="bg-slate-700/50 p-4 rounded-xl border border-slate-600">
-              <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Stan wyjściowy (Problem)</p>
-              <p class="text-sm font-medium">Brak ustrukturyzowanych benefitów, wysoka rotacja pracowników. Polisa OC salonu posiadała ukryte wyłączenia na zabiegi laserowe.</p>
+              <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Stan wyjściowy (Wyzwanie)</p>
+              <p class="text-sm font-medium">Firma płaciła 95 zł za średni pakiet medyczny dla pracownika. Zwrócono się do nas z prośbą o znalezienie sposobu na optymalizację kosztów lub poprawę zakresu świadczeń w tym samym budżecie.</p>
           </div>
       </div>
       <div class="md:w-3/5 p-8 md:p-10 flex flex-col justify-center bg-white">
-          <h4 class="text-sm font-bold text-[#e11d48] uppercase tracking-widest mb-5">Wdrożone rozwiązanie i efekty</h4>
-          <ul class="space-y-5">
-              <li class="flex items-start gap-4">
-                  <span class="text-[#10b981] font-bold text-lg leading-none mt-1">✓</span>
-                  <p class="text-sm text-slate-600 m-0"><strong>Grupowe na życie + Zdrowie:</strong> Wynegocjowaliśmy pakiet 68 zł/os., sfinansowany 50/50 przez pracodawcę i pracowników (optymalizacja kosztowa).</p>
-              </li>
-              <li class="flex items-start gap-4">
-                  <span class="text-[#10b981] font-bold text-lg leading-none mt-1">✓</span>
-                  <p class="text-sm text-slate-600 m-0"><strong>Wdrożenie LAVEN:</strong> Dodatkowe ubezpieczenie od ciężkich zachorowań jako element unikalnego Employer Brandingu w rekrutacji.</p>
-              </li>
-              <li class="flex items-start gap-4">
-                  <span class="text-[#10b981] font-bold text-lg leading-none mt-1">✓</span>
-                  <p class="text-sm text-slate-600 m-0"><strong>Audyt OC:</strong> Usunięto niebezpieczne wyłączenia, zabezpieczając zarząd przed milionowymi roszczeniami klientek.</p>
-              </li>
-          </ul>
+          <h4 class="text-sm font-bold text-[#e11d48] uppercase tracking-widest mb-5">Analiza i Wdrożenie</h4>
+          <p class="text-slate-600 leading-relaxed mb-4 text-sm">
+            Po pełnej weryfikacji rynku wyselekcjonowaliśmy nową ofertę rynkową i dobrano dostawcę z <strong>taką samą ceną (95 zł)</strong> oraz praktycznie identyczną siecią dostępnych placówek do wyboru przez pracowników.
+          </p>
+          <div class="flex items-start gap-4 bg-emerald-50 p-5 rounded-xl border border-emerald-100 mt-2">
+            <span class="text-[#10b981] font-bold text-xl leading-none mt-0">✓</span>
+            <p class="text-sm text-slate-700 m-0 font-medium">Efekt: Pracownicy od 1 stycznia korzystają z maksymalnego możliwego zakresu ochrony i ubezpieczenia medycznego, jaki na dany moment oferował rynek, zachowując ten sam budżet firmowy.</p>
+          </div>
       </div>
     </div>
   </div>
@@ -288,7 +281,7 @@
             </div>
           </div>
           <input type="hidden" name="ref" id="f-referrer">
-          <button type="submit" id="main-submit-btn" class="btn btn-primary text-white w-full mt-2 py-3 rounded-xl text-sm shadow-md">Wyślij zapytanie</button>
+          <button type="submit" id="main-submit-btn" class="bg-[#e11d48] hover:bg-rose-700 transition-colors text-white font-bold w-full mt-2 py-3 rounded-xl text-sm shadow-md">Wyślij zapytanie</button>
         </form>
       </div>
 
@@ -335,24 +328,50 @@
         <p class="mx-auto text-slate-500 text-sm">Aura Consulting to grupa specjalistycznych platform ubezpieczeniowych.</p>
     </div>
     
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <a href="https://www.auraconsulting.pl" target="_blank" class="bg-white p-6 rounded-2xl text-center border border-slate-200 no-underline hover:-translate-y-2 hover:border-[#e11d48] hover:shadow-xl transition-all duration-300">
-        <h4 class="text-base font-bold text-[#1e294a] mb-2">www.auraconsulting.pl</h4>
-        <p class="text-xs text-slate-500 m-0">Korporacyjny broker ubezpieczeniowy. Złożone audyty dla przemysłu.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      
+      <a href="https://www.auraconsulting.pl" target="_blank" class="bg-white rounded-2xl text-center border border-slate-200 no-underline hover:-translate-y-2 hover:border-[#e11d48] hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group">
+        <div class="h-32 overflow-hidden"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80" alt="Aura Consulting" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></div>
+        <div class="p-5 flex flex-col flex-grow justify-center">
+          <h4 class="text-base font-bold text-[#1e294a] mb-2">www.auraconsulting.pl</h4>
+          <p class="text-xs text-slate-500 m-0">Korporacyjny broker ubezpieczeniowy. Złożone audyty dla przemysłu.</p>
+        </div>
       </a>
-      <a href="https://beautypolisa.com" target="_blank" class="bg-white p-6 rounded-2xl text-center border border-slate-200 no-underline hover:-translate-y-2 hover:border-[#e11d48] hover:shadow-xl transition-all duration-300">
-        <h4 class="text-base font-bold text-[#1e294a] mb-2">beautypolisa.com</h4>
-        <p class="text-xs text-slate-500 m-0">Polisy OC i dedykowana ochrona karnoskarbowa dla branży beauty.</p>
+      
+      <a href="https://beautypolisa.com" target="_blank" class="bg-white rounded-2xl text-center border border-slate-200 no-underline hover:-translate-y-2 hover:border-[#e11d48] hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group">
+        <div class="h-32 overflow-hidden"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=400&q=80" alt="Beauty Polisa" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></div>
+        <div class="p-5 flex flex-col flex-grow justify-center">
+          <h4 class="text-base font-bold text-[#1e294a] mb-2">beautypolisa.com</h4>
+          <p class="text-xs text-slate-500 m-0">Polisy OC i dedykowana ochrona karnoskarbowa dla branży beauty.</p>
+        </div>
       </a>
-      <a href="https://utratadochodu.com" target="_blank" class="bg-white p-6 rounded-2xl text-center border border-slate-200 no-underline hover:-translate-y-2 hover:border-[#e11d48] hover:shadow-xl transition-all duration-300">
-        <h4 class="text-base font-bold text-[#1e294a] mb-2">utratadochodu.com</h4>
-        <p class="text-xs text-slate-500 m-0">Zabezpieczenie płynności finansowej w chorobie (Prywatne L4).</p>
+      
+      <a href="https://utratadochodu.com" target="_blank" class="bg-white rounded-2xl text-center border border-slate-200 no-underline hover:-translate-y-2 hover:border-[#e11d48] hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group">
+        <div class="h-32 overflow-hidden"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80" alt="Utrata Dochodu" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></div>
+        <div class="p-5 flex flex-col flex-grow justify-center">
+          <h4 class="text-base font-bold text-[#1e294a] mb-2">utratadochodu.com</h4>
+          <p class="text-xs text-slate-500 m-0">Zabezpieczenie płynności finansowej w chorobie (Prywatne L4).</p>
+        </div>
       </a>
-      <a href="https://grupowe.pro" class="bg-white p-6 rounded-2xl text-center border-2 border-[#1e294a] no-underline hover:-translate-y-2 hover:border-[#e11d48] hover:shadow-xl shadow-md transition-all duration-300">
-        <h4 class="text-base font-bold text-[#1e294a] mb-2">grupowe.pro</h4>
-        <p class="text-xs text-slate-500 m-0">Benefitowe ubezpieczenia grupowe dla firm i pracowników.</p>
+      
+      <a href="https://idzik.org.pl" target="_blank" class="bg-white rounded-2xl text-center border-2 border-[#1e294a] no-underline hover:-translate-y-2 hover:border-[#e11d48] hover:shadow-xl shadow-md transition-all duration-300 flex flex-col overflow-hidden group">
+        <div class="h-32 overflow-hidden"><img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=400&q=80" alt="Idzik Org" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></div>
+        <div class="p-5 flex flex-col flex-grow justify-center">
+          <h4 class="text-base font-bold text-[#1e294a] mb-2">idzik.org.pl</h4>
+          <p class="text-xs text-slate-500 m-0">Zaawansowany system korporacyjny z pełną optymalizacją przepływów danych.</p>
+        </div>
       </a>
+
     </div>
+
+    <!-- Instagram Link Button -->
+    <div class="mt-14 text-center">
+        <a href="https://www.instagram.com/grupowe.pro/" target="_blank" class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-base shadow-md no-underline">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            Obserwuj nas na Instagramie @grupowe.pro
+        </a>
+    </div>
+
   </div>
 </section>
 
@@ -385,10 +404,10 @@
      ========================================== -->
 
 <!-- Modal 1: Życie -->
-<div id="modal-zycie" class="modal-overlay" onclick="closeModalOutside(event, 'modal-zycie')">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeModal('modal-zycie')">&#10005;</button>
-    <span class="modal-tag">Fundament Ochrony</span>
+<div id="modal-zycie" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center p-5 opacity-0 transition-opacity modal-overlay" onclick="closeModalOutside(event, 'modal-zycie')">
+  <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl transform scale-95 transition-transform modal-content">
+    <button class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-2xl font-bold border-none bg-transparent cursor-pointer" onclick="closeModal('modal-zycie')">&#10005;</button>
+    <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">Fundament Ochrony</span>
     <h2 class="text-2xl font-bold mb-4 text-[#1e294a]">Grupowe ubezpieczenie na życie</h2>
     <p class="text-slate-600 mb-6 text-sm">Trzon bezpieczeństwa socjalnego w firmie. Ubezpieczenie na życie to nie tylko świadczenie w przypadku najgorszego, ale realna pomoc finansowa w kluczowych momentach życia pracownika.</p>
     <ul class="space-y-4 mb-8 text-sm">
@@ -396,15 +415,15 @@
         <li class="flex items-start gap-3 text-slate-700"><span class="text-[#10b981] font-bold">✓</span> <span><strong>Pakiet rodzinny:</strong> Świadczenia za urodzenie dziecka, śmierć rodziców czy teściów.</span></li>
         <li class="flex items-start gap-3 text-slate-700"><span class="text-[#10b981] font-bold">✓</span> <span><strong>Elastyczność:</strong> Brak ankiet medycznych dla grup, możliwość kontynuacji polisy po odejściu z pracy.</span></li>
     </ul>
-    <a href="#kontakt" onclick="closeModal('modal-zycie')" class="btn btn-primary text-white w-full">Zapytaj o wycenę</a>
+    <a href="#kontakt" onclick="closeModal('modal-zycie')" class="block text-center bg-[#e11d48] text-white font-bold py-3 rounded-xl hover:bg-rose-700 transition-colors no-underline">Zapytaj o wycenę</a>
   </div>
 </div>
 
 <!-- Modal 2: Zdrowie -->
-<div id="modal-zdrowie" class="modal-overlay" onclick="closeModalOutside(event, 'modal-zdrowie')">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeModal('modal-zdrowie')">&#10005;</button>
-    <span class="modal-tag">Codzienne Zdrowie</span>
+<div id="modal-zdrowie" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center p-5 opacity-0 transition-opacity modal-overlay" onclick="closeModalOutside(event, 'modal-zdrowie')">
+  <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl transform scale-95 transition-transform modal-content">
+    <button class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-2xl font-bold border-none bg-transparent cursor-pointer" onclick="closeModal('modal-zdrowie')">&#10005;</button>
+    <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">Codzienne Zdrowie</span>
     <h2 class="text-2xl font-bold mb-4 text-[#1e294a]">Grupowa opieka medyczna</h2>
     <p class="text-slate-600 mb-6 text-sm">Najbardziej pożądany benefit na polskim rynku pracy. Gwarantuje pracownikom dostęp do prywatnej służby zdrowia omijając system NFZ, co drastycznie skraca czas zwolnień L4.</p>
     <ul class="space-y-4 mb-8 text-sm">
@@ -412,15 +431,15 @@
         <li class="flex items-start gap-3 text-slate-700"><span class="text-[#10b981] font-bold">✓</span> <span><strong>Diagnostyka:</strong> Zaawansowane badania laboratoryjne, RTG, USG, Rezonans i Tomografia Komputerowa.</span></li>
         <li class="flex items-start gap-3 text-slate-700"><span class="text-[#10b981] font-bold">✓</span> <span><strong>E-Zdrowie:</strong> Konsultacje telemedyczne z e-receptą i e-zwolnieniem dostępne 24/7.</span></li>
     </ul>
-    <a href="#kontakt" onclick="closeModal('modal-zdrowie')" class="btn btn-primary text-white w-full">Zapytaj o wycenę</a>
+    <a href="#kontakt" onclick="closeModal('modal-zdrowie')" class="block text-center bg-[#e11d48] text-white font-bold py-3 rounded-xl hover:bg-rose-700 transition-colors no-underline">Zapytaj o wycenę</a>
   </div>
 </div>
 
 <!-- Modal 3: LAVEN -->
-<div id="modal-laven" class="modal-overlay" onclick="closeModalOutside(event, 'modal-laven')">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeModal('modal-laven')">&#10005;</button>
-    <span class="modal-tag">Innowacje Medyczne</span>
+<div id="modal-laven" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center p-5 opacity-0 transition-opacity modal-overlay" onclick="closeModalOutside(event, 'modal-laven')">
+  <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl transform scale-95 transition-transform modal-content">
+    <button class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-2xl font-bold border-none bg-transparent cursor-pointer" onclick="closeModal('modal-laven')">&#10005;</button>
+    <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">Innowacje Medyczne</span>
     <h2 class="text-2xl font-bold mb-4 text-[#1e294a]">LAVEN: Ubezpieczenie Komplementarne</h2>
     <p class="text-slate-600 mb-6 text-sm">Laven to rewolucyjne na polskim rynku ubezpieczenie komplementarne (uzupełniające system NFZ). Pokrywa koszty najnowocześniejszych, ekstremalnie drogich technologii medycznych, które nie są refundowane przez państwo.</p>
     <ul class="space-y-4 mb-8 text-sm">
@@ -428,15 +447,15 @@
         <li class="flex items-start gap-3 text-slate-700"><span class="text-[#e11d48] font-bold text-lg leading-none">💡</span> <span><strong>Innowacyjne procedury:</strong> Pokrycie kosztów operacji z użyciem robota da Vinci oraz bezinwazyjnych terapii nowotworowych.</span></li>
         <li class="flex items-start gap-3 text-slate-700"><span class="text-[#e11d48] font-bold text-lg leading-none">💡</span> <span><strong>Badania genetyczne:</strong> Profilowanie molekularne pozwalające na idealne dobranie terapii do typu nowotworu.</span></li>
     </ul>
-    <a href="#kontakt" onclick="closeModal('modal-laven')" class="btn btn-primary text-white w-full">Zapytaj o LAVEN</a>
+    <a href="#kontakt" onclick="closeModal('modal-laven')" class="block text-center bg-[#e11d48] text-white font-bold py-3 rounded-xl hover:bg-rose-700 transition-colors no-underline">Zapytaj o LAVEN</a>
   </div>
 </div>
 
 <!-- Modal 4: MediSky -->
-<div id="modal-medisky" class="modal-overlay" onclick="closeModalOutside(event, 'modal-medisky')">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeModal('modal-medisky')">&#10005;</button>
-    <span class="modal-tag">Leczenie Globalne</span>
+<div id="modal-medisky" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center p-5 opacity-0 transition-opacity modal-overlay" onclick="closeModalOutside(event, 'modal-medisky')">
+  <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl transform scale-95 transition-transform modal-content">
+    <button class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-2xl font-bold border-none bg-transparent cursor-pointer" onclick="closeModal('modal-medisky')">&#10005;</button>
+    <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">Leczenie Globalne</span>
     <h2 class="text-2xl font-bold mb-4 text-[#1e294a]">MediSky: Leczenie na całym świecie</h2>
     <p class="text-slate-600 mb-6 text-sm">Międzynarodowe Ubezpieczenie Zdrowotne (PMI) zdejmujące bariery geograficzne w leczeniu. W razie poważnej diagnozy, pacjent ma prawo wybrać najlepszą klinikę w Europie lub USA.</p>
     <ul class="space-y-4 mb-8 text-sm">
@@ -444,7 +463,7 @@
         <li class="flex items-start gap-3 text-slate-700"><span class="text-[#00d4ff] font-bold text-lg leading-none">🌍</span> <span><strong>Organizacja logistyki:</strong> Polisa pokrywa koszty przelotów, zakwaterowania pacjenta oraz osoby towarzyszącej.</span></li>
         <li class="flex items-start gap-3 text-slate-700"><span class="text-[#00d4ff] font-bold text-lg leading-none">🌍</span> <span><strong>Druga opinia (Second Opinion):</strong> Konsultacja wyników badań z wybitnymi profesorami z całego świata w celu potwierdzenia diagnozy.</span></li>
     </ul>
-    <a href="#kontakt" onclick="closeModal('modal-medisky')" class="btn btn-primary text-white w-full">Zapytaj o program MediSky</a>
+    <a href="#kontakt" onclick="closeModal('modal-medisky')" class="block text-center bg-[#e11d48] text-white font-bold py-3 rounded-xl hover:bg-rose-700 transition-colors no-underline">Zapytaj o program MediSky</a>
   </div>
 </div>
 
@@ -480,9 +499,36 @@
   }
 
   // Obsługa Modali
-  function openModal(id) { const el = document.getElementById(id); if(el) { el.classList.add('active'); document.body.style.overflow = 'hidden'; } }
-  function closeModal(id) { const el = document.getElementById(id); if(el) { el.classList.remove('active'); document.body.style.overflow = 'auto'; } }
-  function closeModalOutside(event, id) { if(event.target.classList.contains('modal-overlay')) { closeModal(id); } }
+  function openModal(id) { 
+      const el = document.getElementById(id); 
+      if(el) { 
+          el.classList.remove('hidden');
+          el.classList.add('flex');
+          // small delay for css transition
+          setTimeout(() => {
+              el.classList.remove('opacity-0');
+              el.querySelector('.modal-content').classList.remove('scale-95');
+              el.querySelector('.modal-content').classList.add('scale-100');
+          }, 10);
+          document.body.style.overflow = 'hidden'; 
+      } 
+  }
+  function closeModal(id) { 
+      const el = document.getElementById(id); 
+      if(el) { 
+          el.classList.add('opacity-0');
+          el.querySelector('.modal-content').classList.remove('scale-100');
+          el.querySelector('.modal-content').classList.add('scale-95');
+          setTimeout(() => {
+              el.classList.add('hidden');
+              el.classList.remove('flex');
+          }, 300); // match transition duration
+          document.body.style.overflow = 'auto'; 
+      } 
+  }
+  function closeModalOutside(event, id) { 
+      if(event.target.classList.contains('modal-overlay')) { closeModal(id); } 
+  }
 
   // Scroll Reveal (Animacje przewijania)
   function revealOnScroll() {
@@ -493,10 +539,19 @@
       const elementVisible = 100;
       if (elementTop < windowHeight - elementVisible) {
         reveals[i].classList.add('active');
+        reveals[i].style.opacity = 1;
+        reveals[i].style.transform = 'translateY(0)';
       }
     }
   }
   window.addEventListener('scroll', revealOnScroll);
+
+  // Inicjalne style dla reveal (zastępujące klasę .reveal z oddzielnego pliku style.css, by animacja działała z boxa)
+  document.querySelectorAll('.reveal').forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s ease-out';
+  });
 
   // Symulacja weryfikacji NIP (API)
   let nipTimeoutContact;
@@ -544,7 +599,7 @@
 
   window.onload = () => {
       initReferrer();
-      revealOnScroll();
+      revealOnScroll(); // Trigger first time
   };
 </script>
 
