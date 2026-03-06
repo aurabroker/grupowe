@@ -61,11 +61,6 @@
   
   <!-- Główny arkusz stylów -->
   <link rel="stylesheet" href="style.css">
-  
-  <style>
-      .loader { border: 2px solid #f3f3f3; border-top: 2px solid #2a3b69; border-radius: 50%; width: 14px; height: 14px; animation: spin 1s linear infinite; }
-      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-  </style>
 </head>
 <body class="font-sans antialiased text-slate-800">
 
@@ -391,7 +386,7 @@
 
     <!-- SKOMPRESOWANY TEKST PRAWNY W RAMCE NA SAMYM DOLE -->
     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 max-w-4xl mx-auto shadow-sm">
-      <p class="text-[10px] text-slate-500 leading-relaxed m-0 text-center">
+      <p class="text-[10px] text-slate-500 leading-relaxed m-0 text-justify">
         Aura Consulting spółka z ograniczoną odpowiedzialnością z siedzibą w Warszawie przy ul. Bolkowskiej 2A lokal 28, wpisana do Krajowego Rejestru Sądowego pod numerem 0000426835 przez Sąd Rejonowy dla m.st. Warszawy, XII Wydział Gospodarczy Krajowego Rejestru Sądowego,<br> REGON 341302033, kapitał zakładowy 34.000 zł.<br>
         Zezwolenie Komisji Nadzoru Finansowego nr 1972/13, wpis w rejestrze brokerów ubezpieczeniowych pod numerem 00001851/U.
       </p>
@@ -404,8 +399,8 @@
      ========================================== -->
 
 <!-- Modal 1: Życie -->
-<div id="modal-zycie" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center p-5 opacity-0 transition-opacity modal-overlay" onclick="closeModalOutside(event, 'modal-zycie')">
-  <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl transform scale-95 transition-transform modal-content">
+<div id="modal-zycie" class="modal-overlay" onclick="closeModalOutside(event, 'modal-zycie')">
+  <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl modal-content">
     <button class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-2xl font-bold border-none bg-transparent cursor-pointer" onclick="closeModal('modal-zycie')">&#10005;</button>
     <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">Fundament Ochrony</span>
     <h2 class="text-2xl font-bold mb-4 text-[#1e294a]">Grupowe ubezpieczenie na życie</h2>
@@ -420,8 +415,8 @@
 </div>
 
 <!-- Modal 2: Zdrowie -->
-<div id="modal-zdrowie" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center p-5 opacity-0 transition-opacity modal-overlay" onclick="closeModalOutside(event, 'modal-zdrowie')">
-  <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl transform scale-95 transition-transform modal-content">
+<div id="modal-zdrowie" class="modal-overlay" onclick="closeModalOutside(event, 'modal-zdrowie')">
+  <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl modal-content">
     <button class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-2xl font-bold border-none bg-transparent cursor-pointer" onclick="closeModal('modal-zdrowie')">&#10005;</button>
     <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">Codzienne Zdrowie</span>
     <h2 class="text-2xl font-bold mb-4 text-[#1e294a]">Grupowa opieka medyczna</h2>
@@ -436,8 +431,8 @@
 </div>
 
 <!-- Modal 3: LAVEN -->
-<div id="modal-laven" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center p-5 opacity-0 transition-opacity modal-overlay" onclick="closeModalOutside(event, 'modal-laven')">
-  <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl transform scale-95 transition-transform modal-content">
+<div id="modal-laven" class="modal-overlay" onclick="closeModalOutside(event, 'modal-laven')">
+  <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl modal-content">
     <button class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-2xl font-bold border-none bg-transparent cursor-pointer" onclick="closeModal('modal-laven')">&#10005;</button>
     <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">Innowacje Medyczne</span>
     <h2 class="text-2xl font-bold mb-4 text-[#1e294a]">LAVEN: Ubezpieczenie Komplementarne</h2>
@@ -452,8 +447,8 @@
 </div>
 
 <!-- Modal 4: MediSky -->
-<div id="modal-medisky" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center p-5 opacity-0 transition-opacity modal-overlay" onclick="closeModalOutside(event, 'modal-medisky')">
-  <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl transform scale-95 transition-transform modal-content">
+<div id="modal-medisky" class="modal-overlay" onclick="closeModalOutside(event, 'modal-medisky')">
+  <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl modal-content">
     <button class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-2xl font-bold border-none bg-transparent cursor-pointer" onclick="closeModal('modal-medisky')">&#10005;</button>
     <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">Leczenie Globalne</span>
     <h2 class="text-2xl font-bold mb-4 text-[#1e294a]">MediSky: Leczenie na całym świecie</h2>
@@ -498,34 +493,23 @@
     }
   }
 
-  // Obsługa Modali
+  // Obsługa Modali (Zewnętrzny CSS)
   function openModal(id) { 
       const el = document.getElementById(id); 
       if(el) { 
-          el.classList.remove('hidden');
-          el.classList.add('flex');
-          // small delay for css transition
-          setTimeout(() => {
-              el.classList.remove('opacity-0');
-              el.querySelector('.modal-content').classList.remove('scale-95');
-              el.querySelector('.modal-content').classList.add('scale-100');
-          }, 10);
+          el.classList.add('active'); 
           document.body.style.overflow = 'hidden'; 
       } 
   }
+
   function closeModal(id) { 
       const el = document.getElementById(id); 
       if(el) { 
-          el.classList.add('opacity-0');
-          el.querySelector('.modal-content').classList.remove('scale-100');
-          el.querySelector('.modal-content').classList.add('scale-95');
-          setTimeout(() => {
-              el.classList.add('hidden');
-              el.classList.remove('flex');
-          }, 300); // match transition duration
+          el.classList.remove('active');
           document.body.style.overflow = 'auto'; 
       } 
   }
+
   function closeModalOutside(event, id) { 
       if(event.target.classList.contains('modal-overlay')) { closeModal(id); } 
   }
@@ -539,19 +523,10 @@
       const elementVisible = 100;
       if (elementTop < windowHeight - elementVisible) {
         reveals[i].classList.add('active');
-        reveals[i].style.opacity = 1;
-        reveals[i].style.transform = 'translateY(0)';
       }
     }
   }
   window.addEventListener('scroll', revealOnScroll);
-
-  // Inicjalne style dla reveal (zastępujące klasę .reveal z oddzielnego pliku style.css, by animacja działała z boxa)
-  document.querySelectorAll('.reveal').forEach(el => {
-      el.style.opacity = 0;
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'all 0.6s ease-out';
-  });
 
   // Symulacja weryfikacji NIP (API)
   let nipTimeoutContact;
