@@ -24,8 +24,10 @@
     gtag('config', 'G-L5S53BCN1K');
   </script>
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS & Supabase -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
   <script>
     tailwind.config = {
         theme: {
@@ -65,13 +67,13 @@
 <body class="font-sans antialiased text-slate-800">
 
 <!-- NAWIGACJA -->
-<nav class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-sm border-b border-slate-100">
+<nav class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-40 shadow-sm border-b border-slate-100">
   <div class="container mx-auto px-5 py-4 flex justify-between items-center w-full">
     <a href="index.html" class="text-2xl font-black tracking-tighter text-[#1e294a] no-underline">grupowe<span class="text-[#e11d48]">.pro</span></a>
     <ul class="hidden md:flex gap-8 items-center list-none m-0 p-0 text-sm font-semibold">
       <li><a href="#uslugi" class="text-slate-600 hover:text-[#e11d48] transition-colors no-underline">Zakres ochrony</a></li>
       <li><a href="#dlaczego-my" class="text-slate-600 hover:text-[#e11d48] transition-colors no-underline">Dlaczego my</a></li>
-      <li><a href="#projekty" class="text-slate-600 hover:text-[#e11d48] transition-colors no-underline">Nasze projekty</a></li>
+      <li><a href="#aktualnosci" class="text-slate-600 hover:text-[#e11d48] transition-colors no-underline">Aktualności</a></li>
       <li><a href="#faq" class="text-slate-600 hover:text-[#e11d48] transition-colors no-underline">FAQ</a></li>
       <li><a href="tel:+48500502702" class="bg-[#e11d48] text-white px-5 py-2.5 rounded-full hover:bg-rose-700 transition-colors shadow-md shadow-rose-200 no-underline">📞 500 502 702</a></li>
     </ul>
@@ -152,7 +154,7 @@
   </div>
 </section>
 
-<!-- DLACZEGO MY (ODCHUDZONE, JASNE TŁO, ZWĘŻONE) -->
+<!-- DLACZEGO MY -->
 <section class="reveal py-16" id="dlaczego-my">
   <div class="container mx-auto max-w-5xl px-5">
     <div class="bg-slate-50 border border-slate-200 rounded-[32px] p-8 md:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -179,6 +181,23 @@
             <p class="text-slate-400 text-[10px] font-bold tracking-widest uppercase">Koszt audytu dla Ciebie</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     MODUŁ ZINTEGROWANEGO BLOGA (ZASILANY PRZEZ AURABENEFITS)
+========================================================== -->
+<section class="py-20 bg-white border-t border-slate-100 reveal" id="aktualnosci">
+  <div class="container mx-auto px-5 max-w-6xl">
+    <div class="text-center mx-auto mb-12">
+      <span class="text-[#e11d48] font-extrabold tracking-widest text-xs uppercase mb-3 block">Wiedza Ekspercka</span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-[#1e294a]">Aktualności i Trendy HR</h2>
+      <p class="text-slate-500 mt-4 max-w-2xl mx-auto">Czytaj najnowsze raporty, zmiany w prawie pracy i porady dotyczące ubezpieczeń firmowych tworzone przez ekspertów Aura Consulting.</p>
+    </div>
+    
+    <div id="blogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="col-span-full py-16 text-center text-slate-400 text-sm animate-pulse">Trwa pobieranie artykułów z bazy wiedzy...</div>
     </div>
   </div>
 </section>
@@ -216,7 +235,7 @@
   </div>
 </section>
 
-<!-- KONTAKT (ODCHUDZONY, MNIEJSZY) -->
+<!-- KONTAKT -->
 <section class="py-16 reveal" id="kontakt">
   <div class="container mx-auto px-5 max-w-5xl">
     <div class="grid grid-cols-1 lg:grid-cols-2 bg-white rounded-[32px] overflow-hidden shadow-xl border border-slate-200">
@@ -239,7 +258,6 @@
         <h3 class="text-xl font-bold text-[#1e294a] mb-6">Zamów wycenę</h3>
         <form id="mainContactForm" class="flex flex-col gap-4">
           
-          <!-- NOWE POLE NIP -->
           <div>
             <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500 block mb-1">NIP (Weryfikacja API)</label>
             <div class="relative">
@@ -333,7 +351,7 @@
         </div>
       </a>
       
-           
+            
       <a href="https://utratadochodu.com" target="_blank" class="bg-white rounded-2xl text-center border border-slate-200 no-underline hover:-translate-y-2 hover:border-[#e11d48] hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group">
         <div class="h-32 overflow-hidden"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80" alt="Utrata Dochodu" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></div>
         <div class="p-5 flex flex-col flex-grow justify-center">
@@ -392,7 +410,7 @@
      ========================================== -->
 
 <!-- Modal 1: Życie -->
-<div id="modal-zycie" class="modal-overlay" onclick="closeModalOutside(event, 'modal-zycie')">
+<div id="modal-zycie" class="modal-overlay fixed inset-0 bg-slate-900/60 z-50 hidden items-center justify-center p-4 backdrop-blur-sm" onclick="closeModalOutside(event, 'modal-zycie')">
   <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl modal-content">
     <button class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-2xl font-bold border-none bg-transparent cursor-pointer" onclick="closeModal('modal-zycie')">&#10005;</button>
     <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">Fundament Ochrony</span>
@@ -408,7 +426,7 @@
 </div>
 
 <!-- Modal 2: Zdrowie -->
-<div id="modal-zdrowie" class="modal-overlay" onclick="closeModalOutside(event, 'modal-zdrowie')">
+<div id="modal-zdrowie" class="modal-overlay fixed inset-0 bg-slate-900/60 z-50 hidden items-center justify-center p-4 backdrop-blur-sm" onclick="closeModalOutside(event, 'modal-zdrowie')">
   <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl modal-content">
     <button class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-2xl font-bold border-none bg-transparent cursor-pointer" onclick="closeModal('modal-zdrowie')">&#10005;</button>
     <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">Codzienne Zdrowie</span>
@@ -424,7 +442,7 @@
 </div>
 
 <!-- Modal 3: LAVEN -->
-<div id="modal-laven" class="modal-overlay" onclick="closeModalOutside(event, 'modal-laven')">
+<div id="modal-laven" class="modal-overlay fixed inset-0 bg-slate-900/60 z-50 hidden items-center justify-center p-4 backdrop-blur-sm" onclick="closeModalOutside(event, 'modal-laven')">
   <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl modal-content">
     <button class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-2xl font-bold border-none bg-transparent cursor-pointer" onclick="closeModal('modal-laven')">&#10005;</button>
     <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">Innowacje Medyczne</span>
@@ -440,7 +458,7 @@
 </div>
 
 <!-- Modal 4: MediSky -->
-<div id="modal-medisky" class="modal-overlay" onclick="closeModalOutside(event, 'modal-medisky')">
+<div id="modal-medisky" class="modal-overlay fixed inset-0 bg-slate-900/60 z-50 hidden items-center justify-center p-4 backdrop-blur-sm" onclick="closeModalOutside(event, 'modal-medisky')">
   <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl modal-content">
     <button class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 text-2xl font-bold border-none bg-transparent cursor-pointer" onclick="closeModal('modal-medisky')">&#10005;</button>
     <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">Leczenie Globalne</span>
@@ -455,11 +473,175 @@
   </div>
 </div>
 
+<!-- =========================================================
+     MODUŁ CZYTNIKA ARTYKUŁÓW (PEŁNY EKRAN)
+========================================================== -->
+<div id="fullArticleModal" class="fixed inset-0 bg-white z-[100] hidden flex-col overflow-y-auto">
+  <div class="max-w-4xl mx-auto w-full flex-grow flex flex-col bg-white">
+    <!-- Pasek powrotu -->
+    <div class="px-6 py-5 border-b border-slate-100 flex justify-between items-center bg-white sticky top-0 z-10">
+      <button onclick="closeArticleReader()" class="text-sm font-bold text-[#1e294a] flex items-center gap-2 hover:text-[#e11d48] transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        Wróć do strony głównej
+      </button>
+      <button onclick="copyArticleLink()" class="text-xs bg-slate-50 border border-slate-200 hover:bg-slate-100 text-[#1e294a] font-bold px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+        Skopiuj link
+      </button>
+    </div>
+
+    <!-- Treść -->
+    <div class="p-6 md:p-12 lg:p-16 flex-grow">
+      <div id="readerTags" class="mb-6 flex flex-wrap gap-2"></div>
+      <h1 id="readerTitle" class="text-3xl md:text-4xl lg:text-5xl font-black text-[#1e294a] mb-6 leading-tight tracking-tight"></h1>
+      <div id="readerDate" class="text-sm text-slate-400 font-bold mb-10 uppercase tracking-widest border-b border-slate-100 pb-6"></div>
+      
+      <div id="readerContent" class="text-slate-700 leading-relaxed space-y-6 text-[16px] md:text-lg max-w-none"></div>
+      
+      <!-- Anti-Hallucination: Moduł Źródła dopasowany do kolorów grupowe.pro -->
+      <div id="readerSourceBlock" class="hidden mt-16 p-8 bg-slate-50 border-l-4 border-[#e11d48] rounded-r-xl">
+          <p class="text-xs text-[#1e294a] uppercase tracking-widest font-black mb-2 flex items-center gap-2"><span>🤖</span> Opracowano na podstawie źródeł eksperckich:</p>
+          <p id="readerSourceText" class="text-base font-semibold text-slate-800"></p>
+          <a id="readerSourceLink" href="#" target="_blank" class="text-sm text-[#e11d48] font-bold hover:underline mt-3 inline-flex items-center gap-1">
+            <span>Pobierz / Zobacz oryginalny raport</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+      </div>
+    </div>
+    
+    <div class="bg-slate-50 p-8 text-center border-t border-slate-100">
+        <h3 class="font-bold text-[#1e294a] mb-2">Zainteresował Cię ten temat?</h3>
+        <p class="text-sm text-slate-500 mb-4">Porozmawiaj z ekspertem Aura Consulting o wdrożeniu tego rozwiązania w Twojej firmie.</p>
+        <a href="#kontakt" onclick="closeArticleReader()" class="inline-block bg-[#1e294a] text-white px-6 py-3 rounded-xl font-bold hover:bg-slate-800 transition-colors shadow-lg">Skontaktuj się z nami</a>
+    </div>
+  </div>
+</div>
+
 <!-- ==========================================
-     SKRYPTY (LOGIKA STRONY)
+     SKRYPTY (LOGIKA STRONY & BAZA SUPABASE)
      ========================================== -->
 <script>
-  // Parametr polecający (Referrer)
+  // ─── TWARDE KLUCZE API (SUPABASE - AURA CMS) ───
+  const SB_URL = 'https://kukvgsjrmrqtzhkszzum.supabase.co';
+  const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt1a3Znc2pybXJxdHpoa3N6enVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5MTI0NzYsImV4cCI6MjA4ODQ4ODQ3Nn0.wOB-4CJTcRksSUY7WD7CXEccTKNxPIVF8AT8hczS5zY';
+
+  const SB_CLIENT = supabase.createClient(SB_URL, SB_KEY);
+
+  // ─── POBIERANIE ARTYKUŁÓW DO SEKCJI "AKTUALNOŚCI" ───
+  async function loadPublishedArticles() {
+      const grid = document.getElementById('blogGrid');
+      const { data, error } = await SB_CLIENT.from('aura_articles')
+          .select('*')
+          .eq('status', 'published')
+          .order('published_at', { ascending: false });
+
+      if (error || !data) { grid.innerHTML = '<div class="col-span-full text-center text-[#e11d48] font-bold">Błąd połączenia z bazą wiedzy.</div>'; return; }
+      if (data.length === 0) { grid.innerHTML = '<div class="col-span-full text-center text-slate-400 py-10 font-medium border-2 border-dashed border-slate-200 rounded-3xl">Obecnie nie ma żadnych opublikowanych artykułów.</div>'; return; }
+
+      grid.innerHTML = data.map(art => `
+          <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl transition-all hover:-translate-y-1 cursor-pointer border border-slate-200 flex flex-col h-full group" onclick="openArticle('${art.id}')">
+              <div class="flex gap-2 mb-5 flex-wrap">
+                  ${(art.tags||[]).slice(0, 2).map(t => `<span class="bg-rose-50 text-[#e11d48] text-[10px] px-2 py-1 rounded font-black uppercase tracking-wider">${t}</span>`).join('')}
+                  ${(art.tags && art.tags.length > 2) ? `<span class="text-slate-400 text-xs font-bold px-1 py-1">...</span>` : ''}
+              </div>
+              <h3 class="text-xl md:text-2xl font-black text-[#1e294a] mb-4 line-clamp-3 leading-snug group-hover:text-[#e11d48] transition-colors">${art.title}</h3>
+              <p class="text-slate-500 text-sm mb-8 flex-grow line-clamp-4">${art.excerpt}</p>
+              <div class="border-t border-slate-100 pt-5 flex justify-between items-center text-xs font-bold text-slate-400">
+                  <span>${new Date(art.published_at).toLocaleDateString('pl-PL')}</span>
+                  <span class="text-[#e11d48] group-hover:translate-x-1 transition-transform">Czytaj całość →</span>
+              </div>
+          </div>
+      `).join('');
+  }
+
+  // ─── OTWIERANIE ARTYKUŁU (DEEP LINKING & CZYTNIK) ───
+  async function openArticle(id, skipHashChange = false) {
+      const { data } = await SB_CLIENT.from('aura_articles').select('*').eq('id', id).single();
+      if(!data) {
+         alert("Nie znaleziono artykułu.");
+         closeArticleReader();
+         return;
+      }
+      
+      document.getElementById('readerTitle').textContent = data.title;
+      document.getElementById('readerDate').textContent = `Opublikowano: ${new Date(data.published_at || data.created_at).toLocaleString('pl-PL')}`;
+      
+      let contentHtml = data.content
+          .replace(/<h3>/g, '<h3 class="text-2xl md:text-3xl font-black text-[#1e294a] mt-12 mb-5 border-b border-slate-100 pb-3">')
+          .replace(/<h4>/g, '<h4 class="text-xl font-bold text-[#1e294a] mt-8 mb-3">')
+          .replace(/<p>/g, '<p class="mb-5 text-justify">')
+          .replace(/<ul>/g, '<ul class="list-disc list-outside pl-6 mb-8 space-y-3 marker:text-[#e11d48] font-medium">');
+          
+      document.getElementById('readerContent').innerHTML = contentHtml;
+      document.getElementById('readerTags').innerHTML = (data.tags||[]).map(t => `<span class="bg-rose-50 border border-rose-100 text-[#e11d48] text-xs px-3 py-1 rounded-lg font-black uppercase tracking-wider">${t}</span>`).join('');
+      
+      const sourceBlock = document.getElementById('readerSourceBlock');
+      if (data.ai_generated) {
+          sourceBlock.classList.remove('hidden');
+          const linkEl = document.getElementById('readerSourceLink');
+          
+          if (data.title.includes("2026") && !data.title.includes("SHRM") && !data.title.includes("WIDEO")) {
+              document.getElementById('readerSourceText').textContent = "Raport: Środowisko pracy i oczekiwania pracowników 2026";
+              linkEl.href = "https://grupapracuj.pl/centrum-prasowe/raporty"; 
+          } else if (data.title.includes("SHRM") || (data.tags && data.tags.includes("Global HR"))) {
+              document.getElementById('readerSourceText').textContent = "Global Report: Workplace Dynamics & Health Insurance (SHRM)";
+              linkEl.href = "https://www.shrm.org/"; 
+          } else {
+              document.getElementById('readerSourceText').textContent = "Biuletyn Informacji Publicznej (Gov.pl) - Projekt zmian do Kodeksu Pracy";
+              linkEl.href = "https://legislacja.gov.pl/"; 
+          }
+      } else {
+          sourceBlock.classList.add('hidden');
+      }
+      
+      const modal = document.getElementById('fullArticleModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      
+      document.body.style.overflow = 'hidden'; // Blokujemy przewijanie tła
+      modal.scrollTo(0, 0); // Scrollujemy na górę artykułu
+      
+      if(!skipHashChange) {
+          history.pushState(null, null, '#article-' + id);
+      }
+  }
+
+  function closeArticleReader(skipHashChange = false) {
+      const modal = document.getElementById('fullArticleModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto'; // Zwalniamy przewijanie
+      
+      if(!skipHashChange) {
+          history.pushState(null, null, '#aktualnosci');
+          const target = document.getElementById('aktualnosci');
+          if(target) target.scrollIntoView();
+      }
+  }
+
+  function copyArticleLink() {
+      const url = window.location.href;
+      const tempInput = document.createElement("input");
+      tempInput.value = url; document.body.appendChild(tempInput); tempInput.select();
+      try { document.execCommand("copy"); alert("Link skopiowany do schowka! Możesz wysłać go klientowi."); } 
+      catch (err) { alert("Skopiuj link ręcznie:\n" + url); }
+      document.body.removeChild(tempInput);
+  }
+
+  // ─── ROUTING HASHÓW ───
+  function handleHashRoute() {
+      const hash = window.location.hash.replace('#', '');
+      if (hash.startsWith('article-')) {
+          const articleId = hash.replace('article-', '');
+          openArticle(articleId, true);
+      } else {
+          closeArticleReader(true);
+      }
+  }
+
+  window.addEventListener('hashchange', handleHashRoute);
+
+  // ─── POZOSTAŁE FUNKCJE GRUPOWE.PRO ───
   function initReferrer() {
     const params = new URLSearchParams(window.location.search);
     const ref = params.get('ref');
@@ -469,7 +651,6 @@
     if (refEl && storedRef) refEl.value = storedRef;
   }
 
-  // Płynny akordeon FAQ
   function toggleFaq(btn) {
     const content = btn.nextElementSibling;
     const svg = btn.querySelector('svg');
@@ -486,11 +667,10 @@
     }
   }
 
-  // Obsługa Modali (Zewnętrzny CSS)
   function openModal(id) { 
       const el = document.getElementById(id); 
       if(el) { 
-          el.classList.add('active'); 
+          el.classList.add('flex'); el.classList.remove('hidden'); 
           document.body.style.overflow = 'hidden'; 
       } 
   }
@@ -498,7 +678,7 @@
   function closeModal(id) { 
       const el = document.getElementById(id); 
       if(el) { 
-          el.classList.remove('active');
+          el.classList.add('hidden'); el.classList.remove('flex');
           document.body.style.overflow = 'auto'; 
       } 
   }
@@ -507,7 +687,6 @@
       if(event.target.classList.contains('modal-overlay')) { closeModal(id); } 
   }
 
-  // Scroll Reveal (Animacje przewijania)
   function revealOnScroll() {
     const reveals = document.querySelectorAll('.reveal');
     for (let i = 0; i < reveals.length; i++) {
@@ -521,7 +700,6 @@
   }
   window.addEventListener('scroll', revealOnScroll);
 
-  // Symulacja weryfikacji NIP (API)
   let nipTimeoutContact;
   function verifyNipApiKontakt() {
       const nipInput = document.getElementById('kontakt-nip');
@@ -540,7 +718,6 @@
       } else { loader.style.display = 'none'; }
   }
 
-  // Formularz i Sygnatura (Podpięcie)
   document.getElementById('mainContactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = document.getElementById('main-submit-btn');
@@ -567,9 +744,21 @@
 
   window.onload = () => {
       initReferrer();
-      revealOnScroll(); // Trigger first time
+      revealOnScroll(); 
+      loadPublishedArticles(); // Ładuje artykuły z Supabase
+      handleHashRoute();       // Sprawdza czy nie weszliśmy z linkiem z hashem
   };
 </script>
+
+<style>
+/* Brakujące klasy animacyjne z oryginalnego projektu dodane dla kompletności CSS w jednym pliku */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.loader { border: 2px solid #f3f3f3; border-top: 2px solid #e11d48; border-radius: 50%; width: 14px; height: 14px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+</style>
 
 </body>
 </html>
