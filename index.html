@@ -257,7 +257,12 @@
       <div class="p-8 lg:p-10 bg-slate-50">
         <h3 class="text-xl font-bold text-[#1e294a] mb-6">Zamów wycenę</h3>
         <form id="mainContactForm" class="flex flex-col gap-4">
-          
+
+          <!-- Web3Forms -->
+          <input type="hidden" name="access_key" value="afbc1d1c-d275-4e6b-86f0-fd4393ca30be">
+          <input type="hidden" name="subject" value="Nowe zapytanie - grupowe.pro">
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+
           <div>
             <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500 block mb-1">NIP (Weryfikacja API)</label>
             <div class="relative">
@@ -295,6 +300,12 @@
           </div>
           <input type="hidden" name="ref" id="f-referrer">
           <button type="submit" id="main-submit-btn" class="bg-[#e11d48] hover:bg-rose-700 transition-colors text-white font-bold w-full mt-2 py-3 rounded-xl text-sm shadow-md">Wyślij zapytanie</button>
+          <div id="form-success" class="hidden text-center text-emerald-600 font-bold text-sm mt-2 bg-emerald-50 border border-emerald-200 rounded-xl py-3">
+            ✅ Dziękujemy! Ekspert odezwie się wkrótce.
+          </div>
+          <div id="form-error" class="hidden text-center text-red-500 font-bold text-sm mt-2 bg-red-50 border border-red-200 rounded-xl py-3">
+            ❌ Coś poszło nie tak. Spróbuj ponownie lub zadzwoń: 500 502 702.
+          </div>
         </form>
       </div>
 
@@ -718,28 +729,40 @@
       } else { loader.style.display = 'none'; }
   }
 
-  document.getElementById('mainContactForm').addEventListener('submit', function(e) {
+  document.getElementById('mainContactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.getElementById('main-submit-btn');
+    const successMsg = document.getElementById('form-success');
+    const errorMsg = document.getElementById('form-error');
     const originalText = btn.innerHTML;
-    btn.innerHTML = 'Przetwarzanie...';
-    btn.disabled = true;
 
-    setTimeout(() => {
-        const ref = sessionStorage.getItem('bp_ref') || 'DIRECT';
-        const now = new Date();
-        const dateStr = now.toISOString().slice(0,10).replace(/-/g,'');
-        const timeStr = now.getHours().toString().padStart(2,'0') + now.getMinutes().toString().padStart(2,'0') + now.getSeconds().toString().padStart(2,'0');
-        const random = Math.random().toString(36).substring(2, 6).toUpperCase();
-        const sig = `BP/${ref}/${dateStr}-${timeStr}/${random}`;
-        
-        alert(`Dziękujemy! Twoje zgłoszenie o sygnaturze ${sig} zostało pomyślnie zarejestrowane. Ekspert skontaktuje się z Tobą.`);
-        
+    btn.innerHTML = 'Wysyłanie...';
+    btn.disabled = true;
+    successMsg.classList.add('hidden');
+    errorMsg.classList.add('hidden');
+
+    const formData = new FormData(this);
+    formData.set('ref', sessionStorage.getItem('bp_ref') || 'DIRECT');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const json = await res.json();
+      if (json.success) {
+        successMsg.classList.remove('hidden');
         this.reset();
         document.getElementById('kontakt-nip-status').innerText = '';
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-    }, 1200);
+      } else {
+        errorMsg.classList.remove('hidden');
+      }
+    } catch (err) {
+      errorMsg.classList.remove('hidden');
+    } finally {
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    }
   });
 
   window.onload = () => {
