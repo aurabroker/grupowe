@@ -70,12 +70,29 @@
 <nav class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-40 shadow-sm border-b border-slate-100">
   <div class="container mx-auto px-5 py-4 flex justify-between items-center w-full">
     <a href="index.html" class="text-2xl font-black tracking-tighter text-[#1e294a] no-underline">grupowe<span class="text-[#e11d48]">.pro</span></a>
+    <!-- Desktop menu -->
     <ul class="hidden md:flex gap-8 items-center list-none m-0 p-0 text-sm font-semibold">
       <li><a href="#uslugi" class="text-slate-600 hover:text-[#e11d48] transition-colors no-underline">Zakres ochrony</a></li>
       <li><a href="#dlaczego-my" class="text-slate-600 hover:text-[#e11d48] transition-colors no-underline">Dlaczego my</a></li>
       <li><a href="#aktualnosci" class="text-slate-600 hover:text-[#e11d48] transition-colors no-underline">Aktualności</a></li>
       <li><a href="#faq" class="text-slate-600 hover:text-[#e11d48] transition-colors no-underline">FAQ</a></li>
       <li><a href="tel:+48500502702" class="bg-[#e11d48] text-white px-5 py-2.5 rounded-full hover:bg-rose-700 transition-colors shadow-md shadow-rose-200 no-underline">📞 500 502 702</a></li>
+    </ul>
+    <!-- Hamburger (mobile only) -->
+    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Otwórz menu" class="md:hidden flex flex-col justify-center gap-[5px] p-2 -mr-1 bg-transparent border-none cursor-pointer">
+      <span class="block w-6 h-[2px] bg-[#1e294a] transition-all duration-300" id="hbLine1"></span>
+      <span class="block w-6 h-[2px] bg-[#1e294a] transition-all duration-300" id="hbLine2"></span>
+      <span class="block w-5 h-[2px] bg-[#1e294a] transition-all duration-300" id="hbLine3"></span>
+    </button>
+  </div>
+  <!-- Mobile dropdown menu -->
+  <div id="mobileMenu" class="hidden md:hidden border-t border-slate-100">
+    <ul class="flex flex-col list-none m-0 p-4 gap-1 text-sm font-semibold">
+      <li><a href="#uslugi" onclick="closeMobileMenu()" class="block py-3 px-4 text-slate-700 hover:text-[#e11d48] hover:bg-rose-50 rounded-xl transition-colors no-underline">Zakres ochrony</a></li>
+      <li><a href="#dlaczego-my" onclick="closeMobileMenu()" class="block py-3 px-4 text-slate-700 hover:text-[#e11d48] hover:bg-rose-50 rounded-xl transition-colors no-underline">Dlaczego my</a></li>
+      <li><a href="#aktualnosci" onclick="closeMobileMenu()" class="block py-3 px-4 text-slate-700 hover:text-[#e11d48] hover:bg-rose-50 rounded-xl transition-colors no-underline">Aktualności</a></li>
+      <li><a href="#faq" onclick="closeMobileMenu()" class="block py-3 px-4 text-slate-700 hover:text-[#e11d48] hover:bg-rose-50 rounded-xl transition-colors no-underline">FAQ</a></li>
+      <li class="mt-2"><a href="tel:+48500502702" class="block text-center bg-[#e11d48] text-white px-5 py-3 rounded-xl hover:bg-rose-700 transition-colors shadow-md shadow-rose-200 no-underline font-bold">📞 500 502 702</a></li>
     </ul>
   </div>
 </nav>
@@ -652,6 +669,25 @@
 
   window.addEventListener('hashchange', handleHashRoute);
 
+  // ─── MOBILE MENU ───
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const isOpen = !menu.classList.contains('hidden');
+    menu.classList.toggle('hidden', isOpen);
+    document.getElementById('hbLine1').style.transform = isOpen ? '' : 'translateY(7px) rotate(45deg)';
+    document.getElementById('hbLine2').style.opacity = isOpen ? '' : '0';
+    document.getElementById('hbLine3').style.transform = isOpen ? '' : 'translateY(-7px) rotate(-45deg)';
+    document.getElementById('hbLine3').style.width = isOpen ? '' : '24px';
+  }
+
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.add('hidden');
+    document.getElementById('hbLine1').style.transform = '';
+    document.getElementById('hbLine2').style.opacity = '';
+    document.getElementById('hbLine3').style.transform = '';
+    document.getElementById('hbLine3').style.width = '';
+  }
+
   // ─── POZOSTAŁE FUNKCJE GRUPOWE.PRO ───
   function initReferrer() {
     const params = new URLSearchParams(window.location.search);
@@ -699,16 +735,22 @@
   }
 
   function revealOnScroll() {
-    const reveals = document.querySelectorAll('.reveal');
-    for (let i = 0; i < reveals.length; i++) {
-      const windowHeight = window.innerHeight;
-      const elementTop = reveals[i].getBoundingClientRect().top;
-      const elementVisible = 100;
-      if (elementTop < windowHeight - elementVisible) {
-        reveals[i].classList.add('active');
-      }
-    }
+    document.querySelectorAll('.reveal').forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      if (top < window.innerHeight - 50) el.classList.add('active');
+    });
   }
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   window.addEventListener('scroll', revealOnScroll);
 
   let nipTimeoutContact;
