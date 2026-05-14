@@ -561,6 +561,7 @@
       const { data, error } = await SB_CLIENT.from('aura_articles')
           .select('*')
           .eq('status', 'published')
+          .contains('platforms', ['Grupowe.pro'])
           .order('published_at', { ascending: false });
 
       if (error || !data) { grid.innerHTML = '<div class="col-span-full text-center text-[#e11d48] font-bold">Błąd połączenia z bazą wiedzy.</div>'; return; }
