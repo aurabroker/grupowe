@@ -1,0 +1,47 @@
+---
+import { NAV, SITE } from '../data/site';
+---
+<header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-40 shadow-sm border-b border-slate-100">
+  <nav class="container mx-auto px-4 py-4 flex justify-between items-center" aria-label="Główna nawigacja">
+    <a href="/" class="text-2xl font-black tracking-tighter text-navy" aria-label="grupowe.pro – strona główna">grupowe<span class="text-pink">.pro</span></a>
+
+    <ul class="hidden md:flex gap-7 items-center text-sm font-semibold">
+      {NAV.map((item) => (
+        <li><a href={item.href} class="text-slate-600 hover:text-pink transition-colors">{item.label}</a></li>
+      ))}
+      <li><a href={SITE.phoneHref} class="bg-pink text-white px-5 py-2.5 rounded-full hover:bg-pink-dark transition-colors shadow-md shadow-rose-200">📞 {SITE.phoneDisplay}</a></li>
+    </ul>
+
+    <button id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Otwórz menu" class="md:hidden flex flex-col justify-center gap-[5px] p-2 -mr-1 cursor-pointer">
+      <span class="block w-6 h-[2px] bg-navy transition-transform"></span>
+      <span class="block w-6 h-[2px] bg-navy transition-opacity"></span>
+      <span class="block w-6 h-[2px] bg-navy transition-transform"></span>
+    </button>
+  </nav>
+
+  <div id="menu-mobile" class="hidden md:hidden border-t border-slate-100">
+    <ul class="flex flex-col p-4 gap-1 text-sm font-semibold">
+      {NAV.map((item) => (
+        <li><a href={item.href} class="block py-3 px-4 text-slate-700 hover:text-pink hover:bg-rose-50 rounded-xl transition-colors">{item.label}</a></li>
+      ))}
+      <li class="mt-2"><a href={SITE.phoneHref} class="block text-center bg-pink text-white px-5 py-3 rounded-xl font-bold">📞 {SITE.phoneDisplay}</a></li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu-mobile');
+  if (btn && menu) {
+    const lines = btn.querySelectorAll('span');
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden') === false;
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+      lines[0].style.transform = open ? 'translateY(7px) rotate(45deg)' : '';
+      lines[1].style.opacity = open ? '0' : '';
+      lines[2].style.transform = open ? 'translateY(-7px) rotate(-45deg)' : '';
+    });
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => btn.click()));
+  }
+</script>

@@ -1,0 +1,3 @@
+Contact: mailto:biuro@grupowe.pro
+Preferred-Languages: pl, en
+Canonical: https://grupowe.pro/.well-known/security.txt

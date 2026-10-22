@@ -1,0 +1,20 @@
+---
+import Base from './Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { breadcrumbs } from '../lib/schema';
+interface Props { title: string; heading: string; description: string; path: string; updated?: string }
+const { title, heading, description, path, updated } = Astro.props;
+const crumbs = [{ name: 'Strona główna', url: '/' }, { name: heading, url: path }];
+---
+<Base title={title} description={description} path={path} schema={[breadcrumbs(crumbs)]}>
+  <article class="pt-32 md:pt-40 pb-20">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <Breadcrumbs items={crumbs} />
+      <h1 class="text-3xl md:text-4xl font-black text-navy mb-8 tracking-tight">{heading}</h1>
+      <div class="article-body">
+        <slot />
+      </div>
+      {updated && <p class="mt-10 text-xs text-slate-400">Ostatnia aktualizacja dokumentu: {updated}</p>}
+    </div>
+  </article>
+</Base>

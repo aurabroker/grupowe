@@ -1,0 +1,93 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { SITE, SERVICES } from '../../data/site';
+import { getArticles, articleUrl, articleImage, formatDate, readingTime, stripHtml, type Article } from '../../lib/articles';
+import { breadcrumbs, ORG_ID } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  const all = await getArticles();
+  return all.map((a) => ({ params: { slug: a.slug }, props: { a, related: all.filter((o) => o.id !== a.id).slice(0, 3) } }));
+}
+const { a, related } = Astro.props as { a: Article; related: Article[] };
+
+const url = articleUrl(a);
+const cover = articleImage(a, 1600);
+const ogImg = cover ?? SITE.ogImage;
+// CMS często osadza obrazek już w treści – wtedy nie dublujemy go jako hero.
+const hero = /<img\s/i.test(a.content) ? null : cover;
+const crumbs = [{ name: 'Strona główna', url: '/' }, { name: 'Aktualności', url: '/aktualnosci/' }, { name: a.title, url }];
+const minutes = readingTime(a.content);
+const metaDesc = (a.excerpt || stripHtml(a.content)).slice(0, 160);
+
+const posting = {
+  '@type': 'BlogPosting',
+  '@id': `${SITE.url}${url}#article`,
+  mainEntityOfPage: `${SITE.url}${url}`,
+  headline: a.title,
+  description: a.excerpt,
+  image: cover ? [cover] : undefined,
+  datePublished: a.published_at,
+  dateModified: a.published_at,
+  author: { '@id': ORG_ID },
+  publisher: { '@id': ORG_ID },
+  inLanguage: 'pl',
+  keywords: a.tags.join(', '),
+  wordCount: stripHtml(a.content).split(/\s+/).length,
+  articleBody: stripHtml(a.content),
+  isAccessibleForFree: true,
+  ...(a.source_url ? { citation: { '@type': 'CreativeWork', name: a.source_title ?? a.source_url, url: a.source_url } } : {}),
+};
+---
+<Base title={`${a.title} | grupowe.pro`} description={metaDesc} path={url} type="article" image={ogImg} publishedTime={a.published_at} schema={[posting, breadcrumbs(crumbs)]}>
+  <article class="pt-32 md:pt-40 pb-16">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <Breadcrumbs items={crumbs.map((c, i) => (i === 2 ? { ...c, name: 'Artykuł' } : c))} />
+      {a.tags.length > 0 && (
+        <ul class="mb-5 flex flex-wrap gap-2" aria-label="Tagi">
+          {a.tags.map((t) => <li class="bg-rose-50 border border-rose-100 text-pink text-xs px-3 py-1 rounded-lg font-black uppercase tracking-wider">{t}</li>)}
+        </ul>
+      )}
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-black text-navy mb-6 leading-tight tracking-tight">{a.title}</h1>
+      <p class="text-sm text-slate-400 font-bold uppercase tracking-widest border-b border-slate-100 pb-6 mb-8">
+        <time datetime={a.published_at}>{formatDate(a.published_at)}</time> · {minutes} min czytania · Aura Consulting
+      </p>
+
+      {hero && <img src={hero} alt="" width="1600" height="900" loading="eager" fetchpriority="high" class="w-full rounded-3xl shadow-lg mb-10 object-cover max-h-[480px]" />}
+
+      {a.excerpt && <p class="text-xl text-slate-600 font-medium leading-relaxed mb-8">{a.excerpt}</p>}
+
+      <div class="article-body" set:html={a.content} />
+
+      {a.source_url && (
+        <aside class="mt-14 p-7 bg-slate-50 border-l-4 border-pink rounded-r-2xl">
+          <p class="text-xs text-navy uppercase tracking-widest font-black mb-2">Źródło</p>
+          <p class="font-semibold text-slate-800">{a.source_title ?? a.source_url}</p>
+          <a href={a.source_url} target="_blank" rel="noopener nofollow" class="text-sm text-pink font-bold hover:underline mt-2 inline-block">Zobacz oryginalny materiał &rarr;</a>
+        </aside>
+      )}
+
+      <aside class="mt-14 bg-navy text-white rounded-[32px] p-8 md:p-10">
+        <h2 class="text-2xl font-extrabold mb-2">Zainteresował Cię ten temat?</h2>
+        <p class="text-slate-300 mb-6">Porozmawiaj z ekspertem Aura Consulting o wdrożeniu rozwiązania w Twojej firmie. Analiza i wycena są bezpłatne.</p>
+        <div class="flex gap-4 flex-wrap">
+          <a href="/kontakt/" class="bg-pink hover:bg-pink-dark text-white font-bold py-3 px-7 rounded-xl transition-colors">Skontaktuj się z nami</a>
+          <a href={SITE.phoneHref} class="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-7 rounded-xl transition-colors">📞 {SITE.phoneDisplay}</a>
+        </div>
+        <ul class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-300">
+          {SERVICES.map((s) => <li><a href={`/${s.slug}/`} class="hover:text-white underline underline-offset-4">{s.name}</a></li>)}
+        </ul>
+      </aside>
+    </div>
+
+    {related.length > 0 && (
+      <section class="container mx-auto px-4 mt-20">
+        <h2 class="text-2xl font-extrabold text-navy mb-8 text-center tracking-tight">Czytaj także</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {related.map((r) => <ArticleCard article={r} />)}
+        </div>
+      </section>
+    )}
+  </article>
+</Base>

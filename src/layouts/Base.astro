@@ -1,0 +1,98 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { SITE } from '../data/site';
+import { graph, organization, website } from '../lib/schema';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Ścieżka kanoniczna, np. "/aktualnosci/". Domyślnie bieżąca. */
+  path?: string;
+  type?: 'website' | 'article';
+  image?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  noindex?: boolean;
+  /** Dodatkowe węzły JSON-LD dla tej strony (Organization i WebSite są zawsze). */
+  schema?: object[];
+}
+
+const {
+  title,
+  description,
+  path = Astro.url.pathname,
+  type = 'website',
+  image = SITE.ogImage,
+  publishedTime,
+  modifiedTime,
+  noindex = false,
+  schema = [],
+} = Astro.props;
+
+const canonical = new URL(path, SITE.url).href;
+const ogImage = new URL(image, SITE.url).href;
+const jsonLd = graph(organization(), website(), ...schema);
+---
+<!doctype html>
+<html lang={SITE.lang} prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+    <meta name="author" content="Aura Consulting" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#1e294a" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title="Aktualności grupowe.pro" href="/aktualnosci/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <JsonLd data={jsonLd} />
+
+    <!-- Google Analytics -->
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.gaId}`}></script>
+    <script is:inline define:vars={{ gaId: SITE.gaId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+    </script>
+  </head>
+  <body class="font-sans antialiased text-slate-800 bg-white">
+    <a href="#tresc" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow">Przejdź do treści</a>
+    <Nav />
+    <main id="tresc">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

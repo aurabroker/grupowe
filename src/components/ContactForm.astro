@@ -1,0 +1,81 @@
+---
+/**
+ * Formularz działa bez JavaScriptu: zwykły POST do Web3Forms z przekierowaniem na /dziekujemy/.
+ * Parametr ?ref= z adresu zapisywany jest w polu ukrytym (krótki skrypt, opcjonalny).
+ */
+import { SITE } from '../data/site';
+interface Props { heading?: string; compact?: boolean }
+const { heading = 'Zamów bezpłatną wycenę', compact = false } = Astro.props;
+const input = 'w-full p-3 rounded-xl border border-slate-200 bg-white text-sm outline-none focus:border-pink focus:ring-2 focus:ring-pink/20 transition-all';
+const label = 'text-[10px] font-bold uppercase tracking-widest text-slate-500 block mb-1';
+---
+<form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-4" id="contact-form">
+  <h3 class="text-xl font-bold text-navy">{heading}</h3>
+
+  <input type="hidden" name="access_key" value={SITE.web3formsKey} />
+  <input type="hidden" name="subject" value="Nowe zapytanie – grupowe.pro" />
+  <input type="hidden" name="from_name" value="grupowe.pro" />
+  <input type="hidden" name="redirect" value={`${SITE.url}/dziekujemy/`} />
+  <input type="hidden" name="ref" id="f-ref" value="DIRECT" />
+  <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <div>
+      <label for="f-name" class={label}>Imię i nazwisko</label>
+      <input id="f-name" type="text" name="name" required autocomplete="name" placeholder="Jan Kowalski" class={input} />
+    </div>
+    <div>
+      <label for="f-company" class={label}>Firma</label>
+      <input id="f-company" type="text" name="company" autocomplete="organization" placeholder="Nazwa firmy" class={input} />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <div>
+      <label for="f-email" class={label}>E-mail</label>
+      <input id="f-email" type="email" name="email" required autocomplete="email" placeholder="adres@firma.pl" class={input} />
+    </div>
+    <div>
+      <label for="f-phone" class={label}>Telefon</label>
+      <input id="f-phone" type="tel" name="phone" required autocomplete="tel" placeholder="500 502 702" class={input} />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <div>
+      <label for="f-nip" class={label}>NIP (opcjonalnie)</label>
+      <input id="f-nip" type="text" name="nip" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="0000000000" class={input} />
+    </div>
+    <div>
+      <label for="f-staff" class={label}>Liczba pracowników</label>
+      <select id="f-staff" name="staff" class={input + ' cursor-pointer'}>
+        <option value="">Wybierz</option>
+        <option value="2-10">2 – 10 osób</option>
+        <option value="11-50">11 – 50 osób</option>
+        <option value="51-200">51 – 200 osób</option>
+        <option value="200+">Powyżej 200</option>
+      </select>
+    </div>
+  </div>
+
+  {!compact && (
+    <div>
+      <label for="f-msg" class={label}>Czego potrzebujesz? (opcjonalnie)</label>
+      <textarea id="f-msg" name="message" rows="3" placeholder="np. mamy pakiet medyczny od 3 lat, chcemy sprawdzić cenę i dołożyć ubezpieczenie na życie" class={input}></textarea>
+    </div>
+  )}
+
+  <button type="submit" class="bg-pink hover:bg-pink-dark transition-colors text-white font-bold w-full mt-1 py-3.5 rounded-xl text-sm shadow-md cursor-pointer">Wyślij zapytanie</button>
+  <p class="text-[11px] text-slate-400 leading-relaxed">Wysyłając formularz akceptujesz <a href="/polityka-prywatnosci/" class="underline">politykę prywatności</a>. Odpowiadamy zwykle w ciągu jednego dnia roboczego.</p>
+</form>
+
+<script>
+  // Źródło wejścia (?ref=...) zapamiętane na czas sesji i dołączone do zgłoszenia.
+  try {
+    const ref = new URLSearchParams(location.search).get('ref');
+    if (ref) sessionStorage.setItem('bp_ref', ref);
+    const stored = sessionStorage.getItem('bp_ref');
+    const el = document.getElementById('f-ref') as HTMLInputElement | null;
+    if (el && stored) el.value = stored;
+  } catch {}
+</script>

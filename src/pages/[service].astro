@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import Faq from '../components/Faq.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SERVICES, SITE } from '../data/site';
+import { breadcrumbs, faqPage, service as serviceSchema } from '../lib/schema';
+
+export function getStaticPaths() {
+  return SERVICES.map((s) => ({ params: { service: s.slug }, props: { s } }));
+}
+const { s } = Astro.props;
+const crumbs = [{ name: 'Strona główna', url: '/' }, { name: s.name, url: `/${s.slug}/` }];
+const others = SERVICES.filter((o) => o.slug !== s.slug);
+---
+<Base title={s.title} description={s.description} path={`/${s.slug}/`} image={s.image.src} schema={[serviceSchema(s), breadcrumbs(crumbs), faqPage(s.faq)]}>
+  <article>
+    <header class="pt-32 md:pt-40 pb-12 bg-gradient-to-b from-slate-50 to-white">
+      <div class="container mx-auto px-4">
+        <Breadcrumbs items={crumbs} />
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <p class="text-pink font-extrabold tracking-widest text-xs uppercase mb-3">{s.badge}</p>
+            <h1 class="text-4xl md:text-5xl font-black text-navy tracking-tight leading-tight mb-5">{s.name}</h1>
+            <p class="text-xl text-slate-600 font-medium mb-6">{s.lead}</p>
+            <p class="text-slate-500 leading-relaxed">{s.summary}</p>
+            <div class="mt-8 flex gap-4 flex-wrap">
+              <a href="#wycena" class="bg-pink hover:bg-pink-dark text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition-colors text-center">{s.cta}</a>
+              <a href={SITE.phoneHref} class="bg-white border-2 border-slate-200 text-slate-700 font-bold py-3 px-8 rounded-xl hover:bg-slate-50 transition-colors">📞 {SITE.phoneDisplay}</a>
+            </div>
+          </div>
+          <img src={s.image.src} alt={s.image.alt} width="1200" height="800" loading="eager" fetchpriority="high" class="w-full h-72 lg:h-96 object-cover rounded-[32px] shadow-xl" />
+        </div>
+      </div>
+    </header>
+
+    <Section center={false} class="pt-4">
+      <div class="max-w-3xl">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-navy mb-5 tracking-tight">Na czym polega {s.shortName === 'Życie' || s.shortName === 'Zdrowie' ? 'ten program' : s.shortName}?</h2>
+        {s.intro.map((p) => <p class="text-slate-600 leading-relaxed text-lg mb-4">{p}</p>)}
+      </div>
+    </Section>
+
+    <Section class="bg-slate-50 border-y border-slate-200" center={false}>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <h2 class="text-2xl font-extrabold text-navy mb-5 tracking-tight">Co obejmuje ochrona</h2>
+          <ul class="grid gap-4">
+            {s.covers.map((c) => (
+              <li class="bg-white border border-slate-200 rounded-2xl p-5 flex gap-4">
+                <span class="text-mint font-black text-xl leading-none" aria-hidden="true">✓</span>
+                <div><h3 class="font-bold text-navy">{c.title}</h3><p class="text-sm text-slate-500 mt-1">{c.text}</p></div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-2xl font-extrabold text-navy mb-5 tracking-tight">Dla kogo</h2>
+          <ul class="space-y-3 mb-10">
+            {s.forWhom.map((f) => <li class="flex gap-3 text-slate-600"><span class="text-pink font-black" aria-hidden="true">→</span><span>{f}</span></li>)}
+          </ul>
+          <h2 class="text-2xl font-extrabold text-navy mb-5 tracking-tight">Jak przebiega wdrożenie</h2>
+          <ol class="space-y-3">
+            {s.process.map((step, i) => (
+              <li class="flex gap-4 text-slate-600">
+                <span class="w-8 h-8 shrink-0 rounded-full bg-navy text-white text-sm font-black flex items-center justify-center">{i + 1}</span>
+                <span class="pt-1">{step}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </Section>
+
+    <Section title={`Pytania o: ${s.name}`}>
+      <Faq items={s.faq} />
+    </Section>
+
+    <Section id="wycena" class="bg-slate-50 border-y border-slate-200">
+      <div class="max-w-3xl mx-auto bg-white rounded-[32px] shadow-xl border border-slate-200 p-8 md:p-10">
+        <ContactForm heading={s.cta} />
+      </div>
+    </Section>
+
+    <Section title="Pozostałe programy">
+      <ul class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {others.map((o) => (
+          <li><a href={`/${o.slug}/`} class="block bg-white border border-slate-200 rounded-2xl p-6 hover:border-pink hover:shadow-lg transition-all h-full">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">{o.badge}</p>
+            <h3 class="font-bold text-navy mb-2">{o.name}</h3>
+            <p class="text-sm text-slate-500">{o.summary}</p>
+          </a></li>
+        ))}
+      </ul>
+    </Section>
+  </article>
+</Base>
