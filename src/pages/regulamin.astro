@@ -1,0 +1,18 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { COMPANY, SITE } from '../data/site';
+---
+<Legal title="Regulamin serwisu | grupowe.pro" heading="Regulamin serwisu" description="Zasady korzystania z serwisu grupowe.pro oraz warunki świadczenia usług drogą elektroniczną." path="/regulamin/">
+  <h2>§ 1. Postanowienia ogólne</h2>
+  <p>1. Niniejszy regulamin określa zasady korzystania z serwisu internetowego grupowe.pro oraz warunki świadczenia usług drogą elektroniczną.</p>
+  <p>2. Właścicielem serwisu i usługodawcą jest {COMPANY.legalName} z siedzibą w Warszawie przy {COMPANY.street}.</p>
+  <h2>§ 2. Rodzaj i zakres usług</h2>
+  <p>1. Serwis służy do prezentowania ogólnych informacji na temat programów ubezpieczeń grupowych, medycznych oraz innych rozwiązań benefitowych dla przedsiębiorstw.</p>
+  <p>2. Usługodawca umożliwia za pośrednictwem Serwisu wysłanie zapytania ofertowego poprzez udostępnione formularze kontaktowe.</p>
+  <p>3. Wszelkie dane liczbowe i kwotowe podane na stronie mają charakter poglądowy, informacyjny i nie stanowią oferty handlowej w rozumieniu przepisów Kodeksu Cywilnego, chyba że oznaczono inaczej.</p>
+  <h2>§ 3. Warunki techniczne i prawa autorskie</h2>
+  <p>1. Do korzystania z serwisu wymagane jest urządzenie z dostępem do sieci Internet oraz nowoczesna przeglądarka internetowa.</p>
+  <p>2. Wszelkie treści, grafiki i mechanizmy zawarte na stronach Serwisu są objęte prawami autorskimi {COMPANY.shortName} i ich kopiowanie, przetwarzanie oraz dystrybucja bez zgody jest zabroniona.</p>
+  <h2>§ 4. Postępowanie reklamacyjne</h2>
+  <p>Wszelkie reklamacje dotyczące działania serwisu należy zgłaszać drogą elektroniczną na adres: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Usługodawca rozpatrzy reklamację w terminie 14 dni od daty jej otrzymania.</p>
+</Legal>

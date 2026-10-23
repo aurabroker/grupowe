@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { SITE } from '../../data/site';
+import { getArticles, articleUrl } from '../../lib/articles';
+import { breadcrumbs, ORG_ID } from '../../lib/schema';
+
+const articles = await getArticles();
+const crumbs = [{ name: 'Strona główna', url: '/' }, { name: 'Aktualności', url: '/aktualnosci/' }];
+const blog = {
+  '@type': 'Blog',
+  '@id': `${SITE.url}/aktualnosci/#blog`,
+  url: `${SITE.url}/aktualnosci/`,
+  name: 'Aktualności i trendy HR – grupowe.pro',
+  publisher: { '@id': ORG_ID },
+  inLanguage: 'pl',
+  blogPost: articles.map((a) => ({ '@type': 'BlogPosting', '@id': `${SITE.url}${articleUrl(a)}#article`, headline: a.title, url: `${SITE.url}${articleUrl(a)}`, datePublished: a.published_at })),
+};
+---
+<Base
+  title="Aktualności i trendy HR – ubezpieczenia, L4, benefity | grupowe.pro"
+  description="Artykuły ekspertów Aura Consulting: zmiany w prawie pracy, zwolnienia L4, ZUS, wypadki przy pracy, benefity pracownicze i ubezpieczenia grupowe."
+  path="/aktualnosci/"
+  schema={[blog, breadcrumbs(crumbs)]}
+>
+  <header class="pt-32 md:pt-40 pb-10">
+    <div class="container mx-auto px-4">
+      <Breadcrumbs items={crumbs} />
+      <p class="text-pink font-extrabold tracking-widest text-xs uppercase mb-3">Wiedza ekspercka</p>
+      <h1 class="text-4xl md:text-5xl font-black text-navy tracking-tight leading-tight mb-4">Aktualności i trendy HR</h1>
+      <p class="text-lg text-slate-600 max-w-2xl">Raporty, zmiany w prawie pracy i porady dotyczące ubezpieczeń firmowych. {articles.length} {articles.length === 1 ? 'artykuł' : articles.length < 5 ? 'artykuły' : 'artykułów'}. <a href="/aktualnosci/rss.xml" class="text-pink font-bold">RSS</a></p>
+    </div>
+  </header>
+  <section class="pb-20">
+    <div class="container mx-auto px-4">
+      {articles.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {articles.map((a, i) => <ArticleCard article={a} eager={i < 3} />)}
+        </div>
+      ) : (
+        <p class="text-center text-slate-400 py-16 border-2 border-dashed border-slate-200 rounded-3xl">Wkrótce opublikujemy pierwsze artykuły.</p>
+      )}
+    </div>
+  </section>
+</Base>

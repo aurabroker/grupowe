@@ -1,0 +1,102 @@
+# robots.txt – grupowe.pro
+# Strona jest w pełni statyczna i otwarta dla wyszukiwarek oraz agentów AI.
+# Pełna treść dla asystentów AI: /llms.txt i /llms-full.txt
+
+User-agent: *
+Allow: /
+Disallow: /dziekujemy/
+
+# ─── Wyszukiwarki ───
+User-agent: Googlebot
+Allow: /
+Disallow: /dziekujemy/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /dziekujemy/
+
+# ─── AI search / asystenci (odpowiedzi w czasie rzeczywistym) ───
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# ─── AI training ───
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+# ─── Archiwizacja / SEO ───
+User-agent: ia_archiver
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: AhrefsBot
+Allow: /
+
+Sitemap: https://grupowe.pro/sitemap-index.xml

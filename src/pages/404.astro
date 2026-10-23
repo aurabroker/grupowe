@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import { SERVICES } from '../data/site';
+---
+<Base title="Strona nie istnieje (404) | grupowe.pro" description="Nie znaleziono strony." noindex>
+  <section class="pt-40 pb-24 text-center">
+    <div class="container mx-auto px-4 max-w-xl">
+      <img src="/mark.svg" alt="" width="80" height="92" aria-hidden="true" class="h-20 w-auto mx-auto mb-6 opacity-60" />
+      <p class="text-pink font-black text-6xl mb-4">404</p>
+      <h1 class="text-3xl font-black text-navy tracking-tight mb-4">Tej strony nie ma</h1>
+      <p class="text-slate-600 mb-8">Adres mógł się zmienić. Sprawdź jedną z poniższych stron:</p>
+      <ul class="space-y-2 text-left bg-slate-50 border border-slate-200 rounded-2xl p-6">
+        <li><a href="/" class="font-bold text-navy hover:text-pink">Strona główna</a></li>
+        {SERVICES.map((s) => <li><a href={`/${s.slug}/`} class="font-bold text-navy hover:text-pink">{s.name}</a></li>)}
+        <li><a href="/aktualnosci/" class="font-bold text-navy hover:text-pink">Aktualności</a></li>
+        <li><a href="/kontakt/" class="font-bold text-navy hover:text-pink">Kontakt</a></li>
+      </ul>
+    </div>
+  </section>
+</Base>

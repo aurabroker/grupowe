@@ -1,0 +1,8 @@
+/* TEAM */
+Aura Consulting – broker ubezpieczeniowy
+Site: https://grupowe.pro
+Contact: biuro@grupowe.pro
+
+/* SITE */
+Stack: Astro, Tailwind CSS, Supabase (CMS), GitHub Pages
+Language: Polish

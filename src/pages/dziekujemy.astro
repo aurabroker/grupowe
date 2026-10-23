@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+---
+<Base title="Dziękujemy za zgłoszenie | grupowe.pro" description="Twoje zapytanie zostało wysłane. Ekspert Aura Consulting skontaktuje się z Tobą wkrótce." path="/dziekujemy/" noindex>
+  <section class="pt-40 pb-24 text-center">
+    <div class="container mx-auto px-4 max-w-xl">
+      <img src="/mark.svg" alt="" width="80" height="92" aria-hidden="true" class="h-24 w-auto mx-auto mb-8" />
+      <h1 class="text-4xl font-black text-navy tracking-tight mb-4">Dziękujemy!</h1>
+      <p class="text-lg text-slate-600 mb-8">Zapytanie dotarło do nas. Ekspert Aura Consulting odezwie się zwykle w ciągu jednego dnia roboczego. Jeśli sprawa jest pilna, zadzwoń: <a href={SITE.phoneHref} class="font-bold text-pink">{SITE.phoneDisplay}</a>.</p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="/" class="bg-navy text-white font-bold py-3 px-8 rounded-xl hover:bg-slate-800 transition-colors">Strona główna</a>
+        <a href="/aktualnosci/" class="bg-white border-2 border-slate-200 text-slate-700 font-bold py-3 px-8 rounded-xl hover:bg-slate-50 transition-colors">Czytaj aktualności</a>
+      </div>
+    </div>
+  </section>
+</Base>

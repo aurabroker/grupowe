@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { COMPANY, SITE } from '../data/site';
+import { breadcrumbs, ORG_ID } from '../lib/schema';
+
+const crumbs = [{ name: 'Strona główna', url: '/' }, { name: 'O nas', url: '/o-nas/' }];
+const aboutPage = { '@type': 'AboutPage', '@id': `${SITE.url}/o-nas/#page`, url: `${SITE.url}/o-nas/`, name: 'O nas – Aura Consulting, broker ubezpieczeniowy', about: { '@id': ORG_ID } };
+---
+<Base
+  title="O nas – Aura Consulting, broker ubezpieczeniowy dla firm | grupowe.pro"
+  description="Aura Consulting – licencjonowany broker ubezpieczeniowy (zezwolenie KNF nr 1972/13), Warszawa. Czym różni się broker od agenta i dlaczego usługa jest bezpłatna."
+  path="/o-nas/"
+  schema={[aboutPage, breadcrumbs(crumbs)]}
+>
+  <article>
+    <header class="pt-32 md:pt-40 pb-10">
+      <div class="container mx-auto px-4 max-w-3xl">
+        <Breadcrumbs items={crumbs} />
+        <p class="text-pink font-extrabold tracking-widest text-xs uppercase mb-3">O nas</p>
+        <h1 class="text-4xl md:text-5xl font-black text-navy tracking-tight leading-tight mb-6">Niezależny broker ubezpieczeniowy dla firm</h1>
+        <p class="text-xl text-slate-600 leading-relaxed">grupowe.pro to marka {COMPANY.shortName} – licencjonowanego brokera ubezpieczeniowego z siedzibą w Warszawie, specjalizującego się w ubezpieczeniach grupowych i benefitach pracowniczych dla firm z całej Polski.</p>
+      </div>
+    </header>
+
+    <Section center={false} class="pt-2">
+      <div class="max-w-3xl space-y-12">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-navy mb-4 tracking-tight">Broker a agent – jaka jest różnica?</h2>
+          <p class="text-slate-600 leading-relaxed mb-4">Agent ubezpieczeniowy działa w imieniu i na rzecz towarzystwa ubezpieczeniowego – sprzedaje produkty jednego lub kilku ubezpieczycieli, z którymi ma umowę. Broker działa wyłącznie w imieniu klienta: nie jest związany z żadnym towarzystwem, porównuje oferty całego rynku i ponosi odpowiedzialność za udzieloną rekomendację.</p>
+          <p class="text-slate-600 leading-relaxed">Działalność brokerska wymaga zezwolenia Komisji Nadzoru Finansowego, wpisu do rejestru brokerów oraz obowiązkowego ubezpieczenia odpowiedzialności cywilnej. {COMPANY.shortName} posiada zezwolenie KNF nr {COMPANY.knfPermit} i jest wpisana do rejestru brokerów pod numerem {COMPANY.brokerRegister}.</p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-navy mb-4 tracking-tight">Dlaczego usługa brokera jest bezpłatna dla firmy?</h2>
+          <p class="text-slate-600 leading-relaxed">Wynagrodzenie brokera (kurtaż) wypłaca ubezpieczyciel, z którym klient zawrze umowę. Firma nie ponosi żadnych kosztów analizy rynku, negocjacji ani wdrożenia. Składka ubezpieczeniowa z brokerem nie jest wyższa niż bez niego – często jest niższa, bo ubezpieczyciele konkurują o klienta w otwartym zapytaniu ofertowym.</p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-navy mb-4 tracking-tight">Jak pracujemy</h2>
+          <ol class="space-y-4">
+            {[
+              ['Analiza', 'Poznajemy strukturę zatrudnienia, obecne polisy i cele firmy: koszt, zakres, rekrutacja, retencja.'],
+              ['Zapytanie do rynku', 'Przygotowujemy slip brokerski i wysyłamy go do wszystkich liczących się ubezpieczycieli i operatorów medycznych w Polsce.'],
+              ['Porównanie i rekomendacja', 'Zestawiamy oferty w jednej tabeli: zakres, sumy, wyłączenia, cena. Wskazujemy najlepszy wariant i uzasadniamy wybór.'],
+              ['Negocjacje', 'Negocjujemy warunki w imieniu klienta – zakres, karencje, ceny, obsługę.'],
+              ['Wdrożenie', 'Komunikacja do pracowników, deklaracje elektroniczne, start ochrony. Wspieramy dział HR na każdym etapie.'],
+              ['Obsługa', 'Pomoc przy roszczeniach, zmianach kadrowych, odnowieniach i renegocjacjach. Zostajemy z klientem przez cały okres umowy.'],
+            ].map(([t, d], i) => (
+              <li class="flex gap-4">
+                <span class="w-9 h-9 shrink-0 rounded-full bg-navy text-white font-black flex items-center justify-center">{i + 1}</span>
+                <div><h3 class="font-bold text-navy">{t}</h3><p class="text-slate-600 text-sm mt-1">{d}</p></div>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-navy mb-4 tracking-tight">Dane firmy</h2>
+          <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-sm bg-slate-50 border border-slate-200 rounded-2xl p-6">
+            <div><dt class="font-bold text-navy">Nazwa</dt><dd class="text-slate-600">{COMPANY.legalName}</dd></div>
+            <div><dt class="font-bold text-navy">Adres</dt><dd class="text-slate-600">{COMPANY.street}, {COMPANY.postalCode} {COMPANY.city}</dd></div>
+            <div><dt class="font-bold text-navy">KRS</dt><dd class="text-slate-600">{COMPANY.krs}</dd></div>
+            <div><dt class="font-bold text-navy">REGON</dt><dd class="text-slate-600">{COMPANY.regon}</dd></div>
+            <div><dt class="font-bold text-navy">Zezwolenie KNF</dt><dd class="text-slate-600">nr {COMPANY.knfPermit}</dd></div>
+            <div><dt class="font-bold text-navy">Rejestr brokerów</dt><dd class="text-slate-600">nr {COMPANY.brokerRegister}</dd></div>
+            <div><dt class="font-bold text-navy">Telefon</dt><dd><a href={SITE.phoneHref} class="text-pink font-bold">{SITE.phoneDisplay}</a></dd></div>
+            <div><dt class="font-bold text-navy">E-mail</dt><dd><a href={`mailto:${SITE.email}`} class="text-pink font-bold">{SITE.email}</a></dd></div>
+          </dl>
+        </div>
+
+        <p><a href="/kontakt/" class="inline-block bg-pink hover:bg-pink-dark text-white font-bold py-3.5 px-8 rounded-xl shadow-lg transition-colors">Porozmawiajmy o Twojej firmie &rarr;</a></p>
+      </div>
+    </Section>
+  </article>
+</Base>

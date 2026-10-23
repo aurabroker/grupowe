@@ -1,0 +1,7 @@
+---
+interface Props { data: object }
+const { data } = Astro.props;
+// JSON-LD – bez escapowania przez Astro, ale z zabezpieczeniem przed zamknięciem tagu.
+const json = JSON.stringify(data).replace(/<\//g, '<\\/');
+---
+<script type="application/ld+json" set:html={json} />

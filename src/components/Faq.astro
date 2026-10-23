@@ -1,0 +1,15 @@
+---
+interface Props { items: { q: string; a: string }[] }
+const { items } = Astro.props;
+---
+<div class="max-w-3xl mx-auto divide-y divide-slate-200 border-y border-slate-200">
+  {items.map((f) => (
+    <details class="faq group">
+      <summary class="w-full py-5 flex justify-between items-center gap-4 text-lg font-bold text-navy">
+        <span>{f.q}</span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 transition-transform duration-300" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <p class="pb-5 text-slate-600 leading-relaxed">{f.a}</p>
+    </details>
+  ))}
+</div>
