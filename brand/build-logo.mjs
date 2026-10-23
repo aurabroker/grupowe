@@ -1,117 +1,82 @@
-import opentype from 'opentype.js';
-import fs from 'node:fs';
+import fs from 'node:fs'; import opentype from 'opentype.js';
+import { facetText, hexMark, NAVY, ROSE, LIGHT } from './facet.mjs';
+const OUT = '/home/user/grupowe/brand'; fs.mkdirSync(OUT + '/mockups', { recursive: true });
+const font = opentype.loadSync(process.env.INTER_BLACK_TTF || (process.env.S + '/fonts/inter/extras/ttf/Inter-Black.ttf'));
+const MONO = Array(6).fill('#1E294A'), WHITE = Array(6).fill('#FFFFFF');
+const svg = (vb, body, label) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}" role="img" aria-label="${label}">${body}</svg>\n`;
+const write = (n, s) => { fs.writeFileSync(`${OUT}/${n}`, s); console.log('✓', n); };
+const APEX = [0.44, 0.42], INNER = 0.5;
 
-const OUT = '/home/user/grupowe/brand';
-fs.mkdirSync(OUT, { recursive: true });
-const font = opentype.loadSync(process.env.INTER_BLACK_TTF);
+// ── sygnet ──
+const mk = (o) => hexMark({ apex: APEX, inner: INNER, ...o });
+const M = mk({});
+const markSvg = (o) => svg(`0 0 ${M.w.toFixed(2)} ${M.h.toFixed(2)}`, mk(o).svg, 'grupowe.pro');
+write('mark.svg', markSvg({}));
+write('mark-on-dark.svg', markSvg({ armsRamp: LIGHT }));
+// mono: płaski heksagon z cienkimi liniami faset (grawer / pieczęć)
+const monoMark = (color) => { const m = mk({ armsRamp: Array(6).fill(color), arcRamp: Array(6).fill(color) }); return m.svg.replace(/stroke-width="0.3"/g, 'stroke-width="0.9"'); };
+write('mark-mono.svg', svg(`0 0 ${M.w.toFixed(2)} ${M.h.toFixed(2)}`, monoMark('#1E294A'), 'grupowe.pro'));
+write('mark-white.svg', svg(`0 0 ${M.w.toFixed(2)} ${M.h.toFixed(2)}`, monoMark('#FFFFFF'), 'grupowe.pro'));
 
-// ── Geometria „U” z utratadochodu.pl (bez zmian) + oryginalne tony błękitu ──
-const FACETS = [
-  ['10,8 28,8 19,26','#8FD5F3'],['10,8 19,26 10,32','#B3E3F8'],['28,8 19,26 28,32','#29ADE4'],['10,32 19,26 28,32','#5CC6EF'],
-  ['10,32 28,32 19,50','#8FD5F3'],['10,32 19,50 10,56','#B3E3F8'],['28,32 19,50 28,56','#1697CE'],['10,56 19,50 28,56','#5CC6EF'],
-  ['52,8 70,8 61,26','#5CC6EF'],['52,8 61,26 52,32','#8FD5F3'],['70,8 61,26 70,32','#1697CE'],['52,32 61,26 70,32','#29ADE4'],
-  ['52,32 70,32 61,50','#5CC6EF'],['52,32 61,50 52,56','#8FD5F3'],['70,32 61,50 70,56','#0E86BC'],['52,56 61,50 70,56','#1697CE'],
-  ['10,56 14,71 28,56','#B3E3F8'],['14,71 29.6,62 28,56','#8FD5F3'],['14,71 25,82 29.6,62','#5CC6EF'],['25,82 34,66.4 29.6,62','#8FD5F3'],
-  ['25,82 40,86 34,66.4','#29ADE4'],['40,86 40,68 34,66.4','#5CC6EF'],['40,86 55,82 40,68','#1697CE'],['55,82 46,66.4 40,68','#29ADE4'],
-  ['55,82 66,71 46,66.4','#0E86BC'],['66,71 50.4,62 46,66.4','#1697CE'],['66,71 70,56 50.4,62','#1697CE'],['70,56 52,56 50.4,62','#29ADE4'],
-];
-// Ramki znaku: x 10..70, y 8..86  (60 × 78)
-const MARK = { x: 10, y: 8, w: 60, h: 78 };
-const ARC_FROM = 16; // fasety 17–28 = łuk (fundament)
-
-// Mapowanie tonów: oryginalny błękit (jasny→ciemny) -> rampa docelowa (jasny→ciemny)
-const BLUE = ['#B3E3F8','#8FD5F3','#5CC6EF','#29ADE4','#1697CE','#0E86BC'];
-const RAMPS = {
-  navy:  ['#A9B3D6','#7F8BBB','#5A6AA2','#3E4F8A','#2A3B69','#1E294A'],
-  rose:  ['#F7B3C1','#F0849B','#E9557A','#E11D48','#C3153E','#9F1239'],
-  light: ['#FFFFFF','#EEF1F9','#D6DCEE','#B9C3E2','#9AA7D2','#7C8CC2'],   // na granatowym tle
-  mono:  ['#1E294A','#1E294A','#1E294A','#1E294A','#1E294A','#1E294A'],
-  white: ['#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF'],
-};
-const mapColor = (hex, ramp) => ramp[BLUE.indexOf(hex)];
-
-/** Fasety jako <g>; arms/arc = nazwy ramp. tx/ty/s = transformacja. */
-function facets({ arms = 'navy', arc = 'rose', tx = 0, ty = 0, s = 1, opacityArc = 1 } = {}) {
-  const polys = FACETS.map(([pts, c], i) => {
-    const ramp = RAMPS[i >= ARC_FROM ? arc : arms];
-    const fill = mapColor(c, ramp);
-    const flat = ramp === RAMPS.mono || ramp === RAMPS.white;
-    return `<polygon points="${pts}" fill="${fill}"${flat ? ` stroke="${fill}" stroke-width="0.4" stroke-linejoin="round"` : ''}/>`;
-  }).join('');
-  return `<g transform="translate(${tx} ${ty}) scale(${s})">${polys}</g>`;
+// ── napis fasetowany ──
+function wordmark({ size = 100, navy = NAVY, rose = ROSE, grid = 7, flat = false } = {}) {
+  if (flat) {
+    const a = font.getPath('grupowe', 0, 0, size, { kerning: true, letterSpacing: -0.035 });
+    const adv = font.getAdvanceWidth('grupowe', size, { kerning: true, letterSpacing: -0.035 });
+    const b = font.getPath('.pro', adv, 0, size, { kerning: true, letterSpacing: -0.035 });
+    const bb1 = a.getBoundingBox(), bb2 = b.getBoundingBox();
+    return { svg: `<path d="${a.toPathData(2)}" fill="${navy[5]}"/><path d="${b.toPathData(2)}" fill="${rose[3]}"/>`, bbox: { x1: bb1.x1, y1: Math.min(bb1.y1, bb2.y1), x2: bb2.x2, y2: Math.max(bb1.y2, bb2.y2) } };
+  }
+  const a = facetText(font, 'grupowe', size, 0, 0, { ramp: navy, grid, seed: 11 });
+  const b = facetText(font, '.pro', size, a.advance, 0, { ramp: rose, grid, seed: 23 });
+  return { svg: a.svg + b.svg, bbox: { x1: a.bbox.x1, y1: Math.min(a.bbox.y1, b.bbox.y1), x2: b.bbox.x2, y2: Math.max(a.bbox.y2, b.bbox.y2) } };
 }
+const W = wordmark({}); // 100px, baseline y=0
+write('wordmark.svg', svg(`${(W.bbox.x1 - 4).toFixed(1)} ${(W.bbox.y1 - 4).toFixed(1)} ${(W.bbox.x2 - W.bbox.x1 + 8).toFixed(1)} ${(W.bbox.y2 - W.bbox.y1 + 8).toFixed(1)}`, W.svg, 'grupowe.pro'));
+const Wd = wordmark({ navy: LIGHT });
+write('wordmark-dark.svg', svg(`${(Wd.bbox.x1 - 4).toFixed(1)} ${(Wd.bbox.y1 - 4).toFixed(1)} ${(Wd.bbox.x2 - Wd.bbox.x1 + 8).toFixed(1)} ${(Wd.bbox.y2 - Wd.bbox.y1 + 8).toFixed(1)}`, Wd.svg, 'grupowe.pro'));
 
-// Wordmark jako ścieżki (Inter Black). Zwraca {d, bbox} dla danego tekstu.
-function word(text, size, x, y, letterSpacing) {
-  const p = font.getPath(text, x, y, size, { kerning: true, letterSpacing });
-  const b = p.getBoundingBox();
-  return { d: p.toPathData(3), b, adv: font.getAdvanceWidth(text, size, { kerning: true, letterSpacing }) };
+// ── logo poziome ──
+function horizontal(name, { mark, word }) {
+  const size = 72; const w = wordmark({ size, ...word });
+  const mh = 78, ms = mh / M.h, mw = M.w * ms;          // znak 78 wysokości
+  const gap = 18, pad = 10;
+  const capTop = w.bbox.y1, base = 0;                    // y1 ujemne (nad baseline), descender poniżej 0
+  // wyrównanie: środek wersalikowej części napisu ≈ środek znaku
+  const textMid = (capTop + base) / 2, markMid = mh / 2;
+  const ty = markMid - textMid;                          // baseline napisu
+  const descend = w.bbox.y2;                             // ile wystaje pod baseline
+  const H = Math.max(mh, ty + descend) + pad * 2;
+  const tx = mw + gap - w.bbox.x1;
+  const Wt = tx + w.bbox.x2 + pad * 2;
+  const body = `<g transform="translate(${pad} ${pad})"><g transform="scale(${ms.toFixed(4)})">${mk(mark).svg}</g><g transform="translate(${tx.toFixed(2)} ${ty.toFixed(2)})">${w.svg}</g></g>`;
+  write(name, svg(`0 0 ${Wt.toFixed(1)} ${H.toFixed(1)}`, body, 'grupowe.pro – ubezpieczenia grupowe dla firm'));
 }
+horizontal('logo-horizontal.svg', { mark: {}, word: {} });
+horizontal('logo-horizontal-dark.svg', { mark: { armsRamp: LIGHT }, word: { navy: LIGHT } });
+horizontal('logo-horizontal-mono.svg', { mark: { armsRamp: MONO, arcRamp: MONO }, word: { flat: true, navy: MONO, rose: MONO } });
+horizontal('logo-horizontal-flat.svg', { mark: {}, word: { flat: true } });   // sygnet fasetowany + napis płaski (małe rozmiary)
 
-const svg = (vb, body, extra = '') =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}" role="img" ${extra}>${body}</svg>\n`;
-const write = (name, s) => { fs.writeFileSync(`${OUT}/${name}`, s); console.log('✓', name); };
-
-// ── 1. Sam znak (sygnet) ──
-const markBody = (opts) => facets({ ...opts, tx: -MARK.x, ty: -MARK.y });
-write('mark.svg',        svg(`0 0 ${MARK.w} ${MARK.h}`, markBody({}), 'aria-label="grupowe.pro"'));
-write('mark-mono.svg',   svg(`0 0 ${MARK.w} ${MARK.h}`, markBody({ arms: 'mono', arc: 'mono' }), 'aria-label="grupowe.pro"'));
-write('mark-white.svg',  svg(`0 0 ${MARK.w} ${MARK.h}`, markBody({ arms: 'white', arc: 'white' }), 'aria-label="grupowe.pro"'));
-write('mark-on-dark.svg',svg(`0 0 ${MARK.w} ${MARK.h}`, markBody({ arms: 'light', arc: 'rose' }), 'aria-label="grupowe.pro"'));
-
-// ── 2. Logo poziome: znak + „grupowe.pro” ──
-function horizontal({ textNavy = '#1E294A', textRose = '#E11D48', arms = 'navy', arc = 'rose', bg = null, name }) {
-  const H = 78;                   // wysokość znaku w jednostkach
-  const size = 64;                // rozmiar pisma
-  const ls = -0.035;              // em (opentype.js) – tracking-tighter jak na stronie
-  const gap = 22;
-  const baseline = H - 5;         // optycznie: baseline nieco nad dolną krawędzią łuku
-  const w1 = word('grupowe', size, MARK.w + gap, baseline, ls);
-  const w2 = word('.pro', size, MARK.w + gap + w1.adv, baseline, ls);
-  const right = Math.ceil(w2.b.x2);
-  const pad = 10;
-  const W = right + pad, Hh = H + pad * 2;
-  const body = (bg ? `<rect width="${W}" height="${Hh}" fill="${bg}"/>` : '') +
-    `<g transform="translate(${pad} ${pad})">` +
-    facets({ arms, arc, tx: -MARK.x, ty: -MARK.y }) +
-    `<path d="${w1.d}" fill="${textNavy}"/><path d="${w2.d}" fill="${textRose}"/></g>`;
-  write(name, svg(`0 0 ${W} ${Hh}`, body, 'aria-label="grupowe.pro – ubezpieczenia grupowe dla firm"'));
-  return { W, Hh };
-}
-horizontal({ name: 'logo-horizontal.svg' });
-horizontal({ name: 'logo-horizontal-dark.svg', textNavy: '#FFFFFF', arms: 'light', arc: 'rose' });
-horizontal({ name: 'logo-horizontal-mono.svg', textNavy: '#1E294A', textRose: '#1E294A', arms: 'mono', arc: 'mono' });
-
-// ── 3. Logo pionowe (stacked) ──
+// ── logo pionowe ──
 {
-  const size = 40, ls = -0.035;
-  const w1 = word('grupowe', size, 0, 0, ls); const w2 = word('.pro', size, w1.adv, 0, ls);
-  const tw = w2.b.x2 - w1.b.x1;
-  const markScale = 1.0, mw = MARK.w * markScale, mh = MARK.h * markScale;
-  const W = Math.max(tw, mw) + 24, pad = 12;
-  const mx = (W - mw) / 2, tx = (W - tw) / 2 - w1.b.x1;
-  const ty = pad + mh + 18 + size * 0.73; // baseline
-  const H = ty + 8 + pad;
-  const body = `<g transform="translate(${mx} ${pad})">` + facets({ tx: -MARK.x, ty: -MARK.y }) + `</g>` +
-    `<g transform="translate(${tx} ${ty})"><path d="${w1.d}" fill="#1E294A"/><path d="${w2.d}" fill="#E11D48"/></g>`;
-  write('logo-stacked.svg', svg(`0 0 ${W} ${H}`, body, 'aria-label="grupowe.pro"'));
+  const size = 44, w = wordmark({ size }); const tw = w.bbox.x2 - w.bbox.x1;
+  const mh = 92, ms = mh / M.h, mw = M.w * ms; const pad = 12, gap = 16;
+  const Wt = Math.max(tw, mw) + pad * 2; const mx = (Wt - mw) / 2, tx = (Wt - tw) / 2 - w.bbox.x1;
+  const ty = pad + mh + gap - w.bbox.y1; const H = ty + w.bbox.y2 + pad;
+  write('logo-stacked.svg', svg(`0 0 ${Wt.toFixed(1)} ${H.toFixed(1)}`, `<g transform="translate(${mx.toFixed(2)} ${pad}) scale(${ms.toFixed(4)})">${M.svg}</g><g transform="translate(${tx.toFixed(2)} ${ty.toFixed(2)})">${w.svg}</g>`, 'grupowe.pro'));
 }
 
-// ── 4. Ikona-kafelek (app icon / favicon) ──
-function tile({ name, bg = '#1E294A', arms = 'light', arc = 'rose', radius = 22 }) {
-  const S = 100; // kafelek 100×100, znak wyśrodkowany, wysokość ~62%
-  const s = 62 / MARK.h; const w = MARK.w * s, h = MARK.h * s;
-  const body = `<rect width="${S}" height="${S}" rx="${radius}" fill="${bg}"/>` +
-    facets({ arms, arc, tx: (S - w) / 2 - MARK.x * s, ty: (S - h) / 2 - MARK.y * s, s });
-  write(name, svg(`0 0 ${S} ${S}`, body, 'aria-label="grupowe.pro"'));
+// ── ikony ──
+function tile(name, { bg = '#1E294A', mark = { armsRamp: LIGHT }, radius = 22, scale = 0.66 }) {
+  const S = 100, s = (S * scale) / M.h, w = M.w * s, h = M.h * s;
+  write(name, svg(`0 0 ${S} ${S}`, `<rect width="${S}" height="${S}" rx="${radius}" fill="${bg}"/><g transform="translate(${((S - w) / 2).toFixed(2)} ${((S - h) / 2).toFixed(2)}) scale(${s.toFixed(4)})">${mk(mark).svg}</g>`, 'grupowe.pro'));
 }
-tile({ name: 'icon.svg' });
-tile({ name: 'icon-light.svg', bg: '#FFFFFF', arms: 'navy', arc: 'rose' });
-tile({ name: 'icon-rose.svg', bg: '#E11D48', arms: 'white', arc: 'white' });
-// favicon: kafelek bez zaokrąglenia nie jest potrzebny – przeglądarki same maskują; zostawiamy lekki radius
-tile({ name: 'favicon.svg', radius: 18 });
+tile('icon.svg', {});
+tile('icon-light.svg', { bg: '#FFFFFF', mark: {} });
+tile('icon-rose.svg', { bg: '#E11D48', mark: { armsRamp: WHITE, arcRamp: WHITE } });
+tile('favicon.svg', { radius: 18, scale: 0.74 });
 
-// ── 5. Kopie do public/ (używane przez stronę) ──
 fs.copyFileSync(`${OUT}/favicon.svg`, '/home/user/grupowe/public/favicon.svg');
 fs.copyFileSync(`${OUT}/logo-horizontal.svg`, '/home/user/grupowe/public/logo.svg');
+fs.copyFileSync(`${OUT}/logo-horizontal-dark.svg`, '/home/user/grupowe/public/logo-dark.svg');
 console.log('public/ updated');
