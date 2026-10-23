@@ -25,8 +25,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      # Włącza Pages w trybie „GitHub Actions” (jednorazowo), jeśli jeszcze nie jest.
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: npm
