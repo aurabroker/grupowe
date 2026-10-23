@@ -38,9 +38,7 @@ const legacyMap = Object.fromEntries((await getArticles()).map((a) => [a.id, a.s
       <div class="lg:w-1/2 relative w-full mt-6 lg:mt-0">
         <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80" alt="Zespół pracowników w biurze – program ubezpieczeń grupowych" width="1000" height="667" loading="eager" fetchpriority="high" class="w-full h-[360px] lg:h-[480px] object-cover rounded-[40px] shadow-2xl" />
         <div class="absolute -bottom-6 -left-2 lg:-left-10 bg-white/95 backdrop-blur-xl p-5 rounded-3xl shadow-xl border border-white flex items-center gap-4">
-          <div class="w-12 h-12 bg-mint text-white rounded-full flex items-center justify-center shrink-0" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
+          <img src="/mark.svg" alt="" width="80" height="92" class="h-12 w-auto shrink-0" aria-hidden="true" />
           <div>
             <p class="font-extrabold text-navy text-base leading-none">Ochrona 24/7</p>
             <p class="text-xs text-slate-500 mt-1 font-medium">W pracy i na całym świecie</p>
@@ -133,7 +131,9 @@ const legacyMap = Object.fromEntries((await getArticles()).map((a) => [a.id, a.s
   <!-- KONTAKT -->
   <Section id="kontakt">
     <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 bg-white rounded-[32px] overflow-hidden shadow-xl border border-slate-200">
-      <div class="bg-navy p-10 flex flex-col justify-center text-white">
+      <div class="bg-navy p-10 flex flex-col justify-center text-white relative overflow-hidden">
+        <img src="/mark-dark.svg" alt="" width="80" height="92" aria-hidden="true" class="absolute -right-10 -bottom-12 h-64 w-auto opacity-20 pointer-events-none" />
+        <img src="/logo-dark.svg" alt="grupowe.pro" width="551" height="98" loading="lazy" class="h-8 w-auto self-start mb-8" />
         <h2 class="text-3xl font-extrabold mb-4">Działajmy razem.</h2>
         <p class="text-slate-300 mb-10 text-sm leading-relaxed">Wypełnij formularz. Przeanalizujemy strukturę zatrudnienia w Twojej firmie i w kilka dni przygotujemy porównanie ofert.</p>
         <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1">Infolinia</p>

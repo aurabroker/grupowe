@@ -30,7 +30,9 @@ const contactPage = { '@type': 'ContactPage', '@id': `${SITE.url}/kontakt/#page`
         <ContactForm />
       </div>
       <aside class="lg:col-span-2 space-y-6">
-        <div class="bg-navy text-white rounded-[32px] p-8">
+        <div class="bg-navy text-white rounded-[32px] p-8 relative overflow-hidden">
+          <img src="/mark-dark.svg" alt="" width="80" height="92" aria-hidden="true" class="absolute -right-8 -bottom-10 h-48 w-auto opacity-20 pointer-events-none" />
+          <img src="/logo-dark.svg" alt="grupowe.pro" width="551" height="98" loading="lazy" class="h-8 w-auto mb-8" />
           <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1">Infolinia</p>
           <a href={SITE.phoneHref} class="text-3xl font-black hover:text-pink transition-colors block mb-5">{SITE.phoneDisplay}</a>
           <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1">E-mail</p>
