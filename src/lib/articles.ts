@@ -3,10 +3,11 @@
  * każdy artykuł staje się statyczną stroną HTML pod /aktualnosci/<slug>/.
  */
 
-const SUPABASE_URL = import.meta.env.SUPABASE_URL ?? 'https://kukvgsjrmrqtzhkszzum.supabase.co';
+// `||` zamiast `??`: w GitHub Actions nieustawiona zmienna trafia tu jako pusty string.
+const SUPABASE_URL = import.meta.env.SUPABASE_URL || 'https://kukvgsjrmrqtzhkszzum.supabase.co';
 // Klucz anon jest z założenia publiczny (RLS po stronie Supabase) – ten sam był wcześniej w index.html.
 const SUPABASE_ANON_KEY =
-  import.meta.env.SUPABASE_ANON_KEY ??
+  import.meta.env.SUPABASE_ANON_KEY ||
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt1a3Znc2pybXJxdHpoa3N6enVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5MTI0NzYsImV4cCI6MjA4ODQ4ODQ3Nn0.wOB-4CJTcRksSUY7WD7CXEccTKNxPIVF8AT8hczS5zY';
 
 export interface Article {
