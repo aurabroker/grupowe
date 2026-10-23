@@ -1,0 +1,9 @@
+# www -> apex (301)
+https://www.grupowe.pro/* https://grupowe.pro/:splat 301
+
+# Stare adresy z poprzedniej wersji strony
+/index.html / 301
+/polityka-prywatnosci.html /polityka-prywatnosci/ 301
+/rodo.html /rodo/ 301
+/regulamin.html /regulamin/ 301
+/sitemap.xml /sitemap-index.xml 301

@@ -13,6 +13,7 @@ Zbudowana w **Astro** z jedną zasadą nadrzędną: **maksymalna widoczność w 
 | JSON-LD na każdej stronie | `InsuranceAgency`, `WebSite`, `Service`, `FAQPage`, `BlogPosting`, `BreadcrumbList`, `AboutPage`, `ContactPage`. |
 | `/llms.txt` i `/llms-full.txt` | Standard llmstxt.org – indeks i pełna treść serwisu w Markdown dla asystentów AI. Generowane z tych samych danych co HTML. |
 | `sitemap-index.xml`, RSS, OG/Twitter, `robots.txt` z jawnym Allow dla botów AI | Komplet sygnałów dla wyszukiwarek i agentów. |
+| Hosting: Cloudflare Workers (statyczne assety) | Edge w Polsce, `_headers` z cache i nagłówkami bezpieczeństwa, `_redirects` bez meta-refresh. |
 | Formularz działa bez JS (POST → Web3Forms → `/dziekujemy/`) | Progresywne ulepszanie; JS tylko dla menu mobilnego i parametru `?ref=`. |
 | FAQ na `<details>` | Treść odpowiedzi jest w DOM, bez JS. |
 
@@ -37,7 +38,8 @@ src/
     llms.txt.ts                 /llms.txt
     llms-full.txt.ts            /llms-full.txt
     polityka-prywatnosci / rodo / regulamin / dziekujemy / 404
-public/               ← robots.txt, CNAME, favicon, og-default.png, manifest
+public/               ← robots.txt, _redirects, _headers, favicon, og-default.png, manifest
+wrangler.jsonc        ← konfiguracja Cloudflare Workers (assets-only)
 legacy/               ← poprzednia wersja strony (statyczny HTML), do usunięcia po wdrożeniu
 ```
 
@@ -53,20 +55,25 @@ npm run preview
 Artykuły pobierane są z Supabase kluczem **anon** (publiczny; ten sam był wcześniej w `index.html`).
 Opcjonalnie nadpisz przez `.env` (zob. `.env.example`). Jeśli Supabase nie odpowie, build **celowo** się nie uda – lepiej zostawić poprzednią wersję niż opublikować pusty blog.
 
-## Deploy (GitHub Pages)
+## Deploy (Cloudflare Workers – statyczne assety)
 
-Workflow `.github/workflows/deploy.yml` buduje i publikuje stronę:
-- przy każdym pushu na `main`,
-- codziennie o 04:17 UTC (nowe artykuły z CMS),
-- ręcznie (Actions → Run workflow),
-- przez `repository_dispatch` typu `cms-update` (np. Database Webhook z Supabase).
+Strona działa jako Worker bez własnego kodu, serwujący `dist/` (konfiguracja: `wrangler.jsonc`).
+Domena `grupowe.pro` i `www` są zdefiniowane jako `routes` z `custom_domain: true` – przy pierwszym deployu wrangler
+sam tworzy rekordy DNS w strefie (strefa `grupowe.pro` musi być na Cloudflare). Przekierowania i nagłówki: `public/_redirects`, `public/_headers`.
 
-**Wymagane jednorazowo:** w repo → Settings → Pages → *Build and deployment* → Source: **GitHub Actions**
-(dotychczas Pages serwowało pliki z gałęzi; po zmianie serwuje `dist/` z workflow).
+Workflow `.github/workflows/deploy.yml`:
+- `pull_request` – build + `wrangler deploy --dry-run` (bez publikacji),
+- push na `main`, codziennie 04:17 UTC (nowe artykuły z CMS), ręcznie (Actions → Run workflow), `repository_dispatch` typu `cms-update` – build + deploy.
+
+**Wymagane jednorazowo** w repo → Settings → Secrets and variables → Actions:
+- `CLOUDFLARE_API_TOKEN` – token z szablonu „Edit Cloudflare Workers” (dash.cloudflare.com → Account API tokens → Create Token), zakres: konto Aura + strefa grupowe.pro,
+- `CLOUDFLARE_ACCOUNT_ID` – z prawej kolumny strony Overview strefy w dashboardzie.
+
+Lokalnie: `npx wrangler login`, potem `npm run deploy`.
 
 ## Stare adresy
 
-`/polityka-prywatnosci.html`, `/rodo.html`, `/regulamin.html` → przekierowania do nowych adresów `/…/` (konfiguracja `redirects` w `astro.config.mjs`).
+`/polityka-prywatnosci.html`, `/rodo.html`, `/regulamin.html`, `/sitemap.xml` → 301 do nowych adresów (`public/_redirects`).
 Linki `/#article-<uuid>` z poprzedniej wersji są przekierowywane na `/aktualnosci/<slug>/` małym skryptem na stronie głównej.
 
 ## Jak dodać treść

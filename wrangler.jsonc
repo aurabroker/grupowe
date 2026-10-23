@@ -1,0 +1,18 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "grupowe-pro",
+  "compatibility_date": "2026-10-01",
+  // Worker bez własnego kodu – serwuje wyłącznie statyczny build Astro z dist/.
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  // Domena własna: wrangler sam tworzy rekordy DNS w strefie grupowe.pro na Cloudflare.
+  "routes": [
+    { "pattern": "grupowe.pro", "custom_domain": true },
+    { "pattern": "www.grupowe.pro", "custom_domain": true }
+  ],
+  "workers_dev": false,
+  "observability": { "enabled": true }
+}
