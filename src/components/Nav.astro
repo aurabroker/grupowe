@@ -1,9 +1,13 @@
 ---
 import { NAV, SITE } from '../data/site';
+import Mark from './Mark.astro';
 ---
 <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-40 shadow-sm border-b border-slate-100">
   <nav class="container mx-auto px-4 py-4 flex justify-between items-center" aria-label="Główna nawigacja">
-    <a href="/" class="text-2xl font-black tracking-tighter text-navy" aria-label="grupowe.pro – strona główna">grupowe<span class="text-pink">.pro</span></a>
+    <a href="/" class="flex items-center gap-2.5 text-2xl font-black tracking-tighter text-navy" aria-label="grupowe.pro – strona główna">
+      <Mark class="h-8 w-auto" />
+      <span>grupowe<span class="text-pink">.pro</span></span>
+    </a>
 
     <ul class="hidden md:flex gap-7 items-center text-sm font-semibold">
       {NAV.map((item) => (

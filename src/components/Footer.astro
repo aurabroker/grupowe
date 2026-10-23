@@ -1,11 +1,12 @@
 ---
 import { SITE, COMPANY, SERVICES } from '../data/site';
+import Mark from './Mark.astro';
 const year = new Date().getFullYear();
 ---
 <footer class="bg-slate-50 border-t border-slate-200 mt-16">
   <div class="container mx-auto px-4 py-14 grid gap-10 md:grid-cols-4 text-sm">
     <div class="md:col-span-1">
-      <a href="/" class="text-2xl font-black tracking-tighter text-navy">grupowe<span class="text-pink">.pro</span></a>
+      <a href="/" class="inline-flex items-center gap-2.5 text-2xl font-black tracking-tighter text-navy" aria-label="grupowe.pro"><Mark class="h-8 w-auto" /><span>grupowe<span class="text-pink">.pro</span></span></a>
       <p class="text-slate-500 mt-3 leading-relaxed">Niezależny broker ubezpieczeniowy dla firm. Ubezpieczenia grupowe projektowane pod Twój zespół.</p>
       <p class="mt-4 font-bold"><a href={SITE.phoneHref} class="text-navy hover:text-pink">{SITE.phoneDisplay}</a></p>
       <p><a href={`mailto:${SITE.email}`} class="text-slate-600 hover:text-pink">{SITE.email}</a></p>
