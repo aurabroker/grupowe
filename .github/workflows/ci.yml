@@ -1,0 +1,24 @@
+name: CI (build + wrangler dry-run)
+
+# Deploy robi Cloudflare Workers Builds (podpięte do repo). Tu tylko sprawdzamy, że PR się buduje.
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+      - run: npx wrangler deploy --dry-run

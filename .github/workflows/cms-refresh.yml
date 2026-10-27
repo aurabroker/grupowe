@@ -1,0 +1,51 @@
+name: Odśwież artykuły z CMS
+
+# Strona jest statyczna, więc nowy artykuł w Aura CMS pojawi się dopiero po przebudowie.
+# Ten workflow sprawdza, czy w Supabase jest nowszy artykuł niż ostatnio zbudowany, i jeśli tak –
+# commituje stempel .cms-stamp na main. Push uruchamia build w Cloudflare Workers Builds.
+on:
+  schedule:
+    - cron: '17 4 * * *'      # codziennie 04:17 UTC
+  workflow_dispatch:
+  repository_dispatch:
+    types: [cms-update]       # opcjonalny webhook z Supabase – publikacja od razu
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cms-refresh
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - name: Sprawdź najnowszy artykuł w Supabase
+        id: cms
+        env:
+          SUPABASE_URL: ${{ vars.SUPABASE_URL || 'https://kukvgsjrmrqtzhkszzum.supabase.co' }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt1a3Znc2pybXJxdHpoa3N6enVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5MTI0NzYsImV4cCI6MjA4ODQ4ODQ3Nn0.wOB-4CJTcRksSUY7WD7CXEccTKNxPIVF8AT8hczS5zY' }}
+        run: |
+          latest=$(curl -sSf "$SUPABASE_URL/rest/v1/aura_articles?select=published_at&status=eq.published&platforms=cs.%7B%22Grupowe.pro%22%7D&order=published_at.desc&limit=1" \
+            -H "apikey: $SUPABASE_ANON_KEY" | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d[0]["published_at"] if d else "")')
+          current=$(cat .cms-stamp 2>/dev/null || echo "")
+          echo "latest=$latest"; echo "current=$current"
+          if [ -n "$latest" ] && [ "$latest" != "$current" ]; then
+            echo "$latest" > .cms-stamp
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Commit stempla (uruchamia build w Cloudflare)
+        if: steps.cms.outputs.changed == 'true'
+        run: |
+          git config user.name "aura-cms-bot"
+          git config user.email "biuro@grupowe.pro"
+          git add .cms-stamp
+          git commit -m "cms: nowe artykuły ($(cat .cms-stamp))"
+          git push origin main

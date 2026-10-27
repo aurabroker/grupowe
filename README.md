@@ -55,21 +55,20 @@ npm run preview
 Artykuły pobierane są z Supabase kluczem **anon** (publiczny; ten sam był wcześniej w `index.html`).
 Opcjonalnie nadpisz przez `.env` (zob. `.env.example`). Jeśli Supabase nie odpowie, build **celowo** się nie uda – lepiej zostawić poprzednią wersję niż opublikować pusty blog.
 
-## Deploy (Cloudflare Workers – statyczne assety)
+## Deploy (Cloudflare Workers Builds)
 
-Strona działa jako Worker bez własnego kodu, serwujący `dist/` (konfiguracja: `wrangler.jsonc`).
-Domena `grupowe.pro` i `www` są zdefiniowane jako `routes` z `custom_domain: true` – przy pierwszym deployu wrangler
-sam tworzy rekordy DNS w strefie (strefa `grupowe.pro` musi być na Cloudflare). Przekierowania i nagłówki: `public/_redirects`, `public/_headers`.
+Strona działa jako Worker `grupowe` bez własnego kodu, serwujący `dist/` (`wrangler.jsonc`). Deploy robi
+**Cloudflare Workers Builds** podpięte bezpośrednio do tego repo – każdy push na `main` = build + deploy,
+bez tokenów i sekretów w GitHubie. Domeny `grupowe.pro` i `www` są w `wrangler.jsonc` jako `custom_domain`,
+Cloudflare sam tworzy rekordy DNS. Przekierowania i nagłówki: `public/_redirects`, `public/_headers`.
 
-Workflow `.github/workflows/deploy.yml`:
-- `pull_request` – build + `wrangler deploy --dry-run` (bez publikacji),
-- push na `main`, codziennie 04:17 UTC (nowe artykuły z CMS), ręcznie (Actions → Run workflow), `repository_dispatch` typu `cms-update` – build + deploy.
+Jednorazowe podpięcie (dashboard Cloudflare → Workers & Pages → Create → Import a repository → `aurabroker/grupowe`):
+build command `npm run build`, deploy command `npx wrangler deploy`, nazwa Workera `grupowe`.
 
-**Wymagane jednorazowo** w repo → Settings → Secrets and variables → Actions:
-- `CLOUDFLARE_API_TOKEN` – token z szablonu „Edit Cloudflare Workers” (dash.cloudflare.com → Account API tokens → Create Token), zakres: konto Aura + strefa grupowe.pro,
-- `CLOUDFLARE_ACCOUNT_ID` – z prawej kolumny strony Overview strefy w dashboardzie.
-
-Lokalnie: `npx wrangler login`, potem `npm run deploy`.
+Workflowy GitHub:
+- `ci.yml` – na PR: build + `wrangler deploy --dry-run`.
+- `cms-refresh.yml` – codziennie 04:17 UTC (i na `repository_dispatch` typu `cms-update`): jeśli w Supabase jest nowszy
+  artykuł niż w `.cms-stamp`, commituje nowy stempel na `main`, co uruchamia build w Cloudflare.
 
 ## Stare adresy
 
