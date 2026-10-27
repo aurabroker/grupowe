@@ -62,8 +62,8 @@ Strona działa jako Worker `grupowe` bez własnego kodu, serwujący `dist/` (`wr
 bez tokenów i sekretów w GitHubie. Domeny `grupowe.pro` i `www` są w `wrangler.jsonc` jako `custom_domain`,
 Cloudflare sam tworzy rekordy DNS. Przekierowania i nagłówki: `public/_redirects`, `public/_headers`.
 
-Jednorazowe podpięcie (dashboard Cloudflare → Workers & Pages → Create → Import a repository → `aurabroker/grupowe`):
-build command `npm run build`, deploy command `npx wrangler deploy`, nazwa Workera `grupowe`.
+Podpięcie jest już zrobione (Worker `grupowe`, trigger na `main`, build `npm run build`, deploy `npx wrangler deploy`).
+Status buildów: dashboard → Workers & Pages → `grupowe` → Builds. `www` → apex: reguła przekierowań w strefie (Rules → Redirect Rules).
 
 Workflowy GitHub:
 - `ci.yml` – na PR: build + `wrangler deploy --dry-run`.

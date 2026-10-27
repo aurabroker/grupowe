@@ -8,11 +8,18 @@
 /*.png
   Cache-Control: public, max-age=604800
 
-# Pliki dla botów i AI – krótki cache, żeby nowe artykuły były widoczne szybko
+# Pliki dla botów i AI – krótki cache, żeby nowe artykuły były widoczne szybko.
+# Jawny charset: Workers serwują .txt jako text/plain bez utf-8, a treść jest po polsku.
 /llms.txt
   Cache-Control: public, max-age=3600
+  Content-Type: text/plain; charset=utf-8
 /llms-full.txt
   Cache-Control: public, max-age=3600
+  Content-Type: text/plain; charset=utf-8
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+/humans.txt
+  Content-Type: text/plain; charset=utf-8
 /sitemap-index.xml
   Cache-Control: public, max-age=3600
 /sitemap-0.xml
