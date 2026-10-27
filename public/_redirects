@@ -1,5 +1,5 @@
-# www -> apex (301)
-https://www.grupowe.pro/* https://grupowe.pro/:splat 301
+# www -> apex: reguła przekierowań w strefie Cloudflare (Rules -> Redirect Rules),
+# bo _redirects w Workers przyjmuje tylko ścieżki względne.
 
 # Stare adresy z poprzedniej wersji strony
 /index.html / 301
