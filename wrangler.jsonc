@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "grupowe-pro",
+  "name": "grupowe",
   "compatibility_date": "2026-10-01",
   // Worker bez własnego kodu – serwuje wyłącznie statyczny build Astro z dist/.
   "assets": {
