@@ -13,6 +13,7 @@
     { "pattern": "grupowe.pro", "custom_domain": true },
     { "pattern": "www.grupowe.pro", "custom_domain": true }
   ],
-  "workers_dev": false,
+  // Tymczasowo true – podgląd pod grupowe.aurabroker.workers.dev do czasu podpięcia domeny.
+  "workers_dev": true,
   "observability": { "enabled": true }
 }
