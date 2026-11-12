@@ -40,7 +40,6 @@ src/
     polityka-prywatnosci / rodo / regulamin / dziekujemy / 404
 public/               ← robots.txt, _redirects, _headers, favicon, og-default.png, manifest
 wrangler.jsonc        ← konfiguracja Cloudflare Workers (assets-only)
-legacy/               ← poprzednia wersja strony (statyczny HTML), do usunięcia po wdrożeniu
 ```
 
 ## Uruchomienie
