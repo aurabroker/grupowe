@@ -7,3 +7,5 @@ dist/
 .DS_Store
 .wrangler/
 .dev.vars*
+research_notes/
+reports/
