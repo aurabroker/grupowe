@@ -13,10 +13,9 @@
   },
   "vars": {
     "MAIL_FROM": "grupowe.pro <formularz@auraconsulting.pl>",
-    "MAIL_TO": "biuro@grupowe.pro",
     "SITE_URL": "https://grupowe.pro"
   },
-  // RESEND_API_KEY: secret Workera (ustawiany przez API/dashboard, nie w repo).
+  // Secrety Workera (dashboard/API, nie w repo): RESEND_API_KEY, MAIL_TO (adres odbiorcy zgłoszeń).
   // Domena własna: wrangler sam tworzy rekordy DNS w strefie grupowe.pro na Cloudflare.
   "routes": [
     { "pattern": "grupowe.pro", "custom_domain": true },

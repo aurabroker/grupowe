@@ -6,7 +6,7 @@
 interface Env {
   RESEND_API_KEY: string;   // secret Workera
   MAIL_FROM: string;        // np. "grupowe.pro <formularz@auraconsulting.pl>"
-  MAIL_TO: string;          // np. "biuro@grupowe.pro"
+  MAIL_TO: string;          // secret: adres odbiorcy zgłoszeń
   SITE_URL: string;         // np. "https://grupowe.pro"
   ASSETS: { fetch(request: Request): Promise<Response> };
 }

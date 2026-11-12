@@ -40,7 +40,7 @@ src/
     polityka-prywatnosci / rodo / regulamin / dziekujemy / 404
 public/               ← robots.txt, _redirects, _headers, favicon, og-default.png, manifest
 wrangler.jsonc        ← konfiguracja Cloudflare Workers
-worker/index.ts       ← POST /api/kontakt: walidacja, honeypot, wysyłka przez Resend (secret RESEND_API_KEY)
+worker/index.ts       ← POST /api/kontakt: walidacja, honeypot, wysyłka przez Resend (secrety: RESEND_API_KEY, MAIL_TO)
 ```
 
 ## Uruchomienie
