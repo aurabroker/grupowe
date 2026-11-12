@@ -1,21 +1,20 @@
 ---
 /**
- * Formularz działa bez JavaScriptu: zwykły POST do Web3Forms z przekierowaniem na /dziekujemy/.
+ * Formularz działa bez JavaScriptu: zwykły POST do /api/kontakt (Worker -> Resend),
+ * który przekierowuje na /dziekujemy/ albo wraca na /kontakt/?blad=... z komunikatem.
  * Parametr ?ref= z adresu zapisywany jest w polu ukrytym (krótki skrypt, opcjonalny).
  */
-import { SITE } from '../data/site';
+const page = Astro.url.pathname;
 interface Props { heading?: string; compact?: boolean }
 const { heading = 'Zamów bezpłatną wycenę', compact = false } = Astro.props;
 const input = 'w-full p-3 rounded-xl border border-slate-200 bg-white text-sm outline-none focus:border-pink focus:ring-2 focus:ring-pink/20 transition-all';
 const label = 'text-[10px] font-bold uppercase tracking-widest text-slate-500 block mb-1';
 ---
-<form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-4" id="contact-form">
+<form action="/api/kontakt" method="POST" class="flex flex-col gap-4" id="contact-form">
   <h3 class="text-xl font-bold text-navy">{heading}</h3>
+  <p id="f-error" class="hidden text-sm font-bold text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3" role="alert"></p>
 
-  <input type="hidden" name="access_key" value={SITE.web3formsKey} />
-  <input type="hidden" name="subject" value="Nowe zapytanie – grupowe.pro" />
-  <input type="hidden" name="from_name" value="grupowe.pro" />
-  <input type="hidden" name="redirect" value={`${SITE.url}/dziekujemy/`} />
+  <input type="hidden" name="page" value={page} />
   <input type="hidden" name="ref" id="f-ref" value="DIRECT" />
   <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
@@ -70,12 +69,17 @@ const label = 'text-[10px] font-bold uppercase tracking-widest text-slate-500 bl
 </form>
 
 <script>
-  // Źródło wejścia (?ref=...) zapamiętane na czas sesji i dołączone do zgłoszenia.
+  // Źródło wejścia (?ref=...) zapamiętane na czas sesji i dołączone do zgłoszenia;
+  // ?blad=... po nieudanej wysyłce pokazuje komunikat nad formularzem.
   try {
-    const ref = new URLSearchParams(location.search).get('ref');
+    const params = new URLSearchParams(location.search);
+    const ref = params.get('ref');
     if (ref) sessionStorage.setItem('bp_ref', ref);
     const stored = sessionStorage.getItem('bp_ref');
     const el = document.getElementById('f-ref') as HTMLInputElement | null;
     if (el && stored) el.value = stored;
+    const blad = params.get('blad');
+    const box = document.getElementById('f-error');
+    if (blad && box) { box.textContent = blad; box.classList.remove('hidden'); box.scrollIntoView({ block: 'center' }); }
   } catch {}
 </script>
