@@ -14,7 +14,7 @@ Zbudowana w **Astro** z jedną zasadą nadrzędną: **maksymalna widoczność w 
 | `/llms.txt` i `/llms-full.txt` | Standard llmstxt.org – indeks i pełna treść serwisu w Markdown dla asystentów AI. Generowane z tych samych danych co HTML. |
 | `sitemap-index.xml`, RSS, OG/Twitter, `robots.txt` z jawnym Allow dla botów AI | Komplet sygnałów dla wyszukiwarek i agentów. |
 | Hosting: Cloudflare Workers (statyczne assety) | Edge w Polsce, `_headers` z cache i nagłówkami bezpieczeństwa, `_redirects` bez meta-refresh. |
-| Formularz działa bez JS (POST → Web3Forms → `/dziekujemy/`) | Progresywne ulepszanie; JS tylko dla menu mobilnego i parametru `?ref=`. |
+| Formularz działa bez JS (POST → `/api/kontakt` w Workerze → Resend → `/dziekujemy/`) | Progresywne ulepszanie; JS tylko dla menu mobilnego, parametru `?ref=` i komunikatu błędu. |
 | FAQ na `<details>` | Treść odpowiedzi jest w DOM, bez JS. |
 
 ## Struktura
@@ -39,7 +39,8 @@ src/
     llms-full.txt.ts            /llms-full.txt
     polityka-prywatnosci / rodo / regulamin / dziekujemy / 404
 public/               ← robots.txt, _redirects, _headers, favicon, og-default.png, manifest
-wrangler.jsonc        ← konfiguracja Cloudflare Workers (assets-only)
+wrangler.jsonc        ← konfiguracja Cloudflare Workers
+worker/index.ts       ← POST /api/kontakt: walidacja, honeypot, wysyłka przez Resend (secret RESEND_API_KEY)
 ```
 
 ## Uruchomienie

@@ -17,7 +17,6 @@ export const SITE = {
   email: 'biuro@grupowe.pro',
   instagram: 'https://www.instagram.com/grupowe.pro/',
   gaId: 'G-L5S53BCN1K',
-  web3formsKey: 'afbc1d1c-d275-4e6b-86f0-fd4393ca30be',
   ogImage: '/og-default.png',
 } as const;
 

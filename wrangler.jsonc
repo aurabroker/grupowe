@@ -2,12 +2,21 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "grupowe",
   "compatibility_date": "2026-10-01",
-  // Worker bez własnego kodu – serwuje wyłącznie statyczny build Astro z dist/.
+  // Kod Workera obsługuje tylko /api/* (formularz kontaktowy -> Resend); reszta to statyczny build Astro.
+  "main": "worker/index.ts",
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
     "not_found_handling": "404-page",
-    "html_handling": "auto-trailing-slash"
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": ["/api/*"]
   },
+  "vars": {
+    "MAIL_FROM": "grupowe.pro <formularz@auraconsulting.pl>",
+    "MAIL_TO": "biuro@grupowe.pro",
+    "SITE_URL": "https://grupowe.pro"
+  },
+  // RESEND_API_KEY: secret Workera (ustawiany przez API/dashboard, nie w repo).
   // Domena własna: wrangler sam tworzy rekordy DNS w strefie grupowe.pro na Cloudflare.
   "routes": [
     { "pattern": "grupowe.pro", "custom_domain": true },
