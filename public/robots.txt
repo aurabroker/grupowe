@@ -1,6 +1,8 @@
 # robots.txt – grupowe.pro
 # Strona jest w pełni statyczna i otwarta dla wyszukiwarek oraz agentów AI.
-# Pełna treść dla asystentów AI: /llms.txt i /llms-full.txt
+# Pełna treść dla asystentów AI (llmstxt.org):
+#   https://grupowe.pro/llms.txt
+#   https://grupowe.pro/llms-full.txt
 
 User-agent: *
 Allow: /
