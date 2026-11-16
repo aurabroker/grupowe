@@ -1,9 +1,12 @@
 ---
 /**
- * Formularz działa bez JavaScriptu: zwykły POST do /api/kontakt (Worker -> Resend),
- * który przekierowuje na /dziekujemy/ albo wraca na /kontakt/?blad=... z komunikatem.
- * Parametr ?ref= z adresu zapisywany jest w polu ukrytym (krótki skrypt, opcjonalny).
+ * Zwykły POST do /api/kontakt (Worker -> Resend), który przekierowuje na /dziekujemy/
+ * albo wraca na /kontakt/?blad=... z komunikatem. Ochrona przed spamem: Cloudflare Turnstile
+ * (widżet dokłada do formularza pole cf-turnstile-response, Worker weryfikuje je w siteverify),
+ * więc wysyłka wymaga JS; bez niego Worker odsyła komunikat z numerem telefonu.
+ * Parametr ?ref= z adresu zapisywany jest w polu ukrytym.
  */
+import { SITE } from '../data/site';
 const page = Astro.url.pathname;
 interface Props { heading?: string; compact?: boolean }
 const { heading = 'Zamów bezpłatną wycenę', compact = false } = Astro.props;
@@ -64,11 +67,25 @@ const label = 'text-[10px] font-bold uppercase tracking-widest text-slate-500 bl
     </div>
   )}
 
+  <div class="cf-turnstile" data-sitekey={SITE.turnstileSiteKey} data-language="pl" data-theme="light" data-action="kontakt"></div>
+
   <button type="submit" class="bg-pink hover:bg-pink-dark transition-colors text-white font-bold w-full mt-1 py-3.5 rounded-xl text-sm shadow-md cursor-pointer">Wyślij zapytanie</button>
   <p class="text-[11px] text-slate-400 leading-relaxed">Wysyłając formularz akceptujesz <a href="/polityka-prywatnosci/" class="underline">politykę prywatności</a>. Odpowiadamy zwykle w ciągu jednego dnia roboczego.</p>
 </form>
 
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
+  // Nie wysyłaj, dopóki Turnstile nie wystawił tokenu (zwykle ~1 s po wczytaniu) – inaczej Worker odrzuci zgłoszenie.
+  // Gdy skrypt Turnstile się nie wczytał (np. adblock), puszczamy POST – Worker odpowie komunikatem z telefonem.
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  form?.addEventListener('submit', (e) => {
+    const token = form.querySelector<HTMLInputElement>('input[name="cf-turnstile-response"]');
+    if (!('turnstile' in window) || token?.value) return;
+    e.preventDefault();
+    const box = document.getElementById('f-error');
+    if (box) { box.textContent = 'Chwila – trwa weryfikacja antyspamowa. Zaznacz pole nad przyciskiem, jeśli się pojawiło, i wyślij ponownie.'; box.classList.remove('hidden'); }
+  });
+
   // Źródło wejścia (?ref=...) zapamiętane na czas sesji i dołączone do zgłoszenia;
   // ?blad=... po nieudanej wysyłce pokazuje komunikat nad formularzem.
   try {

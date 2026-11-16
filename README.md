@@ -14,7 +14,7 @@ Zbudowana w **Astro** z jedną zasadą nadrzędną: **maksymalna widoczność w 
 | `/llms.txt` i `/llms-full.txt` | Standard llmstxt.org – indeks i pełna treść serwisu w Markdown dla asystentów AI. Generowane z tych samych danych co HTML. |
 | `sitemap-index.xml`, RSS, OG/Twitter, `robots.txt` z jawnym Allow dla botów AI | Komplet sygnałów dla wyszukiwarek i agentów. |
 | Hosting: Cloudflare Workers (statyczne assety) | Edge w Polsce, `_headers` z cache i nagłówkami bezpieczeństwa, `_redirects` bez meta-refresh. |
-| Formularz działa bez JS (POST → `/api/kontakt` w Workerze → Resend → `/dziekujemy/`) | Progresywne ulepszanie; JS tylko dla menu mobilnego, parametru `?ref=` i komunikatu błędu. |
+| Formularz: zwykły POST → `/api/kontakt` w Workerze → Resend → `/dziekujemy/`, chroniony Cloudflare Turnstile | Spamboty (skrypty HTTP) przechodziły przez sam honeypot. Worker odrzuca POST bez `Origin`/`Sec-Fetch-Site` z tej strony, NIP z błędną sumą kontrolną i zgłoszenia bez ważnego tokenu Turnstile. Turnstile wymaga JS – bez niego użytkownik dostaje komunikat z numerem telefonu. |
 | FAQ na `<details>` | Treść odpowiedzi jest w DOM, bez JS. |
 
 ## Struktura
@@ -40,7 +40,9 @@ src/
     polityka-prywatnosci / rodo / regulamin / dziekujemy / 404
 public/               ← robots.txt, _redirects, _headers, favicon, og-default.png, manifest
 wrangler.jsonc        ← konfiguracja Cloudflare Workers
-worker/index.ts       ← POST /api/kontakt: walidacja, honeypot, wysyłka przez Resend (secrety: RESEND_API_KEY, MAIL_TO)
+worker/index.ts       ← POST /api/kontakt: antyspam (Origin, honeypot, NIP, Turnstile), wysyłka przez Resend
+                        (secrety: RESEND_API_KEY, MAIL_TO, TURNSTILE_SECRET; sitekey w src/data/site.ts)
+worker/*.test.mjs     ← testy endpointu: npm test
 ```
 
 ## Uruchomienie
@@ -66,7 +68,7 @@ Podpięcie jest już zrobione (Worker `grupowe`, trigger na `main`, build `npm r
 Status buildów: dashboard → Workers & Pages → `grupowe` → Builds. `www` → apex: reguła przekierowań w strefie (Rules → Redirect Rules).
 
 Workflowy GitHub:
-- `ci.yml` – na PR: build + `wrangler deploy --dry-run`.
+- `ci.yml` – na PR: testy Workera (`npm test`), build + `wrangler deploy --dry-run`.
 - `cms-refresh.yml` – codziennie 04:17 UTC (i na `repository_dispatch` typu `cms-update`): jeśli w Supabase jest nowszy
   artykuł niż w `.cms-stamp`, commituje nowy stempel na `main`, co uruchamia build w Cloudflare.
 
