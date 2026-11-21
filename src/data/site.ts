@@ -14,7 +14,6 @@ export const SITE = {
   phone: '+48 500 502 702',
   phoneHref: 'tel:+48500502702',
   phoneDisplay: '500 502 702',
-  email: 'biuro@grupowe.pro',
   instagram: 'https://www.instagram.com/grupowe.pro/',
   gaId: 'G-L5S53BCN1K',
   // Cloudflare Turnstile (widżet "grupowe.pro formularz kontaktowy"); klucz publiczny, secret jest w Workerze (TURNSTILE_SECRET).
