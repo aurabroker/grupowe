@@ -137,9 +137,7 @@ const legacyMap = Object.fromEntries((await getArticles()).map((a) => [a.id, a.s
         <h2 class="text-3xl font-extrabold mb-4">Działajmy razem.</h2>
         <p class="text-slate-300 mb-10 text-sm leading-relaxed">Wypełnij formularz. Przeanalizujemy strukturę zatrudnienia w Twojej firmie i w kilka dni przygotujemy porównanie ofert.</p>
         <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1">Infolinia</p>
-        <a href={SITE.phoneHref} class="text-3xl font-black hover:text-pink transition-colors mb-6">{SITE.phoneDisplay}</a>
-        <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1">E-mail</p>
-        <a href={`mailto:${SITE.email}`} class="text-lg font-bold hover:text-pink transition-colors">{SITE.email}</a>
+        <a href={SITE.phoneHref} class="text-3xl font-black hover:text-pink transition-colors">{SITE.phoneDisplay}</a>
       </div>
       <div class="p-8 lg:p-10 bg-slate-50"><ContactForm compact /></div>
     </div>

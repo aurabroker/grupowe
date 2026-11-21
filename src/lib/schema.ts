@@ -16,7 +16,6 @@ export function organization() {
     image: `${SITE.url}${SITE.ogImage}`,
     description: SITE.description,
     telephone: SITE.phone,
-    email: SITE.email,
     foundingDate: String(COMPANY.foundingYear),
     address: {
       '@type': 'PostalAddress',
@@ -45,7 +44,6 @@ export function organization() {
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: SITE.phone,
-      email: SITE.email,
       contactType: 'sales',
       availableLanguage: ['Polish'],
       areaServed: 'PL',

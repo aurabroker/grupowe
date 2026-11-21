@@ -11,7 +11,7 @@ export const GET: APIRoute = async () => {
   const p = (...l: string[]) => out.push(...l, '');
 
   p(`# ${SITE.name} – ${SITE.tagline}`, '', `> ${SITE.description}`);
-  p('Adres: ' + SITE.url, `Telefon: ${SITE.phone}`, `E-mail: ${SITE.email}`, `Instagram: ${SITE.instagram}`);
+  p('Adres: ' + SITE.url, `Telefon: ${SITE.phone}`, `Instagram: ${SITE.instagram}`);
 
   p('## O firmie');
   p(`grupowe.pro to marka ${COMPANY.legalName} – niezależnego, licencjonowanego brokera ubezpieczeniowego specjalizującego się w ubezpieczeniach grupowych i benefitach pracowniczych dla firm.`);

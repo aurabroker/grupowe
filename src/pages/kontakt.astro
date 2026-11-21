@@ -11,7 +11,7 @@ const contactPage = { '@type': 'ContactPage', '@id': `${SITE.url}/kontakt/#page`
 ---
 <Base
   title="Kontakt i bezpłatna wycena ubezpieczenia grupowego | grupowe.pro"
-  description="Zamów bezpłatne porównanie ofert ubezpieczeń grupowych dla firmy. Tel. 500 502 702, biuro@grupowe.pro. Broker Aura Consulting – obsługa firm z całej Polski."
+  description="Zamów bezpłatne porównanie ofert ubezpieczeń grupowych dla firmy. Tel. 500 502 702. Broker Aura Consulting – obsługa firm z całej Polski."
   path="/kontakt/"
   schema={[contactPage, breadcrumbs(crumbs)]}
 >
@@ -35,8 +35,6 @@ const contactPage = { '@type': 'ContactPage', '@id': `${SITE.url}/kontakt/#page`
           <img src="/logo-dark.svg" alt="grupowe.pro" width="551" height="98" loading="lazy" class="h-8 w-auto mb-8" />
           <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1">Infolinia</p>
           <a href={SITE.phoneHref} class="text-3xl font-black hover:text-pink transition-colors block mb-5">{SITE.phoneDisplay}</a>
-          <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1">E-mail</p>
-          <a href={`mailto:${SITE.email}`} class="text-lg font-bold hover:text-pink transition-colors block mb-5">{SITE.email}</a>
           <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1">Godziny pracy</p>
           <p class="text-sm">poniedziałek – piątek, 9:00 – 17:00</p>
         </div>

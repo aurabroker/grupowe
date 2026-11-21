@@ -15,7 +15,7 @@ export const GET: APIRoute = async () => {
     '',
     `grupowe.pro to marka ${COMPANY.legalName} – licencjonowanego brokera ubezpieczeniowego (zezwolenie KNF nr ${COMPANY.knfPermit}, rejestr brokerów nr ${COMPANY.brokerRegister}) z siedzibą w Warszawie (${COMPANY.street}). Obsługujemy firmy z całej Polski, od ${'3'} pracowników. Usługa brokera jest dla firmy bezpłatna – wynagrodzenie wypłaca ubezpieczyciel.`,
     '',
-    `Kontakt: tel. ${SITE.phone}, e-mail ${SITE.email}. Formularz wyceny: ${SITE.url}/kontakt/`,
+    `Kontakt: tel. ${SITE.phone}. Formularz wyceny: ${SITE.url}/kontakt/`,
     '',
     '## Usługi (ubezpieczenia grupowe dla firm)',
     '',

@@ -1,6 +1,6 @@
 ---
 import Legal from '../layouts/Legal.astro';
-import { COMPANY, SITE } from '../data/site';
+import { COMPANY } from '../data/site';
 ---
 <Legal title="Regulamin serwisu | grupowe.pro" heading="Regulamin serwisu" description="Zasady korzystania z serwisu grupowe.pro oraz warunki świadczenia usług drogą elektroniczną." path="/regulamin/">
   <h2>§ 1. Postanowienia ogólne</h2>
@@ -14,5 +14,5 @@ import { COMPANY, SITE } from '../data/site';
   <p>1. Do korzystania z serwisu wymagane jest urządzenie z dostępem do sieci Internet oraz nowoczesna przeglądarka internetowa.</p>
   <p>2. Wszelkie treści, grafiki i mechanizmy zawarte na stronach Serwisu są objęte prawami autorskimi {COMPANY.shortName} i ich kopiowanie, przetwarzanie oraz dystrybucja bez zgody jest zabroniona.</p>
   <h2>§ 4. Postępowanie reklamacyjne</h2>
-  <p>Wszelkie reklamacje dotyczące działania serwisu należy zgłaszać drogą elektroniczną na adres: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Usługodawca rozpatrzy reklamację w terminie 14 dni od daty jej otrzymania.</p>
+  <p>Wszelkie reklamacje dotyczące działania serwisu należy zgłaszać drogą elektroniczną przez <a href="/kontakt/">formularz kontaktowy</a> lub pisemnie na adres siedziby Usługodawcy: {COMPANY.street}, {COMPANY.postalCode} {COMPANY.city}. Usługodawca rozpatrzy reklamację w terminie 14 dni od daty jej otrzymania.</p>
 </Legal>

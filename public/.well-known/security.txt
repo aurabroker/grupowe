@@ -1,3 +1,4 @@
-Contact: mailto:biuro@grupowe.pro
+Contact: https://grupowe.pro/kontakt/
+Contact: tel:+48500502702
 Preferred-Languages: pl, en
 Canonical: https://grupowe.pro/.well-known/security.txt
